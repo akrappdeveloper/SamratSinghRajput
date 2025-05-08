@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://yourwebsite.com/</loc>
+        <lastmod>2025-05-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://yourwebsite.com/images/gallery1.jpg</image:loc>
+            <image:title>Love Story Shoot</image:title>
+            <image:caption>A scene from a love story video shoot by Samrat Rajput Creation.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://yourwebsite.com/images/gallery2.jpg</image:loc>
+            <image:title>Behind the Scenes</image:title>
+            <image:caption>Behind the scenes of a video shoot by Samrat Rajput Creation.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://yourwebsite.com/images/gallery3.jpg</image:loc>
+            <image:title>Samrat Royal Collection Product</image:title>
+            <image:caption>A customized product from Samrat Royal Collection.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://yourwebsite.com/images/gallery4.jpg</image:loc>
+            <image:title>Event Coverage</image:title>
+            <image:caption>Samrat covering an event in Lucknow.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://yourwebsite.com/images/gallery5.jpg</image:loc>
+            <image:title>Creative Photoshoot</image:title>
+            <image:caption>A creative photoshoot by Samrat Rajput Creation.</image:caption>
+        </image:image>
+    </url>
+</urlset>

@@ -1,0 +1,1197 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
+    <meta name="keywords" content="Samrat Singh Rajput, social media influencer, YouTuber, love story videos, Samrat Royal Collection, Lucknow">
+    <meta name="robots" content="index, follow">
+    <title>Samrat Singh Rajput - Portfolio</title>
+    <!-- Firebase SDK (Compatibility Version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            font-family: 'Arial', sans-serif;
+        }
+        .neon-green {
+            color: #39ff14;
+        }
+        .bg-neon-green {
+            background-color: #39ff14;
+        }
+        .border-neon-green {
+            border-color: #39ff14;
+        }
+        /* Tailwind-like Utility Classes */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .items-center { align-items: center; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+        .space-x-8 > * + * { margin-left: 2rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-10 { gap: 2.5rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .font-bold { font-weight: 700; }
+        .text-center { text-align: center; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-gray-500 { color: #6b7280; }
+        .bg-gray-900 { background-color: #111827; }
+        .rounded { border-radius: 0.25rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-6xl { max-width: 72rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .w-full { width: 100%; }
+        .h-48 { height: 12rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .hover\:underline:hover { text-decoration: underline; }
+        .hover\:text-gray-400:hover { color: #9ca3af; }
+        .hover\:bg-green-500:hover { background-color: #2ecc10; }
+        /* Logo Styles */
+        .logo {
+            width: 100px;
+            height: 50px;
+            object-fit: contain;
+        }
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* Slide-in Animation */
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        /* Hover Scale Effect */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        /* Zoom-in Animation for Images */
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 0.8s ease-out forwards;
+        }
+        @keyframes zoomIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        /* Pulse Animation for Buttons */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Profile Image with Circular Border Animation */
+        .profile-container {
+            position: relative;
+            width: 256px;
+            height: 256px;
+        }
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .profile-border svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        .profile-border circle {
+            fill: none;
+            stroke-width: 8;
+            stroke: url(#gradient);
+            stroke-linecap: round;
+            stroke-dasharray: 754;
+            stroke-dashoffset: 0;
+            animation: borderRotate 4s linear infinite;
+        }
+        @keyframes borderRotate {
+            0% { stroke-dashoffset: 754; }
+            100% { stroke-dashoffset: 0; }
+        }
+        /* Colorful Social Icons */
+        .social-icon-youtube {
+            background: linear-gradient(45deg, #ff0000, #ffffff);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            padding: 0.5rem;
+        }
+        .social-icon-instagram {
+            background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            padding: 0.5rem;
+        }
+        .social-icon-facebook {
+            background: linear-gradient(45deg, #1877f2, #ffffff);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            padding: 0.5rem;
+        }
+        .social-icon-youtube:hover,
+        .social-icon-instagram:hover,
+        .social-icon-facebook:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #e5e5e5;
+        }
+        /* Contact Form Styles */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #39ff14;
+            border-radius: 0.25rem;
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .contact-form button {
+            background-color: #39ff14;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #2ecc10;
+        }
+        /* Star Rating Styles */
+        .star-rating {
+            display: inline-flex;
+            cursor: pointer;
+        }
+        .star {
+            font-size: 24px;
+            color: #ccc;
+            transition: color 0.2s;
+        }
+        .star.filled {
+            color: #39ff14;
+        }
+        .star:hover,
+        .star:hover ~ .star {
+            color: #39ff14;
+        }
+        /* Review Form Styles */
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #39ff14;
+            border-radius: 0.25rem;
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .review-form button {
+            background-color: #39ff14;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .review-form button:hover {
+            background-color: #2ecc10;
+        }
+        /* Highlight Review Form on Star Click */
+        .review-form.highlight {
+            border: 2px solid #39ff14;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: border 0.3s ease;
+        }
+        /* Review List Styles */
+        .review-item {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-left: 4px solid #39ff14;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+        /* Chatbot Styles */
+        .chatbot-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #39ff14;
+            color: #000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            z-index: 100;
+        }
+        .chatbot-window {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            width: 300px;
+            height: 400px;
+            background-color: #2a2a2a;
+            border: 2px solid #39ff14;
+            border-radius: 0.5rem;
+            display: none;
+            flex-direction: column;
+            z-index: 100;
+        }
+        .chatbot-header {
+            background-color: #39ff14;
+            color: #000;
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chatbot-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            color: #e5e5e5;
+        }
+        .chatbot-message {
+            margin-bottom: 1rem;
+        }
+        .chatbot-message.user {
+            text-align: right;
+            color: #39ff14;
+        }
+        .chatbot-message.ai {
+            text-align: left;
+            color: #e5e5e5;
+        }
+        .chatbot-input {
+            display: flex;
+            padding: 0.5rem;
+            background-color: #1a1a1a;
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #39ff14;
+            border-radius: 0.25rem;
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            margin-right: 0.5rem;
+        }
+        .chatbot-input button {
+            background-color: #39ff14;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .chatbot-input button:hover {
+            background-color: #2ecc10;
+        }
+        /* Responsive Adjustments */
+        @media (min-width: 640px) {
+            .sm\:space-x-6 > * + * { margin-left: 1.5rem; }
+            .sm\:space-x-8 > * + * { margin-left: 2rem; }
+            .sm\:space-y-0 > * + * { margin-top: 0; }
+            .sm\:px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+            .sm\:text-4xl { font-size: 2.25rem; }
+            .sm\:text-5xl { font-size: 3rem; }
+            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:gap-10 { gap: 2.5rem; }
+        }
+        @media (min-width: 768px) {
+            .md\:w-1\/3 { width: 33.333333%; }
+            .md\:w-2\/3 { width: 66.666667%; }
+            .md\:flex-row { flex-direction: row; }
+            .md\:text-left { text-align: left; }
+            .md\:pl-10 { padding-left: 2.5rem; }
+            .md\:mt-0 { margin-top: 0; }
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+            .text-5xl { font-size: 2.5rem; }
+            .text-4xl { font-size: 2rem; }
+            .text-xl { font-size: 1.25rem; }
+            .profile-container {
+                width: 200px;
+                height: 200px;
+            }
+            .social-icon-youtube svg,
+            .social-icon-instagram svg,
+            .social-icon-facebook svg {
+                width: 32px;
+                height: 32px;
+            }
+            .chatbot-window {
+                width: 90%;
+                right: 5%;
+                bottom: 80px;
+            }
+            .logo {
+                width: 80px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Chatbot Button and Window -->
+    <div class="chatbot-btn" id="chatbotBtn">💬</div>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">Website AI Chatbot</div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chatbot-message ai">Hello! Ask me anything about this website.</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your question...">
+            <button id="chatbotSendBtn">Send</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center py-6 px-4 sm:px-10">
+        <a href="#home">
+            <img src="https://via.placeholder.com/100x50?text=Logo" alt="Samrat Singh Rajput Logo" class="logo">
+        </a>
+        <ul class="flex flex-wrap justify-center space-x-4 sm:space-x-8 text-lg">
+            <li><a href="#home" class="neon-green hover:underline">HOME</a></li>
+            <li><a href="#about" class="text-gray-200 hover:text-gray-400">ABOUT</a></li>
+            <li><a href="#journey" class="text-gray-200 hover:text-gray-400">JOURNEY</a></li>
+            <li><a href="#ventures" class="text-gray-200 hover:text-gray-400">VENTURES</a></li>
+            <li><a href="#gallery" class="text-gray-200 hover:text-gray-400">GALLERY</a></li>
+            <li><a href="#contact" class="text-gray-200 hover:text-gray-400">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="flex flex-col md:flex-row items-center justify-center py-20 px-4 sm:px-10 fade-in">
+        <div class="md:w-1/3 w-full flex justify-center">
+            <div class="profile-container">
+                <img src="https://via.placeholder.com/256" alt="Samrat Singh Rajput" class="profile-image">
+                <div class="profile-border">
+                    <svg viewBox="0 0 256 256">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+                                <stop offset="33%" style="stop-color:#ff00ff;stop-opacity:1" />
+                                <stop offset="66%" style="stop-color:#00ffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#39ff14;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="128" cy="128" r="120" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="md:w-2/3 w-full text-center md:text-left md:pl-10 mt-8 md:mt-0">
+            <h1 class="text-2xl">Hello I'm</h1>
+            <h2 class="text-4xl sm:text-5xl font-bold neon-green">Samrat Singh Rajput</h2>
+            <h3 class="text-3xl sm:text-4xl mt-2">SOCIAL MEDIA INFLUENCER & YOUTUBER</h3>
+            <p class="mt-4 text-gray-400">
+                A creative content creator from Lucknow, known for directing and producing love story videos through Samrat Rajput Creation.
+            </p>
+            <button class="mt-6 px-6 py-2 bg-neon-green text-black font-bold rounded hover:bg-green-500 hover-scale">ABOUT ME</button>
+            <!-- Real-Time User Rating -->
+            <div class="mt-6">
+                <h4 class="text-lg neon-green">Rate My Content:</h4>
+                <div class="star-rating" id="starRating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <p class="mt-2 text-gray-400">Average Rating: <span id="averageRating">0</span>/5 (<span id="totalRatings">0</span> votes)</p>
+                <p id="ratingError" class="mt-2 text-red-500" style="display: none;">Unable to fetch ratings. Please try again later.</p>
+                <button id="showReviewsBtn" class="mt-2 px-4 py-1 bg-neon-green text-black font-bold rounded hover:bg-green-500">Show All Reviews</button>
+            </div>
+            <!-- Review Form -->
+            <div id="reviewSection" class="mt-6">
+                <h4 class="text-lg neon-green">Leave a Review:</h4>
+                <div class="review-form">
+                    <input type="text" id="reviewUsername" placeholder="Your Name" required>
+                    <textarea id="reviewText" placeholder="Your Review" rows="3" required></textarea>
+                    <button id="submitReviewBtn">Submit Review</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Modal -->
+    <div id="reviewsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeReviewsModal">×</span>
+            <h2 class="text-2xl neon-green mb-4">All Reviews</h2>
+            <div id="reviewsList"></div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">ABOUT ME</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Personal Background</h3>
+                <p class="mt-2 text-gray-400">
+                    I am Samrat Singh Rajput, born on 15th October 2003 in Lucknow, Uttar Pradesh, India. At 21 years old, I’ve established myself as a social media influencer and YouTuber, passionate about creating love story videos that resonate with my audience. I’m also an entrepreneur with big dreams of expanding my business ventures.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Family Background</h3>
+                <p class="mt-2 text-gray-400">
+                    I hail from a close-knit family in Lucknow. My father, Thakur Badshah Kushwaha, and my mother, Sunila Devi, have always supported my creative journey. My brother, Aman Rajput, is my constant companion and motivator. My family’s encouragement has been the backbone of my success.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Educational Background</h3>
+                <p class="mt-2 text-gray-400">
+                    I completed my schooling at Sri Ayodhya Singh Memorial Inter College, Lucknow, in 2024. Currently, I’m pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University, Lucknow, balancing my education with my career as a content creator.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Interests & Hobbies</h3>
+                <p class="mt-2 text-gray-400">
+                    I’m passionate about singing and traveling, which keep me inspired. My favorite foods are Sahi Paneer, Puri, Kheer, and Jalebi – a perfect blend of flavors! I’m unmarried and fully dedicated to my career and personal growth.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">More About Me</h3>
+                <p class="mt-2 text-gray-400">
+                    I’m a storyteller at heart, using my platform to connect with people through emotional and relatable content. My journey as a content creator has taught me resilience and creativity, and I’m always looking for new ways to inspire my audience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">MY JOURNEY</h2>
+        <div class="max-w-4xl mx-auto">
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Starting as a Content Creator</h3>
+                <p class="mt-2 text-gray-400">
+                    My journey began with a passion for storytelling. I started Samrat Rajput Creation to produce love story videos that capture the essence of emotions. Over time, my content gained traction, and I built a loyal audience on social media platforms.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in mt-6">
+                <h3 class="text-xl neon-green">Entrepreneurial Venture</h3>
+                <p class="mt-2 text-gray-400">
+                    Alongside my content creation, I founded Samrat Royal Collection in Lucknow, offering customized printing services like T-shirt and mug printing. My vision is to expand this business into a larger empire.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in mt-6">
+                <h3 class="text-xl neon-green">Future Goals</h3>
+                <p class="mt-2 text-gray-400">
+                    I aim to continue creating impactful content that inspires others while growing my business.
+                </p>
+                <p class="mt-2 text-gray-400">
+                    My dream is to make Samrat Royal Collection a household name.
+                </p>
+                <p class="mt-2 text-gray-400">
+                    I also plan to collaborate with brands and creators worldwide.
+                </p>
+                <p class="mt-2 text-gray-400">
+                    Expand my digital presence by launching a mobile app for Samrat Rajput Creation to reach a wider audience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ventures Section -->
+    <section id="ventures" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">MY VENTURES</h2>
+        <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">SAMRAT RAJPUT CREATION</h3>
+                <p class="mt-2 text-gray-400">
+                    I direct and produce love story videos, sharing creative content with my audience on social media platforms, aiming to evoke emotions and connect with viewers.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">SAMRAT ROYAL COLLECTION</h3>
+                <p class="mt-2 text-gray-400">
+                    My entrepreneurial venture in Lucknow offers customized printing services like T-shirt and mug printing, with a vision to expand into a larger empire.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">ACHIEVEMENTS</h2>
+        <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Growing Audience</h3>
+                <p class="mt-2 text-gray-400">
+                    Built a loyal following on social media through consistent and heartfelt content creation.
+                </p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green">Entrepreneurial Success</h3>
+                <p class="mt-2 text-gray-400">
+                    Successfully launched and operated Samrat Royal Collection, gaining traction in Lucknow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <figure class="bg-gray-900 p-4 rounded zoom-in">
+                <img src="images/gallery1.jpg" alt="Gallery Image 1 - Love Story Shoot" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+1'">
+            </figure>
+            <figure class="bg-gray-900 p-4 rounded zoom-in">
+                <img src="images/gallery2.jpg" alt="Gallery Image 2 - Behind the Scenes" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+2'">
+            </figure>
+            <figure class="bg-gray-900 p-4 rounded zoom-in">
+                <img src="images/gallery3.jpg" alt="Gallery Image 3 - Samrat Royal Collection Product" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+3'">
+            </figure>
+            <figure class="bg-gray-900 p-4 rounded zoom-in">
+                <img src="images/gallery4.jpg" alt="Gallery Image 4 - Event Coverage" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+4'">
+            </figure>
+            <figure class="bg-gray-900 p-4 rounded zoom-in">
+                <img src="images/gallery5.jpg" alt="Gallery Image 5 - Creative Photoshoot" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+5'">
+            </figure>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">WHAT PEOPLE SAY</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Indian Hindu Names -->
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s videos are so emotional and relatable! I’m a huge fan of his work."</p>
+                <h3 class="mt-4 text-xl neon-green">Priya Sharma</h3>
+                <p class="text-gray-500">Fan</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"The customized T-shirts from Samrat Royal Collection were amazing!"</p>
+                <h3 class="mt-4 text-xl neon-green">Rohan Verma</h3>
+                <p class="text-gray-500">Client</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s storytelling is incredible. His videos always touch my heart."</p>
+                <h3 class="mt-4 text-xl neon-green">Aarav Patel</h3>
+                <p class="text-gray-500">Viewer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"I ordered a mug from Samrat Royal Collection, and the quality was top-notch!"</p>
+                <h3 class="mt-4 text-xl neon-green">Kavya Gupta</h3>
+                <p class="text-gray-500">Customer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s content is a breath of fresh air. Keep up the great work!"</p>
+                <h3 class="mt-4 text-xl neon-green">Vikram Malhotra</h3>
+                <p class="text-gray-500">Fan</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"The love stories Samrat creates are so captivating!"</p>
+                <h3 class="mt-4 text-xl neon-green">Sneha Thakur</h3>
+                <p class="text-gray-500">Viewer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat Royal Collection’s printing service is the best in Lucknow!"</p>
+                <h3 class="mt-4 text-xl neon-green">Aditya Chauhan</h3>
+                <p class="text-gray-500">Client</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s videos always brighten my day!"</p>
+                <h3 class="mt-4 text-xl neon-green">Riya Saxena</h3>
+                <p class="text-gray-500">Fan</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"I love how Samrat tells stories through his videos."</p>
+                <h3 class="mt-4 text-xl neon-green">Nikhil Rana</h3>
+                <p class="text-gray-500">Viewer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat Royal Collection delivered my order faster than expected!"</p>
+                <h3 class="mt-4 text-xl neon-green">Anjali Mishra</h3>
+                <p class="text-gray-500">Customer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s creativity is unmatched. His videos are a must-watch!"</p>
+                <h3 class="mt-4 text-xl neon-green">Harsh Vardhan</h3>
+                <p class="text-gray-500">Fan</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"The quality of products from Samrat Royal Collection is amazing!"</p>
+                <h3 class="mt-4 text-xl neon-green">Meera Kapoor</h3>
+                <p class="text-gray-500">Client</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s videos always leave me inspired."</p>
+                <h3 class="mt-4 text-xl neon-green">Siddharth Bhatt</h3>
+                <p class="text-gray-500">Viewer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"I’m a regular customer of Samrat Royal Collection. Never disappointed!"</p>
+                <h3 class="mt-4 text-xl neon-green">Pooja Dubey</h3>
+                <p class="text-gray-500">Customer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s storytelling skills are phenomenal!"</p>
+                <h3 class="mt-4 text-xl neon-green">Ishaan Tyagi</h3>
+                <p class="text-gray-500">Fan</p>
+            </div>
+            <!-- International Names -->
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s videos are so touching. I watch them all the time!"</p>
+                <h3 class="mt-4 text-xl neon-green">Emily Johnson</h3>
+                <p class="text-gray-500">Viewer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"I ordered a T-shirt from Samrat Royal Collection, and I love it!"</p>
+                <h3 class="mt-4 text-xl neon-green">Carlos Mendes</h3>
+                <p class="text-gray-500">Customer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat’s content is amazing. I’m a big fan from Japan!"</p>
+                <h3 class="mt-4 text-xl neon-green">Aiko Tanaka</h3>
+                <p class="text-gray-500">Fan</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"The love stories Samrat creates are so beautiful."</p>
+                <h3 class="mt-4 text-xl neon-green">Liam O’Connor</h3>
+                <p class="text-gray-500">Viewer</p>
+            </div>
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <p class="text-gray-400">"Samrat Royal Collection’s service is excellent!"</p>
+                <h3 class="mt-4 text-xl neon-green">Sophie Leclerc</h3>
+                <p class="text-gray-500">Client</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Follow Me Section -->
+    <section id="social" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">FOLLOW ME</h2>
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
+            <!-- YouTube Icon -->
+            <a href="https://youtube.com" target="_blank" class="social-icon-youtube hover-scale">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a2.977 2.977 0 0 0-2.094-2.094C19.954 3.5 12 3.5 12 3.5s-7.954 0-9.404.592A2.977 2.977 0 0 0 .502 6.186C0 7.636 0 11.5 0 11.5s0 3.864.502 5.314a2.977 2.977 0 0 0 2.094 2.094C4.046 19.5 12 19.5 12 19.5s7.954 0 9.404-.592a2.977 2.977 0 0 0 2.094-2.094C24 15.364 24 11.5 24 11.5s0-3.864-.502-5.314zM9.6 15.5V7.5l6.4 4-6.4 4z"/>
+                </svg>
+            </a>
+            <!-- Instagram Icon -->
+            <a href="https://instagram.com" target="_blank" class="social-icon-instagram hover-scale">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.285.058-2.717.283-3.846 1.412-.975.975-1.412 2.407-1.412 3.846-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.285.283 2.717 1.412 3.846.975.975 2.407 1.412 3.846 1.412 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.285-.058 2.717-.283 3.846-1.412.975-.975 1.412-2.407 1.412-3.846.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.285-.283-2.717-1.412-3.846-.975-.975-2.407-1.412-3.846-1.412-1.28-.058-1.688-.072-4.947-.072m0 5.838c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6m0 9.837c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4m6.406-11.845c-.796 0-1.441-.645-1.441-1.441s.645-1.441 1.441-1.441 1.441.645 1.441 1.441-.645 1.441-1.441 1.441"/>
+                </svg>
+            </a>
+            <!-- Facebook Icon -->
+            <a href="https://facebook.com" target="_blank" class="social-icon-facebook hover-scale">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8h-2v2h2v6h3v-6h1.82l.18-2h-2v-1c0-.551.448-1 1-1h1v-2h-1c-1.657 0-3 1.343-3 3v1z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-10 text-center fade-in">
+        <h2 class="text-4xl font-bold mb-6">LET'S COLLABORATE ON YOUR NEXT PROJECT</h2>
+        <button id="openContactModal" class="px-6 py-2 bg-neon-green text-black font-bold rounded hover:bg-green-500 hover-scale pulse">CONTACT</button>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeContactModal">×</span>
+            <h2 class="text-2xl neon-green mb-4">Contact Me</h2>
+            <div class="contact-form">
+                <input type="text" id="contactName" placeholder="Your Name" required>
+                <input type="email" id="contactEmail" placeholder="Your Email" required>
+                <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
+                <button id="submitContactBtn">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-500">
+        <ul class="flex flex-wrap justify-center space-x-4 sm:space-x-6 mb-4">
+            <li><a href="#home" class="hover:text-gray-400">HOME</a></li>
+            <li><a href="#about" class="hover:text-gray-400">ABOUT</a></li>
+            <li><a href="#journey" class="hover:text-gray-400">JOURNEY</a></li>
+            <li><a href="#ventures" class="hover:text-gray-400">VENTURES</a></li>
+            <li><a href="#gallery" class="hover:text-gray-400">GALLERY</a></li>
+            <li><a href="#contact" class="hover:text-gray-400">CONTACT</a></li>
+        </ul>
+        <p>Made with ❤️ by Samrat Singh Rajput</p>
+    </footer>
+
+    <!-- Firebase Initialization and Scripts -->
+    <script>
+        // Start DOMContentLoaded event listener
+        document.addEventListener('DOMContentLoaded', () => {
+            // Firebase Configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyD-Xjp9mhxrHGWszkb_O2p24Pm_QhLuJ-c",
+                authDomain: "portfolio-4399e.firebaseapp.com",
+                databaseURL: "https://portfolio-4399e-default-rtdb.firebaseio.com",
+                projectId: "portfolio-4399e",
+                storageBucket: "portfolio-4399e.firebasestorage.app",
+                messagingSenderId: "670890582025",
+                appId: "1:670890582025:web:e513242b25f6998f47d8d8",
+                measurementId: "G-MLM60R17Z7"
+            };
+
+            // Initialize Firebase
+            try {
+                firebase.initializeApp(firebaseConfig);
+            } catch (error) {
+                console.error('Firebase initialization failed:', error);
+            }
+            const database = firebase.database();
+            const ratingsRef = database.ref('ratings');
+            const reviewsRef = database.ref('reviews');
+            const contactsRef = database.ref('contacts');
+            const chatbotRef = database.ref('chatbotInteractions');
+
+            // Handle Star Rating and Open Review Form
+            const stars = document.querySelectorAll('#starRating .star');
+            const averageRatingEl = document.getElementById('averageRating');
+            const totalRatingsEl = document.getElementById('totalRatings');
+            const ratingErrorEl = document.getElementById('ratingError');
+            const reviewSection = document.getElementById('reviewSection');
+            const reviewForm = reviewSection.querySelector('.review-form');
+            let selectedRating = 0; // Track the selected rating
+
+            // Start Star Rating Section
+            if (stars.length > 0) {
+                stars.forEach(star => {
+                    // Mouse Events
+                    star.addEventListener('click', () => {
+                        selectedRating = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                        ratingsRef.push(selectedRating).then(() => {
+                            console.log(`Rating ${selectedRating} submitted successfully`);
+                        }).catch(error => {
+                            console.error('Error submitting rating:', error);
+                            alert('Failed to submit rating. Please try again.');
+                        });
+                        // Scroll to and highlight the review form
+                        reviewSection.scrollIntoView({ behavior: 'smooth' });
+                        reviewForm.classList.add('highlight');
+                    });
+
+                    star.addEventListener('mouseover', () => {
+                        const hoverValue = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= hoverValue) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    star.addEventListener('mouseout', () => {
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    // Touch Events for Mobile Responsiveness
+                    star.addEventListener('touchstart', (e) => {
+                        e.preventDefault();
+                        selectedRating = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                        ratingsRef.push(selectedRating).then(() => {
+                            console.log(`Rating ${selectedRating} submitted successfully`);
+                        }).catch(error => {
+                            console.error('Error submitting rating:', error);
+                            alert('Failed to submit rating. Please try again.');
+                        });
+                        reviewSection.scrollIntoView({ behavior: 'smooth' });
+                        reviewForm.classList.add('highlight');
+                    });
+                });
+            } else {
+                console.error('Star rating elements not found in the DOM.');
+            }
+            // End Star Rating Section
+
+            // Real-Time Rating Updates
+            ratingsRef.on('value', snapshot => {
+                const ratings = snapshot.val();
+                if (ratings && averageRatingEl && totalRatingsEl) {
+                    const ratingValues = Object.values(ratings);
+                    const total = ratingValues.length;
+                    const average = (ratingValues.reduce((sum, val) => sum + val, 0) / total).toFixed(1);
+                    averageRatingEl.textContent = isNaN(average) ? '0' : average;
+                    totalRatingsEl.textContent = total;
+                    ratingErrorEl.style.display = 'none';
+                } else {
+                    averageRatingEl.textContent = '0';
+                    totalRatingsEl.textContent = '0';
+                    ratingErrorEl.style.display = 'block';
+                }
+            }, error => {
+                console.error('Error fetching ratings:', error);
+                if (averageRatingEl && totalRatingsEl && ratingErrorEl) {
+                    averageRatingEl.textContent = '0';
+                    totalRatingsEl.textContent = '0';
+                    ratingErrorEl.style.display = 'block';
+                }
+            });
+
+            // Handle Review Submission
+            const reviewUsernameEl = document.getElementById('reviewUsername');
+            const reviewTextEl = document.getElementById('reviewText');
+            const submitReviewBtn = document.getElementById('submitReviewBtn');
+
+            // Start Review Submission Section
+            if (reviewUsernameEl && reviewTextEl && submitReviewBtn) {
+                submitReviewBtn.addEventListener('click', () => {
+                    const username = reviewUsernameEl.value.trim();
+                    const reviewContent = reviewTextEl.value.trim();
+                    if (username && reviewContent) {
+                        reviewsRef.push({
+                            username: username,
+                            review: reviewContent,
+                            rating: selectedRating || 0, // Include the selected rating
+                            timestamp: Date.now()
+                        }).then(() => {
+                            reviewUsernameEl.value = '';
+                            reviewTextEl.value = '';
+                            selectedRating = 0; // Reset rating after submission
+                            stars.forEach(s => s.classList.remove('filled')); // Reset stars
+                            reviewForm.classList.remove('highlight'); // Remove highlight
+                            alert('Review submitted successfully!');
+                        }).catch(error => {
+                            console.error('Error submitting review:', error);
+                            alert('Failed to submit review. Please try again.');
+                        });
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            } else {
+                console.error('Review form elements not found in the DOM.');
+            }
+            // End Review Submission Section
+
+            // Show All Reviews Modal
+            const reviewsModal = document.getElementById('reviewsModal');
+            const showReviewsBtn = document.getElementById('showReviewsBtn');
+            const closeReviewsModal = document.getElementById('closeReviewsModal');
+            const reviewsList = document.getElementById('reviewsList');
+
+            // Start Reviews Modal Section
+            if (showReviewsBtn && reviewsModal && closeReviewsModal && reviewsList) {
+                showReviewsBtn.addEventListener('click', () => {
+                    reviewsModal.style.display = 'flex';
+                    reviewsList.innerHTML = '';
+                    reviewsRef.once('value', snapshot => {
+                        const reviews = snapshot.val();
+                        if (reviews) {
+                            Object.values(reviews).forEach(review => {
+                                const reviewItem = document.createElement('div');
+                                reviewItem.classList.add('review-item');
+                                reviewItem.innerHTML = `
+                                    <p class="text-gray-400"><strong>${review.username}</strong> (Rating: ${review.rating}/5)</p>
+                                    <p class="text-gray-400">${review.review}</p>
+                                `;
+                                reviewsList.appendChild(reviewItem);
+                            });
+                        } else {
+                            reviewsList.innerHTML = '<p class="text-gray-400">No reviews yet.</p>';
+                        }
+                    }, error => {
+                        console.error('Error fetching reviews:', error);
+                        reviewsList.innerHTML = '<p class="text-gray-400">Failed to load reviews.</p>';
+                    });
+                });
+
+                closeReviewsModal.addEventListener('click', () => {
+                    reviewsModal.style.display = 'none';
+                });
+
+                reviewsModal.addEventListener('click', (e) => {
+                    if (e.target === reviewsModal) {
+                        reviewsModal.style.display = 'none';
+                    }
+                });
+            } else {
+                console.error('Reviews modal elements not found in the DOM.');
+            }
+            // End Reviews Modal Section
+
+            // Contact Form Modal
+            const contactModal = document.getElementById('contactModal');
+            const openContactModal = document.getElementById('openContactModal');
+            const closeContactModal = document.getElementById('closeContactModal');
+            const submitContactBtn = document.getElementById('submitContactBtn');
+            const contactName = document.getElementById('contactName');
+            const contactEmail = document.getElementById('contactEmail');
+            const contactMessage = document.getElementById('contactMessage');
+
+            // Start Contact Form Modal Section
+            if (openContactModal && contactModal && closeContactModal && submitContactBtn && contactName && contactEmail && contactMessage) {
+                openContactModal.addEventListener('click', () => {
+                    contactModal.style.display = 'flex';
+                });
+
+                closeContactModal.addEventListener('click', () => {
+                    contactModal.style.display = 'none';
+                });
+
+                contactModal.addEventListener('click', (e) => {
+                    if (e.target === contactModal) {
+                        contactModal.style.display = 'none';
+                    }
+                });
+
+                submitContactBtn.addEventListener('click', () => {
+                    const name = contactName.value.trim();
+                    const email = contactEmail.value.trim();
+                    const message = contactMessage.value.trim();
+                    if (name && email && message) {
+                        contactsRef.push({
+                            name: name,
+                            email: email,
+                            message: message,
+                            timestamp: Date.now()
+                        }).then(() => {
+                            contactName.value = '';
+                            contactEmail.value = '';
+                            contactMessage.value = '';
+                            contactModal.style.display = 'none';
+                            alert('Message submitted successfully!');
+                        }).catch(error => {
+                            console.error('Error submitting contact message:', error);
+                            alert('Failed to submit message. Please try again.');
+                        });
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            } else {
+                console.error('Contact form elements not found in the DOM.');
+            }
+            // End Contact Form Modal Section
+
+            // Chatbot Functionality
+            const chatbotBtn = document.getElementById('chatbotBtn');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotBody = document.getElementById('chatbotBody');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSendBtn = document.getElementById('chatbotSendBtn');
+
+            // Start Chatbot Section
+            if (chatbotBtn && chatbotWindow && chatbotBody && chatbotInput && chatbotSendBtn) {
+                // Toggle Chatbot Window
+                chatbotBtn.addEventListener('click', () => {
+                    console.log('Chatbot button clicked'); // Debug log
+                    const currentDisplay = window.getComputedStyle(chatbotWindow).display;
+                    chatbotWindow.style.display = currentDisplay === 'flex' ? 'none' : 'flex';
+                });
+
+                // Predefined Responses
+                const predefinedResponses = {
+                    "who is samrat singh rajput": "Samrat Singh Rajput is a 21-year-old social media influencer and YouTuber from Lucknow, India. He’s known for directing and producing love story videos through Samrat Rajput Creation and is also an entrepreneur with Samrat Royal Collection.",
+                    "what are his ventures": "Samrat has two main ventures: Samrat Rajput Creation, where he produces love story videos, and Samrat Royal Collection, a customized printing service in Lucknow offering T-shirt and mug printing.",
+                    "what are his future goals": "Samrat aims to continue creating impactful content, make Samrat Royal Collection a household name, collaborate with brands and creators worldwide, and expand his digital presence by launching a mobile app for Samrat Rajput Creation.",
+                    "what is samrat royal collection": "Samrat Royal Collection is Samrat’s entrepreneurial venture in Lucknow, offering customized printing services like T-shirt and mug printing, with a vision to expand into a larger empire.",
+                    "what does samrat rajput creation do": "Samrat Rajput Creation is Samrat’s platform where he directs and produces love story videos, sharing creative content on social media to evoke emotions and connect with viewers."
+                };
+
+                // Respond to User Questions
+                const respondToQuestion = (question) => {
+                    const normalizedQuestion = question.toLowerCase().trim();
+                    const response = predefinedResponses[normalizedQuestion] || "Sorry, I don’t have an answer for that. Try asking something else!";
+                    
+                    const userMessage = document.createElement('div');
+                    userMessage.classList.add('chatbot-message', 'user');
+                    userMessage.textContent = question;
+                    chatbotBody.appendChild(userMessage);
+
+                    const aiMessage = document.createElement('div');
+                    aiMessage.classList.add('chatbot-message', 'ai');
+                    aiMessage.textContent = response;
+                    chatbotBody.appendChild(aiMessage);
+
+                    chatbotRef.push({
+                        userQuestion: question,
+                        aiResponse: response,
+                        timestamp: Date.now()
+                    }).catch(error => {
+                        console.error('Error storing chatbot interaction:', error);
+                    });
+
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                };
+
+                // Chatbot Send Button Event Listener
+                chatbotSendBtn.addEventListener('click', () => {
+                    const question = chatbotInput.value.trim();
+                    if (question) {
+                        respondToQuestion(question);
+                        chatbotInput.value = '';
+                    }
+                });
+
+                // Chatbot Input Keypress Event Listener (Enter Key)
+                chatbotInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const question = chatbotInput.value.trim();
+                        if (question) {
+                            respondToQuestion(question);
+                            chatbotInput.value = '';
+                        }
+                    }
+                });
+            } else {
+                console.error('Chatbot elements not found in the DOM.');
+            }
+            // End Chatbot Section
+        }); // End DOMContentLoaded event listener (Added missing closure)
+    </script>
+</body>
+</html>
