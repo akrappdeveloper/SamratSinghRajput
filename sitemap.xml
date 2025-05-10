@@ -1,34 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <!-- Homepage -->
     <url>
-        <loc>https://yourwebsite.com/</loc>
-        <lastmod>2025-05-08</lastmod>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/</loc>
+        <lastmod>2025-05-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://yourwebsite.com/images/gallery1.jpg</image:loc>
-            <image:title>Love Story Shoot</image:title>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/profile.jpg</image:loc>
+            <image:title>Samrat Singh Rajput Profile</image:title>
+            <image:caption>Profile image of Samrat Singh Rajput, social media influencer and YouTuber.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0002.jpg</image:loc>
+            <image:title>Love Story Video Shoot</image:title>
             <image:caption>A scene from a love story video shoot by Samrat Rajput Creation.</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://yourwebsite.com/images/gallery2.jpg</image:loc>
-            <image:title>Behind the Scenes</image:title>
-            <image:caption>Behind the scenes of a video shoot by Samrat Rajput Creation.</image:caption>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0005.jpg</image:loc>
+            <image:title>Horizontal Gallery Image</image:title>
+            <image:caption>A horizontal image showcasing Samrat’s creative work.</image:caption>
         </image:image>
+    </url>
+
+    <!-- About Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#about</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
         <image:image>
-            <image:loc>https://yourwebsite.com/images/gallery3.jpg</image:loc>
-            <image:title>Samrat Royal Collection Product</image:title>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/profile.jpg</image:loc>
+            <image:title>Samrat Singh Rajput Biography</image:title>
+            <image:caption>Profile image representing Samrat’s personal and professional background.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Journey Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#journey</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0004.jpg</image:loc>
+            <image:title>Content Creation Journey</image:title>
+            <image:caption>An image from Samrat’s journey as a content creator.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Ventures Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#ventures</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0008.jpg</image:loc>
+            <image:title>Samrat Royal Collection</image:title>
             <image:caption>A customized product from Samrat Royal Collection.</image:caption>
         </image:image>
+    </url>
+
+    <!-- Gallery Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#gallery</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
         <image:image>
-            <image:loc>https://yourwebsite.com/images/gallery4.jpg</image:loc>
-            <image:title>Event Coverage</image:title>
-            <image:caption>Samrat covering an event in Lucknow.</image:caption>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0002.jpg</image:loc>
+            <image:title>Love Story Video Shoot Scene</image:title>
+            <image:caption>A vertical image from a love story video shoot by Samrat Rajput Creation.</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://yourwebsite.com/images/gallery5.jpg</image:loc>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0009.jpg</image:loc>
             <image:title>Creative Photoshoot</image:title>
-            <image:caption>A creative photoshoot by Samrat Rajput Creation.</image:caption>
+            <image:caption>A creative photoshoot captured by Samrat Rajput Creation.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0018.jpg</image:loc>
+            <image:title>Behind the Scenes</image:title>
+            <image:caption>Behind-the-scenes moment from Samrat’s video production.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0043.jpg</image:loc>
+            <image:title>Event Coverage</image:title>
+            <image:caption>Samrat covering a local event in Lucknow.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Horizontal Gallery Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#horizontal-gallery</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0005.jpg</image:loc>
+            <image:title>Horizontal Creative Image</image:title>
+            <image:caption>A horizontal image showcasing Samrat’s creative work.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0014.jpg</image:loc>
+            <image:title>Video Production Scene</image:title>
+            <image:caption>A scene from Samrat’s video production work.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0062.jpg</image:loc>
+            <image:title>Samrat Royal Collection Product</image:title>
+            <image:caption>A product from Samrat Royal Collection’s printing services.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Videos Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#videos</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0010.jpg</image:loc>
+            <image:title>Video Thumbnail</image:title>
+            <image:caption>A thumbnail representing Samrat’s featured YouTube videos.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Contact Section -->
+    <url>
+        <loc>https://akrappdeveloper.github.io/SamratSinghRajput/#contact</loc>
+        <lastmod>2025-05-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/profile.jpg</image:loc>
+            <image:title>Contact Samrat Singh Rajput</image:title>
+            <image:caption>Profile image for the contact section of Samrat’s portfolio.</image:caption>
         </image:image>
     </url>
 </urlset>
