@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Existing Meta Tags -->
     <meta name="description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
     <meta name="keywords" content="Samrat Singh Rajput, social media influencer, YouTuber, love story videos, Samrat Royal Collection, Lucknow">
     <meta name="robots" content="index, follow">
-    <title>Samrat Singh Rajput</title>
-
-    <!-- Open Graph Tags for Better Search and Social Sharing -->
+    <title>Samrat Singh Rajput - Portfolio</title>
     <meta property="og:title" content="Samrat Singh Rajput - Portfolio">
     <meta property="og:description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.samratsinghrajput.com">
-    <meta property="og:image" content="https://www.mediafire.com/view/qynatktzdr08pg1/samlogo.png/file"> <!-- Replace with your actual image URL -->
-    <meta property="og:site_name" content="Samrat Singh Rajput">
-
-    <!-- Structured Data for Rich Snippets (Ratings and Reviews) -->
+    <meta property="og:image" content="images/profile.jpg">
+    <meta property="og:site_name" content="Samrat Singh Rajput Portfolio">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,8 +35,6 @@
       }
     }
     </script>
-
-    <!-- Firebase SDK (Compatibility Version) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <style>
@@ -50,16 +43,9 @@
             color: #e5e5e5;
             font-family: 'Arial', sans-serif;
         }
-        .neon-green {
-            color: #39ff14;
-        }
-        .bg-neon-green {
-            background-color: #39ff14;
-        }
-        .border-neon-green {
-            border-color: #39ff14;
-        }
-        /* Tailwind-like Utility Classes */
+        .neon-green { color: #39ff14; }
+        .bg-neon-green { background-color: #39ff14; }
+        .border-neon-green { border-color: #39ff14; }
         .flex { display: flex; }
         .flex-col { flex-direction: column; }
         .flex-wrap { flex-wrap: wrap; }
@@ -102,16 +88,16 @@
         .h-48 { height: 12rem; }
         .grid { display: grid; }
         .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         .hover\:underline:hover { text-decoration: underline; }
         .hover\:text-gray-400:hover { color: #9ca3af; }
-        .hover\:bg-green-500:hover { background-color: #2ecc10; }
-        /* Logo Styles */
+        .hover\:bg-teal-700:hover { background-color: #004d40; }
         .logo {
             width: 100px;
             height: 50px;
             object-fit: contain;
         }
-        /* Fade-in Animation */
         .fade-in {
             opacity: 0;
             animation: fadeIn 1s ease-in forwards;
@@ -120,7 +106,6 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-        /* Slide-in Animation */
         .slide-in {
             opacity: 0;
             transform: translateX(-50px);
@@ -130,14 +115,12 @@
             0% { opacity: 0; transform: translateX(-50px); }
             100% { opacity: 1; transform: translateX(0); }
         }
-        /* Hover Scale Effect */
         .hover-scale {
             transition: transform 0.3s ease;
         }
         .hover-scale:hover {
             transform: scale(1.05);
         }
-        /* Zoom-in Animation for Images */
         .zoom-in {
             opacity: 0;
             transform: scale(0.8);
@@ -147,7 +130,6 @@
             0% { opacity: 0; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1); }
         }
-        /* Pulse Animation for Buttons */
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -156,7 +138,6 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        /* Profile Image with Circular Border Animation */
         .profile-container {
             position: relative;
             width: 256px;
@@ -193,7 +174,6 @@
             0% { stroke-dashoffset: 754; }
             100% { stroke-dashoffset: 0; }
         }
-        /* Colorful Social Icons */
         .social-icon-youtube {
             background: linear-gradient(45deg, #ff0000, #ffffff);
             transition: all 0.3s ease;
@@ -218,7 +198,6 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
             transform: scale(1.1);
         }
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -247,7 +226,6 @@
             cursor: pointer;
             color: #e5e5e5;
         }
-        /* Contact Form Styles */
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -259,18 +237,17 @@
             color: #e5e5e5;
         }
         .contact-form button {
-            background-color: #39ff14;
-            color: #000;
-            padding: 0.5rem 1rem;
+            background-color: #00695c;
+            color: #fff;
+            padding: 0.75rem 2rem;
             border: none;
             border-radius: 0.25rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         .contact-form button:hover {
-            background-color: #2ecc10;
+            background-color: #004d40;
         }
-        /* Star Rating Styles */
         .star-rating {
             display: inline-flex;
             cursor: pointer;
@@ -287,7 +264,6 @@
         .star:hover ~ .star {
             color: #39ff14;
         }
-        /* Review Form Styles */
         .review-form input,
         .review-form textarea {
             width: 100%;
@@ -310,14 +286,12 @@
         .review-form button:hover {
             background-color: #2ecc10;
         }
-        /* Highlight Review Form on Star Click */
         .review-form.highlight {
             border: 2px solid #39ff14;
             padding: 1rem;
             border-radius: 0.5rem;
             transition: border 0.3s ease;
         }
-        /* Review List Styles */
         .review-item {
             background-color: #2a2a2a;
             padding: 1rem;
@@ -325,7 +299,6 @@
             margin-bottom: 1rem;
             border-radius: 0.25rem;
         }
-        /* Chatbot Styles */
         .chatbot-btn {
             position: fixed;
             right: 20px;
@@ -380,6 +353,13 @@
             text-align: left;
             color: #e5e5e5;
         }
+        .chatbot-message.ai a {
+            color: #39ff14;
+            text-decoration: underline;
+        }
+        .chatbot-message.ai a:hover {
+            color: #2ecc10;
+        }
         .chatbot-input {
             display: flex;
             padding: 0.5rem;
@@ -405,7 +385,20 @@
         .chatbot-input button:hover {
             background-color: #2ecc10;
         }
-        /* Responsive Adjustments */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.25rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         @media (min-width: 640px) {
             .sm\:space-x-6 > * + * { margin-left: 1.5rem; }
             .sm\:space-x-8 > * + * { margin-left: 2rem; }
@@ -451,16 +444,21 @@
                 width: 80px;
                 height: 40px;
             }
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Chatbot Button and Window -->
     <div class="chatbot-btn" id="chatbotBtn">💬</div>
     <div class="chatbot-window" id="chatbotWindow">
         <div class="chatbot-header">Website AI Chatbot</div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="chatbot-message ai">Hello! Ask me anything about this website.</div>
+            <div class="chatbot-message ai">Hello! Ask me anything about this website or Samrat Singh Rajput.</div>
         </div>
         <div class="chatbot-input">
             <input type="text" id="chatbotInput" placeholder="Type your question...">
@@ -468,7 +466,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="flex justify-between items-center py-6 px-4 sm:px-10">
         <a href="#home">
             <img src="https://via.placeholder.com/100x50?text=Logo" alt="Samrat Singh Rajput Logo" class="logo">
@@ -483,11 +480,10 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="flex flex-col md:flex-row items-center justify-center py-20 px-4 sm:px-10 fade-in">
         <div class="md:w-1/3 w-full flex justify-center">
             <div class="profile-container">
-                <img src="https://via.placeholder.com/256" alt="Samrat Singh Rajput" class="profile-image">
+                <img src="images/profile.jpg" alt="Samrat Singh Rajput Profile" class="profile-image" onerror="this.src='https://via.placeholder.com/256?text=Profile+Image'">
                 <div class="profile-border">
                     <svg viewBox="0 0 256 256">
                         <defs>
@@ -511,7 +507,6 @@
                 A creative content creator from Lucknow, known for directing and producing love story videos through Samrat Rajput Creation.
             </p>
             <button class="mt-6 px-6 py-2 bg-neon-green text-black font-bold rounded hover:bg-green-500 hover-scale">ABOUT ME</button>
-            <!-- Real-Time User Rating -->
             <div class="mt-6">
                 <h4 class="text-lg neon-green">Rate My Content:</h4>
                 <div class="star-rating" id="starRating">
@@ -525,7 +520,6 @@
                 <p id="ratingError" class="mt-2 text-red-500" style="display: none;">Unable to fetch ratings. Please try again later.</p>
                 <button id="showReviewsBtn" class="mt-2 px-4 py-1 bg-neon-green text-black font-bold rounded hover:bg-green-500">Show All Reviews</button>
             </div>
-            <!-- Review Form -->
             <div id="reviewSection" class="mt-6">
                 <h4 class="text-lg neon-green">Leave a Review:</h4>
                 <div class="review-form">
@@ -537,7 +531,6 @@
         </div>
     </section>
 
-    <!-- Reviews Modal -->
     <div id="reviewsModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="closeReviewsModal">×</span>
@@ -546,7 +539,6 @@
         </div>
     </div>
 
-    <!-- About Section -->
     <section id="about" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">ABOUT ME</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -583,7 +575,6 @@
         </div>
     </section>
 
-    <!-- Journey Section -->
     <section id="journey" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">MY JOURNEY</h2>
         <div class="max-w-4xl mx-auto">
@@ -617,7 +608,6 @@
         </div>
     </section>
 
-    <!-- Ventures Section -->
     <section id="ventures" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">MY VENTURES</h2>
         <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
@@ -636,7 +626,6 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
     <section id="achievements" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">ACHIEVEMENTS</h2>
         <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
@@ -655,33 +644,126 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <figure class="bg-gray-900 p-4 rounded zoom-in">
-                <img src="images/gallery1.jpg" alt="Gallery Image 1 - Love Story Shoot" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+1'">
-            </figure>
-            <figure class="bg-gray-900 p-4 rounded zoom-in">
-                <img src="images/gallery2.jpg" alt="Gallery Image 2 - Behind the Scenes" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+2'">
-            </figure>
-            <figure class="bg-gray-900 p-4 rounded zoom-in">
-                <img src="images/gallery3.jpg" alt="Gallery Image 3 - Samrat Royal Collection Product" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+3'">
-            </figure>
-            <figure class="bg-gray-900 p-4 rounded zoom-in">
-                <img src="images/gallery4.jpg" alt="Gallery Image 4 - Event Coverage" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+4'">
-            </figure>
-            <figure class="bg-gray-900 p-4 rounded zoom-in">
-                <img src="images/gallery5.jpg" alt="Gallery Image 5 - Creative Photoshoot" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Image+5'">
-            </figure>
+        <div class="max-w-6xl mx-auto space-y-6">
+            <!-- Row 1 -->
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_1.jpg" alt="Laptop and TV Show Image 1" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+1'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_2.jpg" alt="Laptop and TV Show Image 2" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+2'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_3.jpg" alt="Laptop and TV Show Image 3" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+3'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_4.jpg" alt="Laptop and TV Show Image 4" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+4'">
+                </figure>
+            </div>
+            <!-- Row 2 -->
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_5.jpg" alt="Laptop and TV Show Image 5" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+5'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_6.jpg" alt="Laptop and TV Show Image 6" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+6'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_7.jpg" alt="Laptop and TV Show Image 7" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+7'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_8.jpg" alt="Laptop and TV Show Image 8" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+8'">
+                </figure>
+            </div>
+            <!-- Row 3 -->
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_9.jpg" alt="Laptop and TV Show Image 9" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+9'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_10.jpg" alt="Laptop and TV Show Image 10" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+10'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_11.jpg" alt="Laptop and TV Show Image 11" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+11'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_12.jpg" alt="Laptop and TV Show Image 12" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+12'">
+                </figure>
+            </div>
+            <!-- Row 4 -->
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_13.jpg" alt="Laptop and TV Show Image 13" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+13'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_14.jpg" alt="Laptop and TV Show Image 14" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+14'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_15.jpg" alt="Laptop and TV Show Image 15" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+15'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/laptop_tv_16.jpg" alt="Laptop and TV Show Image 16" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x200?text=Laptop+TV+16'">
+                </figure>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <section id="horizontal-gallery" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">HORIZONTAL GALLERY</h2>
+        <div class="max-w-6xl mx-auto space-y-6">
+            <!-- Row 1 -->
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_1.jpg" alt="Horizontal Image 1" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+1'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_2.jpg" alt="Horizontal Image 2" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+2'">
+                </figure>
+            </div>
+            <!-- Row 2 -->
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_3.jpg" alt="Horizontal Image 3" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+3'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_4.jpg" alt="Horizontal Image 4" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+4'">
+                </figure>
+            </div>
+            <!-- Row 3 -->
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_5.jpg" alt="Horizontal Image 5" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+5'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_6.jpg" alt="Horizontal Image 6" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+6'">
+                </figure>
+            </div>
+            <!-- Row 4 -->
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_7.jpg" alt="Horizontal Image 7" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+7'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_8.jpg" alt="Horizontal Image 8" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+8'">
+                </figure>
+            </div>
+            <!-- Row 5 -->
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_9.jpg" alt="Horizontal Image 9" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+9'">
+                </figure>
+                <figure class="bg-gray-900 p-4 rounded zoom-in">
+                    <img src="images/horizontal_10.jpg" alt="Horizontal Image 10" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+10'">
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <section id="testimonials" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">WHAT PEOPLE SAY</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <!-- Indian Hindu Names -->
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <p class="text-gray-400">"Samrat’s videos are so emotional and relatable! I’m a huge fan of his work."</p>
                 <h3 class="mt-4 text-xl neon-green">Priya Sharma</h3>
@@ -757,7 +839,6 @@
                 <h3 class="mt-4 text-xl neon-green">Ishaan Tyagi</h3>
                 <p class="text-gray-500">Fan</p>
             </div>
-            <!-- International Names -->
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <p class="text-gray-400">"Samrat’s videos are so touching. I watch them all the time!"</p>
                 <h3 class="mt-4 text-xl neon-green">Emily Johnson</h3>
@@ -786,38 +867,58 @@
         </div>
     </section>
 
-    <!-- Follow Me Section -->
-    <section id="social" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">FOLLOW ME</h2>
-        <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
-            <!-- YouTube Icon -->
-            <a href="https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb" target="_blank" class="social-icon-youtube hover-scale">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a2.977 2.977 0 0 0-2.094-2.094C19.954 3.5 12 3.5 12 3.5s-7.954 0-9.404.592A2.977 2.977 0 0 0 .502 6.186C0 7.636 0 11.5 0 11.5s0 3.864.502 5.314a2.977 2.977 0 0 0 2.094 2.094C4.046 19.5 12 19.5 12 19.5s7.954 0 9.404-.592a2.977 2.977 0 0 0 2.094-2.094C24 15.364 24 11.5 24 11.5s0-3.864-.502-5.314zM9.6 15.5V7.5l6.4 4-6.4 4z"/>
-                </svg>
-            </a>
-            <!-- Instagram Icon -->
-            <a href="https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon-instagram hover-scale">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.285.058-2.717.283-3.846 1.412-.975.975-1.412 2.407-1.412 3.846-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.285.283 2.717 1.412 3.846.975.975 2.407 1.412 3.846 1.412 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.285-.058 2.717-.283 3.846-1.412.975-.975 1.412-2.407 1.412-3.846.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.285-.283-2.717-1.412-3.846-.975-.975-2.407-1.412-3.846-1.412-1.28-.058-1.688-.072-4.947-.072m0 5.838c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6m0 9.837c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4m6.406-11.845c-.796 0-1.441-.645-1.441-1.441s.645-1.441 1.441-1.441 1.441.645 1.441 1.441-.645 1.441-1.441 1.441"/>
-                </svg>
-            </a>
-            <!-- Facebook Icon -->
-            <a href="https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#" target="_blank" class="social-icon-facebook hover-scale">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8h-2v2h2v6h3v-6h1.82l.18-2h-2v-1c0-.551.448-1 1-1h1v-2h-1c-1.657 0-3 1.343-3 3v1z"/>
-                </svg>
-            </a>
+    <section id="videos" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">FEATURED VIDEOS</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="bg-gray-900 p-4 rounded zoom-in">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dtYjCV9ja2E" title="Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="bg-gray-900 p-4 rounded zoom-in">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Ps6zsHT1EFw" title="Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="bg-gray-900 p-4 rounded zoom-in">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/mDgkpc8lKqM" title="Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-10 text-center fade-in">
-        <h2 class="text-4xl font-bold mb-6">LET'S COLLABORATE ON YOUR NEXT PROJECT</h2>
-        <button id="openContactModal" class="px-6 py-2 bg-neon-green text-black font-bold rounded hover:bg-green-500 hover-scale pulse">CONTACT</button>
+    <section id="social" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10">FOLLOW ME</h2>
+        <div class="max-w-4xl mx-auto">
+            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
+                <h3 class="text-xl neon-green text-center mb-4">Connect with Me</h3>
+                <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
+                    <a href="https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb" target="_blank" class="social-icon-youtube hover-scale">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a2.977 2.977 0 0 0-2.094-2.094C19.954 3.5 12 3.5 12 3.5s-7.954 0-9.404.592A2.977 2.977 0 0 0 .502 6.186C0 7.636 0 11.5 0 11.5s0 3.864.502 5.314a2.977 2.977 0 0 0 2.094 2.094C4.046 19.5 12 19.5 12 19.5s7.954 0 9.404-.592a2.977 2.977 0 0 0 2.094-2.094C24 15.364 24 11.5 24 11.5s0-3.864-.502-5.314zM9.6 15.5V7.5l6.4 4-6.4 4z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon-instagram hover-scale">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.285.058-2.717.283-3.846 1.412-.975.975-1.412 2.407-1.412 3.846-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.285.283 2.717 1.412 3.846.975.975 2.407 1.412 3.846 1.412 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.285-.058 2.717-.283 3.846-1.412.975-.975 1.412-2.407 1.412-3.846.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.285-.283-2.717-1.412-3.846-.975-.975-2.407-1.412-3.846-1.412-1.28-.058-1.688-.072-4.947-.072m0 5.838c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6m0 9.837c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4m6.406-11.845c-.796 0-1.441-.645-1.441-1.441s.645-1.441 1.441-1.441 1.441.645 1.441 1.441-.645 1.441-1.441 1.441"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#" target="_blank" class="social-icon-facebook hover-scale">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8h-2v2h2v6h3v-6h1.82l.18-2h-2v-1c0-.551.448-1 1-1h1v-2h-1c-1.657 0-3 1.343-3 3v1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact Modal -->
+    <section id="contact" class="py-20 px-4 sm:px-10 text-center fade-in">
+        <h2 class="text-4xl font-bold mb-6">LET'S COLLABORATE ON YOUR NEXT PROJECT</h2>
+        <button id="openContactModal" class="px-8 py-4 text-lg bg-teal-600 text-white font-bold rounded hover:bg-teal-700 hover-scale pulse">CONTACT</button>
+    </section>
+
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="closeContactModal">×</span>
@@ -831,7 +932,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="py-6 text-center text-gray-500">
         <ul class="flex flex-wrap justify-center space-x-4 sm:space-x-6 mb-4">
             <li><a href="#home" class="hover:text-gray-400">HOME</a></li>
@@ -841,14 +941,11 @@
             <li><a href="#gallery" class="hover:text-gray-400">GALLERY</a></li>
             <li><a href="#contact" class="hover:text-gray-400">CONTACT</a></li>
         </ul>
-        <p>Made with ❤️ by Samrat Singh Rajput</p>
+        <p>Made with ❤️ by AKR Industry</p>
     </footer>
 
-    <!-- Firebase Initialization and Scripts -->
     <script>
-        // Start DOMContentLoaded event listener
         document.addEventListener('DOMContentLoaded', () => {
-            // Firebase Configuration
             const firebaseConfig = {
                 apiKey: "AIzaSyD-Xjp9mhxrHGWszkb_O2p24Pm_QhLuJ-c",
                 authDomain: "portfolio-4399e.firebaseapp.com",
@@ -860,7 +957,6 @@
                 measurementId: "G-MLM60R17Z7"
             };
 
-            // Initialize Firebase
             try {
                 firebase.initializeApp(firebaseConfig);
             } catch (error) {
@@ -872,19 +968,16 @@
             const contactsRef = database.ref('contacts');
             const chatbotRef = database.ref('chatbotInteractions');
 
-            // Handle Star Rating and Open Review Form
             const stars = document.querySelectorAll('#starRating .star');
             const averageRatingEl = document.getElementById('averageRating');
             const totalRatingsEl = document.getElementById('totalRatings');
             const ratingErrorEl = document.getElementById('ratingError');
             const reviewSection = document.getElementById('reviewSection');
             const reviewForm = reviewSection.querySelector('.review-form');
-            let selectedRating = 0; // Track the selected rating
+            let selectedRating = 0;
 
-            // Start Star Rating Section
             if (stars.length > 0) {
                 stars.forEach(star => {
-                    // Mouse Events
                     star.addEventListener('click', () => {
                         selectedRating = parseInt(star.getAttribute('data-value'));
                         stars.forEach(s => {
@@ -900,7 +993,6 @@
                             console.error('Error submitting rating:', error);
                             alert('Failed to submit rating. Please try again.');
                         });
-                        // Scroll to and highlight the review form
                         reviewSection.scrollIntoView({ behavior: 'smooth' });
                         reviewForm.classList.add('highlight');
                     });
@@ -926,7 +1018,6 @@
                         });
                     });
 
-                    // Touch Events for Mobile Responsiveness
                     star.addEventListener('touchstart', (e) => {
                         e.preventDefault();
                         selectedRating = parseInt(star.getAttribute('data-value'));
@@ -950,9 +1041,7 @@
             } else {
                 console.error('Star rating elements not found in the DOM.');
             }
-            // End Star Rating Section
 
-            // Real-Time Rating Updates
             ratingsRef.on('value', snapshot => {
                 const ratings = snapshot.val();
                 if (ratings && averageRatingEl && totalRatingsEl) {
@@ -976,12 +1065,10 @@
                 }
             });
 
-            // Handle Review Submission
             const reviewUsernameEl = document.getElementById('reviewUsername');
             const reviewTextEl = document.getElementById('reviewText');
             const submitReviewBtn = document.getElementById('submitReviewBtn');
 
-            // Start Review Submission Section
             if (reviewUsernameEl && reviewTextEl && submitReviewBtn) {
                 submitReviewBtn.addEventListener('click', () => {
                     const username = reviewUsernameEl.value.trim();
@@ -990,14 +1077,14 @@
                         reviewsRef.push({
                             username: username,
                             review: reviewContent,
-                            rating: selectedRating || 0, // Include the selected rating
+                            rating: selectedRating || 0,
                             timestamp: Date.now()
                         }).then(() => {
                             reviewUsernameEl.value = '';
                             reviewTextEl.value = '';
-                            selectedRating = 0; // Reset rating after submission
-                            stars.forEach(s => s.classList.remove('filled')); // Reset stars
-                            reviewForm.classList.remove('highlight'); // Remove highlight
+                            selectedRating = 0;
+                            stars.forEach(s => s.classList.remove('filled'));
+                            reviewForm.classList.remove('highlight');
                             alert('Review submitted successfully!');
                         }).catch(error => {
                             console.error('Error submitting review:', error);
@@ -1010,15 +1097,12 @@
             } else {
                 console.error('Review form elements not found in the DOM.');
             }
-            // End Review Submission Section
 
-            // Show All Reviews Modal
             const reviewsModal = document.getElementById('reviewsModal');
             const showReviewsBtn = document.getElementById('showReviewsBtn');
             const closeReviewsModal = document.getElementById('closeReviewsModal');
             const reviewsList = document.getElementById('reviewsList');
 
-            // Start Reviews Modal Section
             if (showReviewsBtn && reviewsModal && closeReviewsModal && reviewsList) {
                 showReviewsBtn.addEventListener('click', () => {
                     reviewsModal.style.display = 'flex';
@@ -1056,9 +1140,7 @@
             } else {
                 console.error('Reviews modal elements not found in the DOM.');
             }
-            // End Reviews Modal Section
 
-            // Contact Form Modal
             const contactModal = document.getElementById('contactModal');
             const openContactModal = document.getElementById('openContactModal');
             const closeContactModal = document.getElementById('closeContactModal');
@@ -1067,7 +1149,6 @@
             const contactEmail = document.getElementById('contactEmail');
             const contactMessage = document.getElementById('contactMessage');
 
-            // Start Contact Form Modal Section
             if (openContactModal && contactModal && closeContactModal && submitContactBtn && contactName && contactEmail && contactMessage) {
                 openContactModal.addEventListener('click', () => {
                     contactModal.style.display = 'flex';
@@ -1110,83 +1191,85 @@
             } else {
                 console.error('Contact form elements not found in the DOM.');
             }
-            // End Contact Form Modal Section
 
-            // Chatbot Functionality
             const chatbotBtn = document.getElementById('chatbotBtn');
             const chatbotWindow = document.getElementById('chatbotWindow');
             const chatbotBody = document.getElementById('chatbotBody');
             const chatbotInput = document.getElementById('chatbotInput');
             const chatbotSendBtn = document.getElementById('chatbotSendBtn');
 
-            // Start Chatbot Section
             if (chatbotBtn && chatbotWindow && chatbotBody && chatbotInput && chatbotSendBtn) {
-                // Toggle Chatbot Window
                 chatbotBtn.addEventListener('click', () => {
-                    console.log('Chatbot button clicked'); // Debug log
+                    console.log('Chatbot button clicked');
                     const currentDisplay = window.getComputedStyle(chatbotWindow).display;
                     chatbotWindow.style.display = currentDisplay === 'flex' ? 'none' : 'flex';
                 });
 
-                // Predefined Responses
                 const predefinedResponses = {
                     "who is samrat singh rajput": "Samrat Singh Rajput is a 21-year-old social media influencer and YouTuber from Lucknow, India. He’s known for directing and producing love story videos through Samrat Rajput Creation and is also an entrepreneur with Samrat Royal Collection.",
-                    "what are his ventures": "Samrat has two main ventures: Samrat Rajput Creation, where he produces love story videos, and Samrat Royal Collection, a customized printing service in Lucknow offering T-shirt and mug printing.",
-                    "what are his future goals": "Samrat aims to continue creating impactful content, make Samrat Royal Collection a household name, collaborate with brands and creators worldwide, and expand his digital presence by launching a mobile app for Samrat Rajput Creation.",
-                    "what is samrat royal collection": "Samrat Royal Collection is Samrat’s entrepreneurial venture in Lucknow, offering customized printing services like T-shirt and mug printing, with a vision to expand into a larger empire.",
-                    "what does samrat rajput creation do": "Samrat Rajput Creation is Samrat’s platform where he directs and produces love story videos, sharing creative content on social media to evoke emotions and connect with viewers."
+                    "what are his ventures": "Samrat has two main ventures : Samrat Rajput Creation, where he produces love story videos, and Samrat Royal Collection, a business in Lucknow offering customized printing services like T-shirts and mugs.",
+                    "what is samrat royal collection": "Samrat Royal Collection is Samrat Singh Rajput's entrepreneurial venture in Lucknow. It provides customized printing services, such as T-shirt and mug printing, with a vision to expand into a larger business empire.",
+                    "how can i contact him": "You can contact Samrat by clicking the 'CONTACT' button in the 'Let's Collaborate' section. It opens a form where you can submit your name, email, and message.",
+                    "where is he from": "Samrat Singh Rajput is from Lucknow, Uttar Pradesh, India.",
+                    "what kind of videos does he make": "Samrat creates love story videos through his platform, Samrat Rajput Creation. His videos are emotional, relatable, and aimed at connecting with his audience.",
+                    "how can i follow him": "You can follow Samrat on his social media platforms. Links to his YouTube, Instagram, and Facebook are in the 'Follow Me' section of the website.",
+                    "what are his future goals": "Samrat aims to grow his content creation, expand Samrat Royal Collection into a household name, collaborate with brands and creators worldwide, and launch a mobile app for Samrat Rajput Creation to reach a wider audience.",
+                    "tell me about his education": "Samrat completed his schooling at Sri Ayodhya Singh Memorial Inter College, Lucknow, in 2024. He’s currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University, Lucknow.",
+                    "what are his hobbies": "Samrat is passionate about singing and traveling, which keep him inspired. He also enjoys foods like Sahi Paneer, Puri, Kheer, and Jalebi."
                 };
 
-                // Respond to User Questions
-                const respondToQuestion = (question) => {
-                    const normalizedQuestion = question.toLowerCase().trim();
-                    const response = predefinedResponses[normalizedQuestion] || "Sorry, I don’t have an answer for that. Try asking something else!";
-                    
-                    const userMessage = document.createElement('div');
-                    userMessage.classList.add('chatbot-message', 'user');
-                    userMessage.textContent = question;
-                    chatbotBody.appendChild(userMessage);
-
-                    const aiMessage = document.createElement('div');
-                    aiMessage.classList.add('chatbot-message', 'ai');
-                    aiMessage.textContent = response;
-                    chatbotBody.appendChild(aiMessage);
-
-                    chatbotRef.push({
-                        userQuestion: question,
-                        aiResponse: response,
-                        timestamp: Date.now()
-                    }).catch(error => {
-                        console.error('Error storing chatbot interaction:', error);
-                    });
-
+                const appendMessage = (message, type) => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('chatbot-message', type);
+                    messageDiv.innerHTML = message;
+                    chatbotBody.appendChild(messageDiv);
                     chatbotBody.scrollTop = chatbotBody.scrollHeight;
                 };
 
-                // Chatbot Send Button Event Listener
+                const getBotResponse = (userMessage) => {
+                    userMessage = userMessage.toLowerCase().trim();
+                    for (let question in predefinedResponses) {
+                        if (userMessage.includes(question)) {
+                            return predefinedResponses[question];
+                        }
+                    }
+                    return "I'm not sure how to answer that. Could you please ask something else about Samrat Singh Rajput or his ventures?";
+                };
+
                 chatbotSendBtn.addEventListener('click', () => {
-                    const question = chatbotInput.value.trim();
-                    if (question) {
-                        respondToQuestion(question);
+                    const userMessage = chatbotInput.value.trim();
+                    if (userMessage) {
+                        appendMessage(userMessage, 'user');
+                        const botResponse = getBotResponse(userMessage);
+                        setTimeout(() => {
+                            appendMessage(botResponse, 'ai');
+                        }, 500);
+                        chatbotRef.push({
+                            userMessage: userMessage,
+                            botResponse: botResponse,
+                            timestamp: Date.now()
+                        }).catch(error => {
+                            console.error('Error logging chatbot interaction:', error);
+                        });
                         chatbotInput.value = '';
                     }
                 });
 
-                // Chatbot Input Keypress Event Listener (Enter Key)
                 chatbotInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
-                        const question = chatbotInput.value.trim();
-                        if (question) {
-                            respondToQuestion(question);
-                            chatbotInput.value = '';
-                        }
+                        chatbotSendBtn.click();
+                    }
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (!chatbotWindow.contains(e.target) && e.target !== chatbotBtn) {
+                        chatbotWindow.style.display = 'none';
                     }
                 });
             } else {
                 console.error('Chatbot elements not found in the DOM.');
             }
-            // End Chatbot Section
-        }); // End DOMContentLoaded event listener
+        });
     </script>
 </body>
 </html>
