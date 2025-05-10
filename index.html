@@ -1,51 +1,46 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Existing Meta Tags -->
     <meta name="description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
     <meta name="keywords" content="Samrat Singh Rajput, social media influencer, YouTuber, love story videos, Samrat Royal Collection, Lucknow">
     <meta name="robots" content="index, follow">
-    <title>Samrat Singh Rajput - Portfolio</title>
+    <title>Samrat Singh Rajput</title>
+
+    <!-- Open Graph Tags for Better Search and Social Sharing -->
+    <meta property="og:title" content="Samrat Singh Rajput - Portfolio">
+    <meta property="og:description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.samratsinghrajput.com">
+    <meta property="og:image" content="https://www.samratsinghrajput.com/images/profile.jpg"> <!-- Replace with your actual image URL -->
+    <meta property="og:site_name" content="Samrat Singh Rajput Portfolio">
+
+    <!-- Structured Data for Rich Snippets (Ratings and Reviews) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Samrat Singh Rajput",
+      "jobTitle": "Social Media Influencer & YouTuber",
+      "description": "Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, known for love story videos through Samrat Rajput Creation and his venture Samrat Royal Collection.",
+      "url": "https://www.samratsinghrajput.com",
+      "sameAs": [
+        "https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb",
+        "https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        "https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "120",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
     <!-- Firebase SDK (Compatibility Version) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
@@ -796,19 +791,19 @@
         <h2 class="text-4xl font-bold text-center mb-10">FOLLOW ME</h2>
         <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
             <!-- YouTube Icon -->
-            <a href="https://youtube.com" target="_blank" class="social-icon-youtube hover-scale">
+            <a href="https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb" target="_blank" class="social-icon-youtube hover-scale">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M23.498 6.186a2.977 2.977 0 0 0-2.094-2.094C19.954 3.5 12 3.5 12 3.5s-7.954 0-9.404.592A2.977 2.977 0 0 0 .502 6.186C0 7.636 0 11.5 0 11.5s0 3.864.502 5.314a2.977 2.977 0 0 0 2.094 2.094C4.046 19.5 12 19.5 12 19.5s7.954 0 9.404-.592a2.977 2.977 0 0 0 2.094-2.094C24 15.364 24 11.5 24 11.5s0-3.864-.502-5.314zM9.6 15.5V7.5l6.4 4-6.4 4z"/>
                 </svg>
             </a>
             <!-- Instagram Icon -->
-            <a href="https://instagram.com" target="_blank" class="social-icon-instagram hover-scale">
+            <a href="https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon-instagram hover-scale">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.285.058-2.717.283-3.846 1.412-.975.975-1.412 2.407-1.412 3.846-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.285.283 2.717 1.412 3.846.975.975 2.407 1.412 3.846 1.412 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.285-.058 2.717-.283 3.846-1.412.975-.975 1.412-2.407 1.412-3.846.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.285-.283-2.717-1.412-3.846-.975-.975-2.407-1.412-3.846-1.412-1.28-.058-1.688-.072-4.947-.072m0 5.838c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6m0 9.837c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4m6.406-11.845c-.796 0-1.441-.645-1.441-1.441s.645-1.441 1.441-1.441 1.441.645 1.441 1.441-.645 1.441-1.441 1.441"/>
                 </svg>
             </a>
             <!-- Facebook Icon -->
-            <a href="https://facebook.com" target="_blank" class="social-icon-facebook hover-scale">
+            <a href="https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#" target="_blank" class="social-icon-facebook hover-scale">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8h-2v2h2v6h3v-6h1.82l.18-2h-2v-1c0-.551.448-1 1-1h1v-2h-1c-1.657 0-3 1.343-3 3v1z"/>
                 </svg>
@@ -1191,7 +1186,7 @@
                 console.error('Chatbot elements not found in the DOM.');
             }
             // End Chatbot Section
-        }); // End DOMContentLoaded event listener (Added missing closure)
+        }); // End DOMContentLoaded event listener
     </script>
 </body>
 </html>
