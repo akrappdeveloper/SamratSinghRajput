@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <!--
+        Note: Google site verification is handled via the meta tag in index.html:
+        <meta name="google-site-verification" content="378HzkAkbznbC3rkX94gZJHQaAMbm0z4-pyHAfolumA" />
+        This sitemap is optimized for a verified site to improve SEO and indexing.
+    -->
+
     <!-- Homepage -->
     <url>
         <loc>https://akrappdeveloper.github.io/SamratSinghRajput/</loc>
@@ -88,6 +94,11 @@
             <image:title>Event Coverage</image:title>
             <image:caption>Samrat covering a local event in Lucknow.</image:caption>
         </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0044.jpg</image:loc>
+            <image:title>Creative Video Production</image:title>
+            <image:caption>An image from Samrat’s creative video production work.</image:caption>
+        </image:image>
     </url>
 
     <!-- Horizontal Gallery Section -->
@@ -110,6 +121,11 @@
             <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0062.jpg</image:loc>
             <image:title>Samrat Royal Collection Product</image:title>
             <image:caption>A product from Samrat Royal Collection’s printing services.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://akrappdeveloper.github.io/SamratSinghRajput/images/IMG-20250510-WA0067.jpg</image:loc>
+            <image:title>Creative Horizontal Image</image:title>
+            <image:caption>Another horizontal image from Samrat’s portfolio.</image:caption>
         </image:image>
     </url>
 
