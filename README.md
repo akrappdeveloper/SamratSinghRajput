@@ -1,2 +1,0 @@
-# SamratSinghRajput
-Samrat Singh Rajput
