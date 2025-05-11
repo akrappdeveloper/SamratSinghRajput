@@ -439,6 +439,12 @@
             height: clamp(16rem, 40vw, 28rem); /* Uniform height across devices */
             object-fit: cover;
         }
+        /* Default gallery layout for larger screens (laptops) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+        }
         @media (min-width: 640px) {
             .sm\:space-x-6 > * + * { margin-left: clamp(1rem, 2vw, 1.5rem); }
             .sm\:space-x-8 > * + * { margin-left: clamp(1.5rem, 3vw, 2rem); }
@@ -464,13 +470,19 @@
             .h-80 { height: 28rem; }
             .h-56 { height: 20rem; }
         }
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .lg\:grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        /* Tablets: 2 images per row */
+        @media (max-width: 1023px) and (min-width: 769px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
             .h-80 { height: 22rem; }
             .h-56 { height: 16rem; }
         }
+        /* Phones: 1 image per row */
         @media (max-width: 768px) {
-            .lg\:grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .gallery-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
             .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             .h-80 { height: 18rem; }
             .h-56 { height: 14rem; }
@@ -698,7 +710,7 @@
     <section id="gallery" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
         <div class="max-w-6xl mx-auto space-y-6">
-            <div class="lg:grid-cols-4 gap-6">
+            <div class="gallery-grid">
                 <figure class="gallery-card card-hover zoom-in">
                     <img src="images/IMG-20250510-WA0002.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 1" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+1'">
                     <figcaption>Laptop and TV Show Image 1</figcaption>
