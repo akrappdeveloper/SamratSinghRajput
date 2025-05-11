@@ -80,8 +80,8 @@
         .max-w-6xl { max-width: 72rem; }
         .mx-auto { margin-left: auto; margin-right: auto; }
         .w-full { width: 100%; }
-        .h-48 { height: 12rem; }
-        .h-64 { height: 16rem; }
+        .h-48 { height: 16rem; } /* Updated for Horizontal Gallery */
+        .h-64 { height: 20rem; } /* Updated for Gallery */
         .grid { display: grid; }
         .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
         .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -446,7 +446,8 @@
             .grid-cols-2 {
                 grid-template-columns: repeat(1, minmax(0, 1fr));
             }
-            .h-64 { height: 12rem; }
+            .h-64 { height: 16rem; } /* Adjusted for smaller screens */
+            .h-48 { height: 12rem; } /* Adjusted for smaller screens */
         }
     </style>
 </head>
@@ -1203,7 +1204,7 @@
                 chatbotSendBtn.addEventListener('click', sendChatbotMessage);
                 chatbotInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
-                        sendChatbotMessage();
+                                                sendChatbotMessage();
                     }
                 });
 
@@ -1214,60 +1215,61 @@
                         userMessageEl.classList.add('chatbot-message', 'user');
                         userMessageEl.textContent = userMessage;
                         chatbotBody.appendChild(userMessageEl);
+                        chatbotInput.value = '';
 
-                        chatbotRef.push({
-                            userMessage: userMessage,
-                            timestamp: Date.now()
-                        }).then(() => {
-                            const aiResponse = getAIResponse(userMessage);
+                        const aiResponse = getAIResponse(userMessage.toLowerCase());
+                        setTimeout(() => {
                             const aiMessageEl = document.createElement('div');
                             aiMessageEl.classList.add('chatbot-message', 'ai');
                             aiMessageEl.innerHTML = aiResponse;
                             chatbotBody.appendChild(aiMessageEl);
                             chatbotBody.scrollTop = chatbotBody.scrollHeight;
-                            chatbotInput.value = '';
-                        }).catch(error => {
-                            console.error('Error saving chatbot message:', error);
-                            const aiMessageEl = document.createElement('div');
-                            aiMessageEl.classList.add('chatbot-message', 'ai');
-                            aiMessageEl.textContent = 'Sorry, something went wrong. Please try again.';
-                            chatbotBody.appendChild(aiMessageEl);
-                            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-                        });
+
+                            chatbotRef.push({
+                                userMessage: userMessage,
+                                aiResponse: aiResponse,
+                                timestamp: Date.now()
+                            }).catch(error => {
+                                console.error('Error logging chatbot interaction:', error);
+                            });
+                        }, 500);
                     }
                 }
 
                 function getAIResponse(message) {
-                    const lowerMessage = message.toLowerCase();
-                    if (lowerMessage.includes('samrat') || lowerMessage.includes('who is')) {
-                        return 'Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, known for his love story videos through Samrat Rajput Creation and his venture Samrat Royal Collection. Check out the <a href="#about">About</a> section for more details!';
-                    } else if (lowerMessage.includes('gallery') || lowerMessage.includes('photos')) {
-                        return 'You can view Samrat’s amazing gallery of images in the <a href="#gallery">Gallery</a> and <a href="#horizontal-gallery">Horizontal Gallery</a> sections!';
-                    } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach out')) {
-                        return 'Want to collaborate? Click the <a href="#contact">Contact</a> section to send a message!';
-                    } else if (lowerMessage.includes('ventures') || lowerMessage.includes('business')) {
-                        return 'Samrat runs Samrat Rajput Creation for love story videos and Samrat Royal Collection for customized printing services. Learn more in the <a href="#ventures">Ventures</a> section!';
-                    } else if (lowerMessage.includes('videos') || lowerMessage.includes('youtube')) {
-                        return 'Check out Samrat’s featured videos in the <a href="#videos">Videos</a> section or visit his <a href="https://youtube.com/@samratrajputcreation" target="_blank">YouTube channel</a>!';
+                    if (message.includes('who is samrat') || message.includes('about samrat')) {
+                        return 'Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, born on 15th October 2003. He’s known for creating love story videos through Samrat Rajput Creation and runs a business called Samrat Royal Collection, offering customized printing services.';
+                    } else if (message.includes('what does samrat do') || message.includes('samrat ventures')) {
+                        return 'Samrat creates love story videos on his YouTube channel, Samrat Rajput Creation, and runs Samrat Royal Collection, a business in Lucknow that offers customized printing services like T-shirts and mugs.';
+                    } else if (message.includes('contact samrat') || message.includes('how to reach samrat')) {
+                        return 'You can contact Samrat through the <a href="#contact">Contact section</a> on this website or reach out via his social media profiles linked in the <a href="#social">Follow Me section</a>.';
+                    } else if (message.includes('gallery') || message.includes('photos')) {
+                        return 'Check out the <a href="#gallery">Gallery section</a> and <a href="#horizontal-gallery">Horizontal Gallery section</a> to see photos related to Samrat’s work and ventures.';
+                    } else if (message.includes('videos') || message.includes('youtube')) {
+                        return 'Samrat shares his love story videos on YouTube. You can watch some of his featured videos in the <a href="#videos">Featured Videos section</a> or visit his YouTube channel linked in the <a href="#social">Follow Me section</a>.';
+                    } else if (message.includes('reviews') || message.includes('rating')) {
+                        return 'You can rate Samrat’s content and leave a review in the <a href="#home">Home section</a>. See what others are saying in the <a href="#testimonials">What People Say section</a> or click "Show All Reviews" to view all submitted reviews.';
+                    } else if (message.includes('social media') || message.includes('follow samrat')) {
+                        return 'You can follow Samrat on YouTube, Instagram, and Facebook. Check the <a href="#social">Follow Me section</a> for direct links to his profiles.';
+                    } else if (message.includes('education') || message.includes('samrat study')) {
+                        return 'Samrat completed his schooling at Sri Ayodhya Singh Memorial Inter College, Lucknow, in 2024. He’s currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University, Lucknow.';
+                    } else if (message.includes('family') || message.includes('samrat family')) {
+                        return 'Samrat comes from a supportive family in Lucknow. His father is Thakur Badshah Kushwaha, his mother is Sunila Devi, and his brother, Aman Rajput, is his constant motivator.';
+                    } else if (message.includes('hobbies') || message.includes('interests')) {
+                        return 'Samrat enjoys singing and traveling. His favorite foods are Sahi Paneer, Puri, Kheer, and Jalebi.';
+                    } else if (message.includes('future goals') || message.includes('samrat plans')) {
+                        return 'Samrat aims to expand his business, Samrat Royal Collection, into a larger empire, continue creating inspiring content, collaborate with brands worldwide, and launch a mobile app for Samrat Rajput Creation.';
+                    } else if (message.includes('achievements') || message.includes('samrat success')) {
+                        return 'Samrat has built a loyal following on social media with his heartfelt content and successfully launched Samrat Royal Collection in Lucknow. Check the <a href="#achievements">Achievements section</a> for more details.';
                     } else {
-                        return 'I’m not sure about that, but feel free to ask about Samrat’s work, gallery, ventures, or how to contact him!';
+                        return 'I’m not sure how to answer that. Could you ask something else about Samrat or this website?';
                     }
                 }
+
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
             } else {
                 console.error('Chatbot elements not found in the DOM.');
             }
-
-            const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
         });
     </script>
 </body>
