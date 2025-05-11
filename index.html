@@ -33,10 +33,18 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
         body {
             background-color: #1a1a1a;
             color: #e5e5e5;
             font-family: 'Arial', sans-serif;
+            font-size: clamp(14px, 2vw, 16px); /* Responsive font size */
         }
         .neon-green { color: #39ff14; }
         .bg-neon-green { background-color: #39ff14; }
@@ -48,40 +56,44 @@
         .justify-center { justify-content: center; }
         .items-center { align-items: center; }
         .space-x-4 > * + * { margin-left: 1rem; }
-        .space-x-6 > * + * { margin-left: 1.5rem; }
-        .space-x-8 > * + * { margin-left: 2rem; }
-        .space-y-6 > * + * { margin-top: 1.5rem; }
-        .gap-6 { gap: 1.5rem; }
-        .gap-10 { gap: 2.5rem; }
-        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .mt-8 { margin-top: 2rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-10 { margin-bottom: 2.5rem; }
-        .text-lg { font-size: 1.125rem; }
-        .text-xl { font-size: 1.25rem; }
-        .text-2xl { font-size: 1.5rem; }
-        .text-3xl { font-size: 1.875rem; }
-        .text-4xl { font-size: 2.25rem; }
-        .text-5xl { font-size: 3rem; }
+        .space-x-6 > * + * { margin-left: clamp(1rem, 2vw, 1.5rem); }
+        .space-x-8 > * + * { margin-left: clamp(1.5rem, 3vw, 2rem); }
+        .space-y-6 > * + * { margin-top: clamp(1rem, 3vw, 1.5rem); }
+        .gap-6 { gap: clamp(1rem, 2vw, 1.5rem); }
+        .gap-10 { gap: clamp(1.5rem, 3vw, 2.5rem); }
+        .py-6 { padding-top: clamp(1rem, 2vw, 1.5rem); padding-bottom: clamp(1rem, 2vw, 1.5rem); }
+        .py-20 { padding-top: clamp(3rem, 5vw, 5rem); padding-bottom: clamp(3rem, 5vw, 5rem); }
+        .px-4 { padding-left: clamp(0.5rem, 2vw, 1rem); padding-right: clamp(0.5rem, 2vw, 1rem); }
+        .px-10 { padding-left: clamp(1.5rem, 3vw, 2.5rem); padding-right: clamp(1.5rem, 3vw, 2.5rem); }
+        .mt-2 { margin-top: clamp(0.25rem, 1vw, 0.5rem); }
+        .mt-4 { margin-top: clamp(0.5rem, 2vw, 1rem); }
+        .mt-6 { margin-top: clamp(1rem, 2vw, 1.5rem); }
+        .mt-8 { margin-top: clamp(1.5rem, 3vw, 2rem); }
+        .mb-4 { margin-bottom: clamp(0.5rem, 2vw, 1rem); }
+        .mb-6 { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+        .mb-10 { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+        .text-lg { font-size: clamp(1rem, 2vw, 1.125rem); }
+        .text-xl { font-size: clamp(1.125rem, 2.5vw, 1.25rem); }
+        .text-2xl { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+        .text-3xl { font-size: clamp(1.5rem, 3.5vw, 1.875rem); }
+        .text-4xl { font-size: clamp(1.875rem, 4vw, 2.25rem); }
+        .text-5xl { font-size: clamp(2.25rem, 5vw, 3rem); }
         .font-bold { font-weight: 700; }
         .text-center { text-align: center; }
         .text-gray-400 { color: #9ca3af; }
         .text-gray-500 { color: #6b7280; }
         .bg-gray-900 { background-color: #111827; }
         .rounded { border-radius: 0.25rem; }
-        .max-w-4xl { max-width: 56rem; }
-        .max-w-6xl { max-width: 72rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .max-w-4xl { max-width: clamp(90%, 56rem, 100%); }
+        .max-w-6xl { max-width: clamp(90%, 72rem, 100%); }
         .mx-auto { margin-left: auto; margin-right: auto; }
         .w-full { width: 100%; }
-        .h-48 { height: 16rem; } /* Updated for Horizontal Gallery */
-        .h-64 { height: 20rem; } /* Updated for Gallery */
+        .h-48 { height: 20rem; } /* Updated for Horizontal Gallery */
+        .h-56 { height: 20rem; } /* Updated for Horizontal Gallery (larger screens) */
+        .h-64 { height: 24rem; } /* Updated for Gallery */
+        .h-80 { height: 28rem; } /* Updated for Gallery (larger screens) */
         .grid { display: grid; }
         .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
         .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -90,8 +102,8 @@
         .hover\:text-gray-400:hover { color: #9ca3af; }
         .hover\:bg-teal-700:hover { background-color: #004d40; }
         .logo {
-            width: 100px;
-            height: 50px;
+            width: clamp(80px, 10vw, 100px);
+            height: clamp(40px, 5vw, 50px);
             object-fit: contain;
         }
         .fade-in {
@@ -117,6 +129,13 @@
         .hover-scale:hover {
             transform: scale(1.05);
         }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
+        }
         .zoom-in {
             opacity: 0;
             transform: scale(0.8);
@@ -136,8 +155,8 @@
         }
         .profile-container {
             position: relative;
-            width: 256px;
-            height: 256px;
+            width: clamp(200px, 25vw, 256px);
+            height: clamp(200px, 25vw, 256px);
         }
         .profile-image {
             width: 100%;
@@ -174,19 +193,19 @@
             background: linear-gradient(45deg, #ff0000, #ffffff);
             transition: all 0.3s ease;
             border-radius: 50%;
-            padding: 0.5rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
         }
         .social-icon-instagram {
             background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
             transition: all 0.3s ease;
             border-radius: 50%;
-            padding: 0.5rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
         }
         .social-icon-facebook {
             background: linear-gradient(45deg, #1877f2, #ffffff);
             transition: all 0.3s ease;
             border-radius: 50%;
-            padding: 0.5rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
         }
         .social-icon-youtube:hover,
         .social-icon-instagram:hover,
@@ -208,25 +227,24 @@
         }
         .modal-content {
             background-color: #2a2a2a;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
             border-radius: 0.5rem;
-            width: 90%;
-            max-width: 500px;
+            width: clamp(80%, 90vw, 500px);
             position: relative;
         }
         .close-btn {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
             cursor: pointer;
             color: #e5e5e5;
         }
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
             border: 1px solid #39ff14;
             border-radius: 0.25rem;
             background-color: #1a1a1a;
@@ -235,7 +253,7 @@
         .contact-form button {
             background-color: #00695c;
             color: #fff;
-            padding: 0.75rem 2rem;
+            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 2rem);
             border: none;
             border-radius: 0.25rem;
             cursor: pointer;
@@ -249,7 +267,7 @@
             cursor: pointer;
         }
         .star {
-            font-size: 24px;
+            font-size: clamp(20px, 3vw, 24px);
             color: #ccc;
             transition: color 0.2s;
         }
@@ -263,8 +281,8 @@
         .review-form input,
         .review-form textarea {
             width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
             border: 1px solid #39ff14;
             border-radius: 0.25rem;
             background-color: #1a1a1a;
@@ -273,7 +291,7 @@
         .review-form button {
             background-color: #39ff14;
             color: #000;
-            padding: 0.5rem 1rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
             border: none;
             border-radius: 0.25rem;
             cursor: pointer;
@@ -284,40 +302,40 @@
         }
         .review-form.highlight {
             border: 2px solid #39ff14;
-            padding: 1rem;
+            padding: clamp(0.5rem, 2vw, 1rem);
             border-radius: 0.5rem;
             transition: border 0.3s ease;
         }
         .review-item {
             background-color: #2a2a2a;
-            padding: 1rem;
+            padding: clamp(0.5rem, 2vw, 1rem);
             border-left: 4px solid #39ff14;
-            margin-bottom: 1rem;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
             border-radius: 0.25rem;
         }
         .chatbot-btn {
             position: fixed;
-            right: 20px;
-            bottom: 20px;
+            right: clamp(10px, 2vw, 20px);
+            bottom: clamp(10px, 2vw, 20px);
             background-color: #39ff14;
             color: #000;
-            width: 60px;
-            height: 60px;
+            width: clamp(50px, 6vw, 60px);
+            height: clamp(50px, 6vw, 60px);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            font-size: clamp(20px, 3vw, 24px);
             cursor: pointer;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
             z-index: 100;
         }
         .chatbot-window {
             position: fixed;
-            right: 20px;
-            bottom: 100px;
-            width: 300px;
-            height: 400px;
+            right: clamp(10px, 2vw, 20px);
+            bottom: clamp(80px, 10vw, 100px);
+            width: clamp(250px, 80vw, 300px);
+            height: clamp(300px, 60vh, 400px);
             background-color: #2a2a2a;
             border: 2px solid #39ff14;
             border-radius: 0.5rem;
@@ -328,18 +346,18 @@
         .chatbot-header {
             background-color: #39ff14;
             color: #000;
-            padding: 0.5rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
             text-align: center;
             font-weight: bold;
         }
         .chatbot-body {
             flex: 1;
-            padding: 1rem;
+            padding: clamp(0.5rem, 2vw, 1rem);
             overflow-y: auto;
             color: #e5e5e5;
         }
         .chatbot-message {
-            margin-bottom: 1rem;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
         }
         .chatbot-message.user {
             text-align: right;
@@ -358,22 +376,22 @@
         }
         .chatbot-input {
             display: flex;
-            padding: 0.5rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
             background-color: #1a1a1a;
         }
         .chatbot-input input {
             flex: 1;
-            padding: 0.5rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
             border: 1px solid #39ff14;
             border-radius: 0.25rem;
             background-color: #1a1a1a;
             color: #e5e5e5;
-            margin-right: 0.5rem;
+            margin-right: clamp(0.3rem, 1vw, 0.5rem);
         }
         .chatbot-input button {
             background-color: #39ff14;
             color: #000;
-            padding: 0.5rem 1rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
             border: none;
             border-radius: 0.25rem;
             cursor: pointer;
@@ -395,59 +413,91 @@
             width: 100%;
             height: 100%;
         }
+        /* Card styles for gallery */
+        .gallery-card {
+            background-color: #111827;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .gallery-card figcaption {
+            padding: clamp(0.5rem, 1vw, 1rem);
+            text-align: center;
+            color: #e5e5e5;
+            font-size: clamp(0.875rem, 1.5vw, 1rem);
+        }
+        /* Media Queries for Responsiveness */
         @media (min-width: 640px) {
-            .sm\:space-x-6 > * + * { margin-left: 1.5rem; }
-            .sm\:space-x-8 > * + * { margin-left: 2rem; }
+            .sm\:space-x-6 > * + * { margin-left: clamp(1rem, 2vw, 1.5rem); }
+            .sm\:space-x-8 > * + * { margin-left: clamp(1.5rem, 3vw, 2rem); }
             .sm\:space-y-0 > * + * { margin-top: 0; }
-            .sm\:px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
-            .sm\:text-4xl { font-size: 2.25rem; }
-            .sm\:text-5xl { font-size: 3rem; }
+            .sm\:px-10 { padding-left: clamp(1.5rem, 3vw, 2.5rem); padding-right: clamp(1.5rem, 3vw, 2.5rem); }
+            .sm\:text-4xl { font-size: clamp(1.875rem, 4vw, 2.25rem); }
+            .sm\:text-5xl { font-size: clamp(2.25rem, 5vw, 3rem); }
             .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .sm\:flex-row { flex-direction: row; }
-            .sm\:gap-10 { gap: 2.5rem; }
+            .sm\:gap-10 { gap: clamp(1.5rem, 3vw, 2.5rem); }
         }
         @media (min-width: 768px) {
             .md\:w-1\/3 { width: 33.333333%; }
             .md\:w-2\/3 { width: 66.666667%; }
             .md\:flex-row { flex-direction: row; }
             .md\:text-left { text-align: left; }
-            .md\:pl-10 { padding-left: 2.5rem; }
+            .md\:pl-10 { padding-left: clamp(1.5rem, 3vw, 2.5rem); }
             .md\:mt-0 { margin-top: 0; }
         }
         @media (min-width: 1024px) {
             .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .h-80 { height: 28rem; } /* Larger screens for Gallery */
+            .h-56 { height: 20rem; } /* Larger screens for Horizontal Gallery */
+        }
+        @media (max-width: 1024px) {
+            .grid-cols-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .h-80 { height: 22rem; }
+            .h-56 { height: 16rem; }
+        }
+        @media (max-width: 768px) {
+            .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .h-80 { height: 18rem; }
+            .h-56 { height: 14rem; }
         }
         @media (max-width: 640px) {
-            .text-5xl { font-size: 2.5rem; }
-            .text-4xl { font-size: 2rem; }
-            .text-xl { font-size: 1.25rem; }
+            .text-5xl { font-size: clamp(2rem, 5vw, 2.5rem); }
+            .text-4xl { font-size: clamp(1.75rem, 4vw, 2rem); }
+            .text-xl { font-size: clamp(1rem, 2.5vw, 1.25rem); }
             .profile-container {
-                width: 200px;
-                height: 200px;
+                width: clamp(150px, 40vw, 200px);
+                height: clamp(150px, 40vw, 200px);
             }
             .social-icon-youtube svg,
             .social-icon-instagram svg,
             .social-icon-facebook svg {
-                width: 32px;
-                height: 32px;
+                width: clamp(28px, 6vw, 32px);
+                height: clamp(28px, 6vw, 32px);
             }
             .chatbot-window {
-                width: 90%;
-                right: 5%;
-                bottom: 80px;
+                width: clamp(90%, 95vw, 100%);
+                right: 2.5%;
+                bottom: clamp(60px, 10vw, 80px);
             }
             .logo {
-                width: 80px;
-                height: 40px;
+                width: clamp(60px, 15vw, 80px);
+                height: clamp(30px, 7.5vw, 40px);
             }
-            .grid-cols-4 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .grid-cols-2 {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-            .h-64 { height: 16rem; } /* Adjusted for smaller screens */
-            .h-48 { height: 12rem; } /* Adjusted for smaller screens */
+            .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .h-80 { height: 16rem; } /* Adjusted for smaller screens */
+            .h-56 { height: 12rem; } /* Adjusted for smaller screens */
         }
     </style>
 </head>
@@ -647,62 +697,78 @@
         <div class="max-w-6xl mx-auto space-y-6">
             <!-- Row 1 -->
             <div class="grid grid-cols-4 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0002.jpg" alt="Laptop and TV Show Image 1" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+1'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0002.jpg" alt="Laptop and TV Show Image 1" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+1'">
+                    <figcaption>Laptop and TV Show Image 1</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0004.jpg" alt="Laptop and TV Show Image 2" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+2'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0004.jpg" alt="Laptop and TV Show Image 2" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+2'">
+                    <figcaption>Laptop and TV Show Image 2</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0008.jpg" alt="Laptop and TV Show Image 3" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+3'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0008.jpg" alt="Laptop and TV Show Image 3" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+3'">
+                    <figcaption>Laptop and TV Show Image 3</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0009.jpg" alt="Laptop and TV Show Image 4" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+4'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0009.jpg" alt="Laptop and TV Show Image 4" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+4'">
+                    <figcaption>Laptop and TV Show Image 4</figcaption>
                 </figure>
             </div>
             <!-- Row 2 -->
             <div class="grid grid-cols-4 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0010.jpg" alt="Laptop and TV Show Image 5" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+5'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0010.jpg" alt="Laptop and TV Show Image 5" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+5'">
+                    <figcaption>Laptop and TV Show Image 5</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0012.jpg" alt="Laptop and TV Show Image 6" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+6'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0012.jpg" alt="Laptop and TV Show Image 6" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+6'">
+                    <figcaption>Laptop and TV Show Image 6</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0013.jpg" alt="Laptop and TV Show Image 7" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+7'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0013.jpg" alt="Laptop and TV Show Image 7" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+7'">
+                    <figcaption>Laptop and TV Show Image 7</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0018.jpg" alt="Laptop and TV Show Image 8" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+8'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0018.jpg" alt="Laptop and TV Show Image 8" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+8'">
+                    <figcaption>Laptop and TV Show Image 8</figcaption>
                 </figure>
             </div>
             <!-- Row 3 -->
             <div class="grid grid-cols-4 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0019.jpg" alt="Laptop and TV Show Image 9" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+9'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0019.jpg" alt="Laptop and TV Show Image 9" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+9'">
+                    <figcaption>Laptop and TV Show Image 9</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0021.jpg" alt="Laptop and TV Show Image 10" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+10'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0021.jpg" alt="Laptop and TV Show Image 10" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+10'">
+                    <figcaption>Laptop and TV Show Image 10</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0043.jpg" alt="Laptop and TV Show Image 11" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+11'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0043.jpg" alt="Laptop and TV Show Image 11" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+11'">
+                    <figcaption>Laptop and TV Show Image 11</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0025.jpg" alt="Laptop and TV Show Image 12" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+12'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0025.jpg" alt="Laptop and TV Show Image 12" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+12'">
+                    <figcaption>Laptop and TV Show Image 12</figcaption>
                 </figure>
             </div>
             <!-- Row 4 -->
             <div class="grid grid-cols-4 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0026.jpg" alt="Laptop and TV Show Image 13" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+13'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0026.jpg" alt="Laptop and TV Show Image 13" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+13'">
+                    <figcaption>Laptop and TV Show Image 13</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0028.jpg" alt="Laptop and TV Show Image 14" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+14'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0028.jpg" alt="Laptop and TV Show Image 14" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+14'">
+                    <figcaption>Laptop and TV Show Image 14</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0029.jpg" alt="Laptop and TV Show Image 15" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+15'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0029.jpg" alt="Laptop and TV Show Image 15" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+15'">
+                    <figcaption>Laptop and TV Show Image 15</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0044.jpg" alt="Laptop and TV Show Image 16" class="w-full h-64 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+16'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0044.jpg" alt="Laptop and TV Show Image 16" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+16'">
+                    <figcaption>Laptop and TV Show Image 16</figcaption>
                 </figure>
             </div>
         </div>
@@ -713,47 +779,57 @@
         <div class="max-w-6xl mx-auto space-y-6">
             <!-- Row 1 -->
             <div class="grid grid-cols-2 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0005.jpg" alt="Horizontal Image 1" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+1'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0005.jpg" alt="Horizontal Image 1" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+1'">
+                    <figcaption>Horizontal Image 1</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0014.jpg" alt="Horizontal Image 2" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+2'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0014.jpg" alt="Horizontal Image 2" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+2'">
+                    <figcaption>Horizontal Image 2</figcaption>
                 </figure>
             </div>
             <!-- Row 2 -->
             <div class="grid grid-cols-2 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0015.jpg" alt="Horizontal Image 3" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+3'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0015.jpg" alt="Horizontal Image 3" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+3'">
+                    <figcaption>Horizontal Image 3</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0016.jpg" alt="Horizontal Image 4" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+4'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0016.jpg" alt="Horizontal Image 4" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+4'">
+                    <figcaption>Horizontal Image 4</figcaption>
                 </figure>
             </div>
             <!-- Row 3 -->
             <div class="grid grid-cols-2 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0034.jpg" alt="Horizontal Image 5" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+5'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0034.jpg" alt="Horizontal Image 5" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+5'">
+                    <figcaption>Horizontal Image 5</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0062.jpg" alt="Horizontal Image 6" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+6'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0062.jpg" alt="Horizontal Image 6" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+6'">
+                    <figcaption>Horizontal Image 6</figcaption>
                 </figure>
             </div>
             <!-- Row 4 -->
             <div class="grid grid-cols-2 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0063.jpg" alt="Horizontal Image 7" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+7'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0063.jpg" alt="Horizontal Image 7" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+7'">
+                    <figcaption>Horizontal Image 7</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0065.jpg" alt="Horizontal Image 8" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+8'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0065.jpg" alt="Horizontal Image 8" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+8'">
+                    <figcaption>Horizontal Image 8</figcaption>
                 </figure>
             </div>
             <!-- Row 5 -->
             <div class="grid grid-cols-2 gap-6">
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0067.jpg" alt="Horizontal Image 9" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+9'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0067.jpg" alt="Horizontal Image 9" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+9'">
+                    <figcaption>Horizontal Image 9</figcaption>
                 </figure>
-                <figure class="bg-gray-900 p-4 rounded zoom-in">
-                    <img src="images/IMG-20250510-WA0056.jpg" alt="Horizontal Image 10" class="w-full h-48 object-cover hover-scale" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+10'">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0056.jpg" alt="Horizontal Image 10" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+10'">
+                    <figcaption>Horizontal Image 10</figcaption>
                 </figure>
             </div>
         </div>
