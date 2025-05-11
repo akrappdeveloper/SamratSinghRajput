@@ -601,7 +601,7 @@
             <div id="reviewsList"></div>
         </div>
     </div>
-
+    
     <section id="about" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">ABOUT ME</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -1047,120 +1047,190 @@
             });
             lazyImages.forEach(img => observer.observe(img));
 
-            // Star Rating System
+            try {
+                firebase.initializeApp(firebaseConfig);
+            } catch (error) {
+                console.error('Firebase initialization failed:', error);
+            }
+            const database = firebase.database();
+            const ratingsRef = database.ref('ratings');
+            const reviewsRef = database.ref('reviews');
+            const contactsRef = database.ref('contacts');
+            const chatbotRef = database.ref('chatbotInteractions');
+
             const stars = document.querySelectorAll('#starRating .star');
-            let userRating = 0;
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    userRating = parseInt(star.getAttribute('data-value'));
-                    stars.forEach(s => s.classList.remove('filled'));
-                    for (let i = 0; i < userRating; i++) {
-                        stars[i].classList.add('filled');
-                    }
-                    saveRating(userRating);
-                });
-                star.addEventListener('mouseover', () => {
-                    stars.forEach(s => s.classList.remove('filled'));
-                    const value = parseInt(star.getAttribute('data-value'));
-                    for (let i = 0; i < value; i++) {
-                        stars[i].classList.add('filled');
-                    }
-                });
-                star.addEventListener('mouseout', () => {
-                    stars.forEach(s => s.classList.remove('filled'));
-                    for (let i = 0; i < userRating; i++) {
-                        stars[i].classList.add('filled');
-                    }
-                });
-            });
+            const averageRatingEl = document.getElementById('averageRating');
+            const totalRatingsEl = document.getElementById('totalRatings');
+            const ratingErrorEl = document.getElementById('ratingError');
+            const reviewSection = document.getElementById('reviewSection');
+            const reviewForm = reviewSection.querySelector('.review-form');
+            let selectedRating = 0;
 
-            function saveRating(rating) {
-                database.ref('ratings').push(rating, error => {
-                    if (error) {
-                        document.getElementById('ratingError').style.display = 'block';
-                    } else {
-                        fetchRatings();
-                    }
-                });
-            }
-
-            function fetchRatings() {
-                database.ref('ratings').once('value', snapshot => {
-                    const ratings = snapshot.val();
-                    if (ratings) {
-                        const ratingValues = Object.values(ratings);
-                        const total = ratingValues.length;
-                        const sum = ratingValues.reduce((a, b) => a + b, 0);
-                        const average = (sum / total).toFixed(1);
-                        document.getElementById('averageRating').textContent = average;
-                        document.getElementById('totalRatings').textContent = total;
-                    }
-                }, error => {
-                    document.getElementById('ratingError').style.display = 'block';
-                });
-            }
-            fetchRatings();
-
-            // Review System
-            const submitReviewBtn = document.getElementById('submitReviewBtn');
-            const reviewUsername = document.getElementById('reviewUsername');
-            const reviewText = document.getElementById('reviewText');
-            const reviewsList = document.getElementById('reviewsList');
-            const showReviewsBtn = document.getElementById('showReviewsBtn');
-            const reviewsModal = document.getElementById('reviewsModal');
-            const closeReviewsModal = document.getElementById('closeReviewsModal');
-
-            submitReviewBtn.addEventListener('click', () => {
-                const username = reviewUsername.value.trim();
-                const text = reviewText.value.trim();
-                if (username && text && userRating > 0) {
-                    const review = { username, text, rating: userRating, timestamp: Date.now() };
-                    database.ref('reviews').push(review, error => {
-                        if (!error) {
-                            reviewUsername.value = '';
-                            reviewText.value = '';
-                            userRating = 0;
-                            stars.forEach(s => s.classList.remove('filled'));
-                        }
+            if (stars.length > 0) {
+                stars.forEach(star => {
+                    star.addEventListener('click', () => {
+                        selectedRating = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                        ratingsRef.push(selectedRating).then(() => {
+                            console.log(`Rating ${selectedRating} submitted successfully`);
+                        }).catch(error => {
+                            console.error('Error submitting rating:', error);
+                            alert('Failed to submit rating. Please try again.');
+                        });
+                        reviewSection.scrollIntoView({ behavior: 'smooth' });
+                        reviewForm.classList.add('highlight');
                     });
+
+                    star.addEventListener('mouseover', () => {
+                        const hoverValue = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= hoverValue) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    star.addEventListener('mouseout', () => {
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    star.addEventListener('touchstart', (e) => {
+                        e.preventDefault();
+                        selectedRating = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                        ratingsRef.push(selectedRating).then(() => {
+                            console.log(`Rating ${selectedRating} submitted successfully`);
+                        }).catch(error => {
+                            console.error('Error submitting rating:', error);
+                            alert('Failed to submit rating. Please try again.');
+                        });
+                        reviewSection.scrollIntoView({ behavior: 'smooth' });
+                        reviewForm.classList.add('highlight');
+                    });
+                });
+            } else {
+                console.error('Star rating elements not found in the DOM.');
+            }
+
+            ratingsRef.on('value', snapshot => {
+                const ratings = snapshot.val();
+                if (ratings && averageRatingEl && totalRatingsEl) {
+                    const ratingValues = Object.values(ratings);
+                    const total = ratingValues.length;
+                    const average = (ratingValues.reduce((sum, val) => sum + val, 0) / total).toFixed(1);
+                    averageRatingEl.textContent = isNaN(average) ? '0' : average;
+                    totalRatingsEl.textContent = total;
+                    ratingErrorEl.style.display = 'none';
                 } else {
-                    alert('Please provide your name, review, and rating.');
+                    averageRatingEl.textContent = '0';
+                    totalRatingsEl.textContent = '0';
+                    ratingErrorEl.style.display = 'block';
+                }
+            }, error => {
+                console.error('Error fetching ratings:', error);
+                if (averageRatingEl && totalRatingsEl && ratingErrorEl) {
+                    averageRatingEl.textContent = '0';
+                    totalRatingsEl.textContent = '0';
+                    ratingErrorEl.style.display = 'block';
                 }
             });
 
-            function fetchReviews() {
-                database.ref('reviews').on('value', snapshot => {
-                    const reviews = snapshot.val();
-                    reviewsList.innerHTML = '';
-                    if (reviews) {
-                        const reviewArray = Object.entries(reviews).map(([id, review]) => ({ id, ...review }));
-                        reviewArray.sort((a, b) => b.rating - a.rating); // Sort by rating
-                        reviewArray.forEach(review => {
-                            const reviewItem = document.createElement('div');
-                            reviewItem.className = 'review-item';
-                            reviewItem.innerHTML = `
-                                <p><strong>${review.username}</strong> (${review.rating}/5)</p>
-                                <p>${review.text}</p>
-                                <p class="text-gray-500">${new Date(review.timestamp).toLocaleString()}</p>
-                            `;
-                            reviewsList.appendChild(reviewItem);
+            const reviewUsernameEl = document.getElementById('reviewUsername');
+            const reviewTextEl = document.getElementById('reviewText');
+            const submitReviewBtn = document.getElementById('submitReviewBtn');
+
+            if (reviewUsernameEl && reviewTextEl && submitReviewBtn) {
+                submitReviewBtn.addEventListener('click', () => {
+                    const username = reviewUsernameEl.value.trim();
+                    const reviewContent = reviewTextEl.value.trim();
+                    if (username && reviewContent) {
+                        reviewsRef.push({
+                            username: username,
+                            review: reviewContent,
+                            rating: selectedRating || 0,
+                            timestamp: Date.now()
+                        }).then(() => {
+                            reviewUsernameEl.value = '';
+                            reviewTextEl.value = '';
+                            selectedRating = 0;
+                            stars.forEach(s => s.classList.remove('filled'));
+                            reviewForm.classList.remove('highlight');
+                            alert('Review submitted successfully!');
+                        }).catch(error => {
+                            console.error('Error submitting review:', error);
+                            alert('Failed to submit review. Please try again.');
                         });
                     } else {
-                        reviewsList.innerHTML = '<p>No reviews yet.</p>';
+                        alert('Please fill in all fields.');
                     }
                 });
+            } else {
+                console.error('Review form elements not found in the DOM.');
             }
-            fetchReviews();
 
-            showReviewsBtn.addEventListener('click', () => {
-                reviewsModal.style.display = 'flex';
-            });
+            const reviewsModal = document.getElementById('reviewsModal');
+            const showReviewsBtn = document.getElementById('showReviewsBtn');
+            const closeReviewsModal = document.getElementById('closeReviewsModal');
+            const reviewsList = document.getElementById('reviewsList');
 
-            closeReviewsModal.addEventListener('click', () => {
-                reviewsModal.style.display = 'none';
-            });
+            if (showReviewsBtn && reviewsModal && closeReviewsModal && reviewsList) {
+                showReviewsBtn.addEventListener('click', () => {
+                    reviewsModal.style.display = 'flex';
+                    reviewsList.innerHTML = '';
+                    reviewsRef.once('value', snapshot => {
+                        const reviews = snapshot.val();
+                        if (reviews) {
+                            Object.values(reviews).forEach(review => {
+                                const reviewItem = document.createElement('div');
+                                reviewItem.classList.add('review-item');
+                                reviewItem.innerHTML = `
+                                    <p class="text-gray-400"><strong>${review.username}</strong> (Rating: ${review.rating}/5)</p>
+                                    <p class="text-gray-400">${review.review}</p>
+                                `;
+                                reviewsList.appendChild(reviewItem);
+                            });
+                        } else {
+                            reviewsList.innerHTML = '<p class="text-gray-400">No reviews yet.</p>';
+                        }
+                    }, error => {
+                        console.error('Error fetching reviews:', error);
+                        reviewsList.innerHTML = '<p class="text-gray-400">Failed to load reviews.</p>';
+                    });
+                });
 
-            // Contact Modal
+                closeReviewsModal.addEventListener('click', () => {
+                    reviewsModal.style.display = 'none';
+                });
+
+                reviewsModal.addEventListener('click', (e) => {
+                    if (e.target === reviewsModal) {
+                        reviewsModal.style.display = 'none';
+                    }
+                });
+            } else {
+                console.error('Reviews modal elements not found in the DOM.');
+            }
+
             const contactModal = document.getElementById('contactModal');
             const openContactModal = document.getElementById('openContactModal');
             const closeContactModal = document.getElementById('closeContactModal');
@@ -1169,34 +1239,48 @@
             const contactEmail = document.getElementById('contactEmail');
             const contactMessage = document.getElementById('contactMessage');
 
-            openContactModal.addEventListener('click', () => {
-                contactModal.style.display = 'flex';
-            });
+            if (openContactModal && contactModal && closeContactModal && submitContactBtn && contactName && contactEmail && contactMessage) {
+                openContactModal.addEventListener('click', () => {
+                    contactModal.style.display = 'flex';
+                });
 
-            closeContactModal.addEventListener('click', () => {
-                contactModal.style.display = 'none';
-            });
+                closeContactModal.addEventListener('click', () => {
+                    contactModal.style.display = 'none';
+                });
 
-            submitContactBtn.addEventListener('click', () => {
-                const name = contactName.value.trim();
-                const email = contactEmail.value.trim();
-                const message = contactMessage.value.trim();
-                if (name && email && message) {
-                    database.ref('contacts').push({ name, email, message, timestamp: Date.now() }, error => {
-                        if (!error) {
-                            alert('Message sent successfully!');
-                            contactModal.style.display = 'none';
+                contactModal.addEventListener('click', (e) => {
+                    if (e.target === contactModal) {
+                        contactModal.style.display = 'none';
+                    }
+                });
+
+                submitContactBtn.addEventListener('click', () => {
+                    const name = contactName.value.trim();
+                    const email = contactEmail.value.trim();
+                    const message = contactMessage.value.trim();
+                    if (name && email && message) {
+                        contactsRef.push({
+                            name: name,
+                            email: email,
+                            message: message,
+                            timestamp: Date.now()
+                        }).then(() => {
                             contactName.value = '';
                             contactEmail.value = '';
                             contactMessage.value = '';
-                        } else {
+                            alert('Message sent successfully!');
+                            contactModal.style.display = 'none';
+                        }).catch(error => {
+                            console.error('Error submitting contact message:', error);
                             alert('Failed to send message. Please try again.');
-                        }
-                    });
-                } else {
-                    alert('Please fill in all fields.');
-                }
-            });
+                        });
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            } else {
+                console.error('Contact form elements not found in the DOM.');
+            }
 
             // Chatbot Functionality
             const chatbotBtn = document.getElementById('chatbotBtn');
