@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
-    <meta name="keywords" content="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection, Lucknow">
+    <meta name="keywords" content="Samrat Singh Rajput, social media influencer, YouTuber, love story videos, Samrat Royal Collection, Lucknow">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="378HzkAkbznbC3rkX94gZJHQaAMbm0z4-pyHAfolumA" />
     <title>Samrat Singh Rajput</title>
-    <link rel="icon" type="image/x-icon" href="image/samlogo.png">
     <meta property="og:title" content="Samrat Singh Rajput">
     <meta property="og:description" content="Portfolio of Samrat Singh Rajput, a social media influencer and YouTuber from Lucknow, known for love story videos and Samrat Royal Collection.">
     <meta property="og:type" content="website">
@@ -16,7 +15,7 @@
     <meta property="og:image" content="images/samlogo.png">
     <meta property="og:site_name" content="Samrat Singh Rajput">
     <script type="application/ld+json">
-    {
+   {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Samrat Singh Rajput",
@@ -45,7 +44,7 @@
             background-color: #1a1a1a;
             color: #e5e5e5;
             font-family: 'Arial', sans-serif;
-            font-size: clamp(14px, 2vw, 16px);
+            font-size: clamp(14px, 2vw, 16px); /* Responsive font size */
         }
         .neon-green { color: #39ff14; }
         .bg-neon-green { background-color: #39ff14; }
@@ -91,10 +90,10 @@
         .max-w-6xl { max-width: clamp(90%, 72rem, 100%); }
         .mx-auto { margin-left: auto; margin-right: auto; }
         .w-full { width: 100%; }
-        .h-48 { height: 20rem; }
-        .h-56 { height: 20rem; }
-        .h-64 { height: 24rem; }
-        .h-80 { height: 28rem; }
+        .h-48 { height: 20rem; } /* Updated for Horizontal Gallery */
+        .h-56 { height: 20rem; } /* Updated for Horizontal Gallery (larger screens) */
+        .h-64 { height: 24rem; } /* Updated for Gallery */
+        .h-80 { height: 28rem; } /* Updated for Gallery (larger screens) */
         .grid { display: grid; }
         .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
         .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -414,6 +413,7 @@
             width: 100%;
             height: 100%;
         }
+        /* Card styles for gallery */
         .gallery-card {
             background-color: #111827;
             border-radius: 0.5rem;
@@ -426,7 +426,7 @@
         }
         .gallery-card img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
         }
         .gallery-card figcaption {
@@ -435,16 +435,7 @@
             color: #e5e5e5;
             font-size: clamp(0.875rem, 1.5vw, 1rem);
         }
-        .gallery-image {
-            width: 100%;
-            height: clamp(16rem, 40vw, 28rem);
-            object-fit: cover;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: clamp(1rem, 2vw, 1.5rem);
-        }
+        /* Media Queries for Responsiveness */
         @media (min-width: 640px) {
             .sm\:space-x-6 > * + * { margin-left: clamp(1rem, 2vw, 1.5rem); }
             .sm\:space-x-8 > * + * { margin-left: clamp(1.5rem, 3vw, 2rem); }
@@ -466,21 +457,16 @@
         }
         @media (min-width: 1024px) {
             .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-            .h-80 { height: 28rem; }
-            .h-56 { height: 20rem; }
+            .h-80 { height: 28rem; } /* Larger screens for Gallery */
+            .h-56 { height: 20rem; } /* Larger screens for Horizontal Gallery */
         }
-        @media (max-width: 1023px) and (min-width: 769px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+        @media (max-width: 1024px) {
+            .grid-cols-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
             .h-80 { height: 22rem; }
             .h-56 { height: 16rem; }
         }
         @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
+            .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             .h-80 { height: 18rem; }
             .h-56 { height: 14rem; }
@@ -508,18 +494,19 @@
                 width: clamp(60px, 15vw, 80px);
                 height: clamp(30px, 7.5vw, 40px);
             }
+            .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .h-80 { height: 16rem; }
-            .h-56 { height: 12rem; }
+            .h-80 { height: 16rem; } /* Adjusted for smaller screens */
+            .h-56 { height: 12rem; } /* Adjusted for smaller screens */
         }
     </style>
 </head>
 <body>
     <div class="chatbot-btn" id="chatbotBtn">💬</div>
     <div class="chatbot-window" id="chatbotWindow">
-        <div class="chatbot-header">AKR Sparker</div>
+        <div class="chatbot-header">Website AI Chatbot</div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="chatbot-message ai">Hello! I am AKR Sparker. Ask me anything about this website or Samrat Singh Rajput.</div>
+            <div class="chatbot-message ai">Hello! Ask me anything about this website or Samrat Singh Rajput.</div>
         </div>
         <div class="chatbot-input">
             <input type="text" id="chatbotInput" placeholder="Type your question...">
@@ -599,7 +586,7 @@
             <div id="reviewsList"></div>
         </div>
     </div>
-    
+
     <section id="about" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">ABOUT ME</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -708,69 +695,79 @@
     <section id="gallery" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
         <div class="max-w-6xl mx-auto space-y-6">
-            <div class="gallery-grid">
+            <!-- Row 1 -->
+            <div class="grid grid-cols-4 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0002.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 1" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+1'">
+                    <img src="images/IMG-20250510-WA0002.jpg" alt="Laptop and TV Show Image 1" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+1'">
                     <figcaption>Laptop and TV Show Image 1</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0004.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 2" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+2'">
+                    <img src="images/IMG-20250510-WA0004.jpg" alt="Laptop and TV Show Image 2" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+2'">
                     <figcaption>Laptop and TV Show Image 2</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0008.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 3" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+3'">
+                    <img src="images/IMG-20250510-WA0008.jpg" alt="Laptop and TV Show Image 3" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+3'">
                     <figcaption>Laptop and TV Show Image 3</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0009.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 4" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+4'">
+                    <img src="images/IMG-20250510-WA0009.jpg" alt="Laptop and TV Show Image 4" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+4'">
                     <figcaption>Laptop and TV Show Image 4</figcaption>
                 </figure>
+            </div>
+            <!-- Row 2 -->
+            <div class="grid grid-cols-4 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0010.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 5" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+5'">
+                    <img src="images/IMG-20250510-WA0010.jpg" alt="Laptop and TV Show Image 5" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+5'">
                     <figcaption>Laptop and TV Show Image 5</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0012.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 6" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+6'">
+                    <img src="images/IMG-20250510-WA0012.jpg" alt="Laptop and TV Show Image 6" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+6'">
                     <figcaption>Laptop and TV Show Image 6</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0013.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 7" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+7'">
+                    <img src="images/IMG-20250510-WA0013.jpg" alt="Laptop and TV Show Image 7" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+7'">
                     <figcaption>Laptop and TV Show Image 7</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0018.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 8" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+8'">
+                    <img src="images/IMG-20250510-WA0018.jpg" alt="Laptop and TV Show Image 8" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+8'">
                     <figcaption>Laptop and TV Show Image 8</figcaption>
                 </figure>
+            </div>
+            <!-- Row 3 -->
+            <div class="grid grid-cols-4 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0019.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 9" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+9'">
+                    <img src="images/IMG-20250510-WA0019.jpg" alt="Laptop and TV Show Image 9" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+9'">
                     <figcaption>Laptop and TV Show Image 9</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0021.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 10" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+10'">
+                    <img src="images/IMG-20250510-WA0021.jpg" alt="Laptop and TV Show Image 10" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+10'">
                     <figcaption>Laptop and TV Show Image 10</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0043.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 11" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+11'">
+                    <img src="images/IMG-20250510-WA0043.jpg" alt="Laptop and TV Show Image 11" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+11'">
                     <figcaption>Laptop and TV Show Image 11</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0025.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 12" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+12'">
+                    <img src="images/IMG-20250510-WA0025.jpg" alt="Laptop and TV Show Image 12" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+12'">
                     <figcaption>Laptop and TV Show Image 12</figcaption>
                 </figure>
+            </div>
+            <!-- Row 4 -->
+            <div class="grid grid-cols-4 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0026.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 13" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+13'">
+                    <img src="images/IMG-20250510-WA0026.jpg" alt="Laptop and TV Show Image 13" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+13'">
                     <figcaption>Laptop and TV Show Image 13</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0028.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 14" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+14'">
+                    <img src="images/IMG-20250510-WA0028.jpg" alt="Laptop and TV Show Image 14" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+14'">
                     <figcaption>Laptop and TV Show Image 14</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0029.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 15" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+15'">
+                    <img src="images/IMG-20250510-WA0029.jpg" alt="Laptop and TV Show Image 15" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+15'">
                     <figcaption>Laptop and TV Show Image 15</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0044.jpg" alt="Samrat Singh Rajput, Samrat Kushwaha Rajput, Samrat Rajput Creation, Samrat Royal Collection - Laptop and TV Show Image 16" class="gallery-image lazy-load" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+16'">
+                    <img src="images/IMG-20250510-WA0044.jpg" alt="Laptop and TV Show Image 16" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+16'">
                     <figcaption>Laptop and TV Show Image 16</figcaption>
                 </figure>
             </div>
@@ -780,6 +777,7 @@
     <section id="horizontal-gallery" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">HORIZONTAL GALLERY</h2>
         <div class="max-w-6xl mx-auto space-y-6">
+            <!-- Row 1 -->
             <div class="grid grid-cols-2 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
                     <img src="images/IMG-20250510-WA0005.jpg" alt="Horizontal Image 1" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+1'">
@@ -790,6 +788,7 @@
                     <figcaption>Horizontal Image 2</figcaption>
                 </figure>
             </div>
+            <!-- Row 2 -->
             <div class="grid grid-cols-2 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
                     <img src="images/IMG-20250510-WA0015.jpg" alt="Horizontal Image 3" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+3'">
@@ -800,6 +799,7 @@
                     <figcaption>Horizontal Image 4</figcaption>
                 </figure>
             </div>
+            <!-- Row 3 -->
             <div class="grid grid-cols-2 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
                     <img src="images/IMG-20250510-WA0034.jpg" alt="Horizontal Image 5" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+5'">
@@ -810,6 +810,7 @@
                     <figcaption>Horizontal Image 6</figcaption>
                 </figure>
             </div>
+            <!-- Row 4 -->
             <div class="grid grid-cols-2 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
                     <img src="images/IMG-20250510-WA0063.jpg" alt="Horizontal Image 7" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+7'">
@@ -820,13 +821,14 @@
                     <figcaption>Horizontal Image 8</figcaption>
                 </figure>
             </div>
+            <!-- Row 5 -->
             <div class="grid grid-cols-2 gap-6">
                 <figure class="gallery-card card-hover zoom-in">
                     <img src="images/IMG-20250510-WA0067.jpg" alt="Horizontal Image 9" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+9'">
                     <figcaption>Horizontal Image 9</figcaption>
                 </figure>
                 <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/1741362034080.jpg" alt="Horizontal Image 10" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+10'">
+                    <img src="images/IMG-20250510-WA0056.jpg" alt="Horizontal Image 10" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+10'">
                     <figcaption>Horizontal Image 10</figcaption>
                 </figure>
             </div>
@@ -1017,388 +1019,334 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyD-Xjp9mhxrHGWszkb_O2p24Pm_QhLuJ-c",
-            authDomain: "portfolio-4399e.firebaseapp.com",
-            databaseURL: "https://portfolio-4399e-default-rtdb.firebaseio.com",
-            projectId: "portfolio-4399e",
-            storageBucket: "portfolio-4399e.appspot.com",
-            messagingSenderId: "87755535143",
-            appId: "1:87755535143:web:5fecb6fadf151b5f3c0b7e",
-            measurementId: "G-7Y7WGCW6YL"
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const firebaseConfig = {
+                apiKey: "AIzaSyD-Xjp9mhxrHGWszkb_O2p24Pm_QhLuJ-c",
+                authDomain: "portfolio-4399e.firebaseapp.com",
+                databaseURL: "https://portfolio-4399e-default-rtdb.firebaseio.com",
+                projectId: "portfolio-4399e",
+                storageBucket: "portfolio-4399e.firebasestorage.app",
+                messagingSenderId: "670890582025",
+                appId: "1:670890582025:web:e513242b25f6998f47d8d8",
+                measurementId: "G-MLM60R17Z7"
+            };
 
-        // Initialize Firebase
-        try {
-            firebase.initializeApp(firebaseConfig);
-            console.log("Firebase initialized successfully");
-        } catch (error) {
-            console.error("Firebase initialization failed:", error);
-            displayRatingError();
-        }
-
-        const database = firebase.database();
-        let selectedRating = 0;
-
-        // DOM Elements
-        const stars = document.querySelectorAll('#starRating .star');
-        const averageRatingElement = document.getElementById('averageRating');
-        const totalRatingsElement = document.getElementById('totalRatings');
-        const ratingErrorElement = document.getElementById('ratingError');
-        const reviewUsernameInput = document.getElementById('reviewUsername');
-        const reviewTextInput = document.getElementById('reviewText');
-        const submitReviewBtn = document.getElementById('submitReviewBtn');
-        const showReviewsBtn = document.getElementById('showReviewsBtn');
-        const reviewsModal = document.getElementById('reviewsModal');
-        const closeReviewsModal = document.getElementById('closeReviewsModal');
-        const reviewsList = document.getElementById('reviewsList');
-
-        // Display error message for ratings
-        function displayRatingError() {
-            if (ratingErrorElement) {
-                ratingErrorElement.style.display = 'block';
+            try {
+                firebase.initializeApp(firebaseConfig);
+            } catch (error) {
+                console.error('Firebase initialization failed:', error);
             }
-        }
+            const database = firebase.database();
+            const ratingsRef = database.ref('ratings');
+            const reviewsRef = database.ref('reviews');
+            const contactsRef = database.ref('contacts');
+            const chatbotRef = database.ref('chatbotInteractions');
 
-        // Star Rating Interaction
-        stars.forEach(star => {
-            star.addEventListener('mouseover', () => {
-                const value = parseInt(star.getAttribute('data-value'));
-                stars.forEach(s => {
-                    s.classList.remove('filled');
-                    if (parseInt(s.getAttribute('data-value')) <= value) {
-                        s.classList.add('filled');
-                    }
+            const stars = document.querySelectorAll('#starRating .star');
+            const averageRatingEl = document.getElementById('averageRating');
+            const totalRatingsEl = document.getElementById('totalRatings');
+            const ratingErrorEl = document.getElementById('ratingError');
+            const reviewSection = document.getElementById('reviewSection');
+            const reviewForm = reviewSection.querySelector('.review-form');
+            let selectedRating = 0;
+
+            if (stars.length > 0) {
+                stars.forEach(star => {
+                    star.addEventListener('click', () => {
+                        selectedRating = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                        ratingsRef.push(selectedRating).then(() => {
+                            console.log(`Rating ${selectedRating} submitted successfully`);
+                        }).catch(error => {
+                            console.error('Error submitting rating:', error);
+                            alert('Failed to submit rating. Please try again.');
+                        });
+                        reviewSection.scrollIntoView({ behavior: 'smooth' });
+                        reviewForm.classList.add('highlight');
+                    });
+
+                    star.addEventListener('mouseover', () => {
+                        const hoverValue = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= hoverValue) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    star.addEventListener('mouseout', () => {
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    star.addEventListener('touchstart', (e) => {
+                        e.preventDefault();
+                        selectedRating = parseInt(star.getAttribute('data-value'));
+                        stars.forEach(s => {
+                            if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                                s.classList.add('filled');
+                            } else {
+                                s.classList.remove('filled');
+                            }
+                        });
+                        ratingsRef.push(selectedRating).then(() => {
+                            console.log(`Rating ${selectedRating} submitted successfully`);
+                        }).catch(error => {
+                            console.error('Error submitting rating:', error);
+                            alert('Failed to submit rating. Please try again.');
+                        });
+                        reviewSection.scrollIntoView({ behavior: 'smooth' });
+                        reviewForm.classList.add('highlight');
+                    });
                 });
-            });
+            } else {
+                console.error('Star rating elements not found in the DOM.');
+            }
 
-            star.addEventListener('mouseout', () => {
-                stars.forEach(s => {
-                    s.classList.remove('filled');
-                    if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
-                        s.classList.add('filled');
-                    }
-                });
-            });
-
-            star.addEventListener('click', () => {
-                selectedRating = parseInt(star.getAttribute('data-value'));
-                stars.forEach(s => {
-                    s.classList.remove('filled');
-                    if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
-                        s.classList.add('filled');
-                    }
-                });
-
-                // Save rating to Firebase
-                database.ref('ratings').push().set({
-                    rating: selectedRating,
-                    timestamp: Date.now()
-                }).then(() => {
-                    updateAverageRating();
-                }).catch(error => {
-                    console.error("Error saving rating:", error);
-                    displayRatingError();
-                });
-            });
-        });
-
-        // Update Average Rating and Total Ratings
-        function updateAverageRating() {
-            database.ref('ratings').once('value').then(snapshot => {
+            ratingsRef.on('value', snapshot => {
                 const ratings = snapshot.val();
-                if (!ratings) {
-                    averageRatingElement.textContent = '0';
-                    totalRatingsElement.textContent = '0';
-                    return;
+                if (ratings && averageRatingEl && totalRatingsEl) {
+                    const ratingValues = Object.values(ratings);
+                    const total = ratingValues.length;
+                    const average = (ratingValues.reduce((sum, val) => sum + val, 0) / total).toFixed(1);
+                    averageRatingEl.textContent = isNaN(average) ? '0' : average;
+                    totalRatingsEl.textContent = total;
+                    ratingErrorEl.style.display = 'none';
+                } else {
+                    averageRatingEl.textContent = '0';
+                    totalRatingsEl.textContent = '0';
+                    ratingErrorEl.style.display = 'block';
                 }
-
-                const ratingValues = Object.values(ratings).map(r => r.rating);
-                const totalRatings = ratingValues.length;
-                const averageRating = (ratingValues.reduce((sum, rating) => sum + rating, 0) / totalRatings).toFixed(1);
-
-                averageRatingElement.textContent = isNaN(averageRating) ? '0' : averageRating;
-                totalRatingsElement.textContent = totalRatings;
-            }).catch(error => {
-                console.error("Error fetching ratings:", error);
-                displayRatingError();
-            });
-        }
-
-        // Submit Review
-        submitReviewBtn.addEventListener('click', () => {
-            const username = reviewUsernameInput.value.trim();
-            const reviewText = reviewTextInput.value.trim();
-
-            if (!username || !reviewText) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            if (!selectedRating) {
-                alert("Please select a rating before submitting a review.");
-                return;
-            }
-
-            database.ref('reviews').push().set({
-                username: username,
-                review: reviewText,
-                rating: selectedRating,
-                timestamp: Date.now()
-            }).then(() => {
-                alert("Review submitted successfully!");
-                reviewUsernameInput.value = '';
-                reviewTextInput.value = '';
-                selectedRating = 0;
-                stars.forEach(s => s.classList.remove('filled'));
-                loadReviews();
-            }).catch(error => {
-                console.error("Error submitting review:", error);
-                alert("Failed to submit review. Please try again.");
-            });
-        });
-
-        // Load Reviews in Modal
-        function loadReviews() {
-            database.ref('reviews').once('value').then(snapshot => {
-                const reviews = snapshot.val();
-                reviewsList.innerHTML = ''; // Clear existing reviews
-
-                if (!reviews) {
-                    reviewsList.innerHTML = '<p class="text-gray-400">No reviews yet.</p>';
-                    return;
+            }, error => {
+                console.error('Error fetching ratings:', error);
+                if (averageRatingEl && totalRatingsEl && ratingErrorEl) {
+                    averageRatingEl.textContent = '0';
+                    totalRatingsEl.textContent = '0';
+                    ratingErrorEl.style.display = 'block';
                 }
+            });
 
-                const sortedReviews = Object.entries(reviews).sort((a, b) => b[1].timestamp - a[1].timestamp);
+            const reviewUsernameEl = document.getElementById('reviewUsername');
+            const reviewTextEl = document.getElementById('reviewText');
+            const submitReviewBtn = document.getElementById('submitReviewBtn');
 
-                sortedReviews.forEach(([key, review]) => {
-                    const reviewItem = document.createElement('div');
-                    reviewItem.classList.add('review-item');
-                    reviewItem.innerHTML = `
-                        <p class="text-gray-400"><strong>${review.username}</strong> (${review.rating}/5)</p>
-                        <p class="text-gray-400">${review.review}</p>
-                        <p class="text-gray-500 text-sm">${new Date(review.timestamp).toLocaleDateString()}</p>
-                    `;
-                    reviewsList.appendChild(reviewItem);
+            if (reviewUsernameEl && reviewTextEl && submitReviewBtn) {
+                submitReviewBtn.addEventListener('click', () => {
+                    const username = reviewUsernameEl.value.trim();
+                    const reviewContent = reviewTextEl.value.trim();
+                    if (username && reviewContent) {
+                        reviewsRef.push({
+                            username: username,
+                            review: reviewContent,
+                            rating: selectedRating || 0,
+                            timestamp: Date.now()
+                        }).then(() => {
+                            reviewUsernameEl.value = '';
+                            reviewTextEl.value = '';
+                            selectedRating = 0;
+                            stars.forEach(s => s.classList.remove('filled'));
+                            reviewForm.classList.remove('highlight');
+                            alert('Review submitted successfully!');
+                        }).catch(error => {
+                            console.error('Error submitting review:', error);
+                            alert('Failed to submit review. Please try again.');
+                        });
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
                 });
-            }).catch(error => {
-                console.error("Error loading reviews:", error);
-                reviewsList.innerHTML = '<p class="text-red-500">Failed to load reviews. Please try again later.</p>';
-            });
-        }
-
-        // Show Reviews Modal
-        showReviewsBtn.addEventListener('click', () => {
-            loadReviews();
-            reviewsModal.style.display = 'flex';
-        });
-
-        // Close Reviews Modal
-        closeReviewsModal.addEventListener('click', () => {
-            reviewsModal.style.display = 'none';
-        });
-
-        // Close Modal on Outside Click
-        window.addEventListener('click', (event) => {
-            if (event.target === reviewsModal) {
-                reviewsModal.style.display = 'none';
-            }
-        });
-
-        // Contact Form Modal
-        const contactModal = document.getElementById('contactModal');
-        const openContactModal = document.getElementById('openContactModal');
-        const closeContactModal = document.getElementById('closeContactModal');
-        const submitContactBtn = document.getElementById('submitContactBtn');
-        const contactNameInput = document.getElementById('contactName');
-        const contactEmailInput = document.getElementById('contactEmail');
-        const contactMessageInput = document.getElementById('contactMessage');
-
-        openContactModal.addEventListener('click', () => {
-            contactModal.style.display = 'flex';
-        });
-
-        closeContactModal.addEventListener('click', () => {
-            contactModal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === contactModal) {
-                contactModal.style.display = 'none';
-            }
-        });
-
-        submitContactBtn.addEventListener('click', () => {
-            const name = contactNameInput.value.trim();
-            const email = contactEmailInput.value.trim();
-            const message = contactMessageInput.value.trim();
-
-            if (!name || !email || !message) {
-                alert("Please fill in all fields.");
-                return;
+            } else {
+                console.error('Review form elements not found in the DOM.');
             }
 
-            database.ref('contacts').push().set({
-                name: name,
-                email: email,
-                message: message,
-                timestamp: Date.now()
-            }).then(() => {
-                alert("Message sent successfully!");
-                contactNameInput.value = '';
-                contactEmailInput.value = '';
-                contactMessageInput.value = '';
-                contactModal.style.display = 'none';
-            }).catch(error => {
-                console.error("Error sending message:", error);
-                alert("Failed to send message. Please try again.");
-            });
-        });
+            const reviewsModal = document.getElementById('reviewsModal');
+            const showReviewsBtn = document.getElementById('showReviewsBtn');
+            const closeReviewsModal = document.getElementById('closeReviewsModal');
+            const reviewsList = document.getElementById('reviewsList');
 
-        // Chatbot Functionality
+            if (showReviewsBtn && reviewsModal && closeReviewsModal && reviewsList) {
+                showReviewsBtn.addEventListener('click', () => {
+                    reviewsModal.style.display = 'flex';
+                    reviewsList.innerHTML = '';
+                    reviewsRef.once('value', snapshot => {
+                        const reviews = snapshot.val();
+                        if (reviews) {
+                            Object.values(reviews).forEach(review => {
+                                const reviewItem = document.createElement('div');
+                                reviewItem.classList.add('review-item');
+                                reviewItem.innerHTML = `
+                                    <p class="text-gray-400"><strong>${review.username}</strong> (Rating: ${review.rating}/5)</p>
+                                    <p class="text-gray-400">${review.review}</p>
+                                `;
+                                reviewsList.appendChild(reviewItem);
+                            });
+                        } else {
+                            reviewsList.innerHTML = '<p class="text-gray-400">No reviews yet.</p>';
+                        }
+                    }, error => {
+                        console.error('Error fetching reviews:', error);
+                        reviewsList.innerHTML = '<p class="text-gray-400">Failed to load reviews.</p>';
+                    });
+                });
+
+                closeReviewsModal.addEventListener('click', () => {
+                    reviewsModal.style.display = 'none';
+                });
+
+                reviewsModal.addEventListener('click', (e) => {
+                    if (e.target === reviewsModal) {
+                        reviewsModal.style.display = 'none';
+                    }
+                });
+            } else {
+                console.error('Reviews modal elements not found in the DOM.');
+            }
+
+            const contactModal = document.getElementById('contactModal');
+            const openContactModal = document.getElementById('openContactModal');
+            const closeContactModal = document.getElementById('closeContactModal');
+            const submitContactBtn = document.getElementById('submitContactBtn');
+            const contactName = document.getElementById('contactName');
+            const contactEmail = document.getElementById('contactEmail');
+            const contactMessage = document.getElementById('contactMessage');
+
+            if (openContactModal && contactModal && closeContactModal && submitContactBtn && contactName && contactEmail && contactMessage) {
+                openContactModal.addEventListener('click', () => {
+                    contactModal.style.display = 'flex';
+                });
+
+                closeContactModal.addEventListener('click', () => {
+                    contactModal.style.display = 'none';
+                });
+
+                contactModal.addEventListener('click', (e) => {
+                    if (e.target === contactModal) {
+                        contactModal.style.display = 'none';
+                    }
+                });
+
+                submitContactBtn.addEventListener('click', () => {
+                    const name = contactName.value.trim();
+                    const email = contactEmail.value.trim();
+                    const message = contactMessage.value.trim();
+                    if (name && email && message) {
+                        contactsRef.push({
+                            name: name,
+                            email: email,
+                            message: message,
+                            timestamp: Date.now()
+                        }).then(() => {
+                            contactName.value = '';
+                            contactEmail.value = '';
+                            contactMessage.value = '';
+                            alert('Message sent successfully!');
+                            contactModal.style.display = 'none';
+                        }).catch(error => {
+                            console.error('Error submitting contact message:', error);
+                            alert('Failed to send message. Please try again.');
+                        });
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            } else {
+                console.error('Contact form elements not found in the DOM.');
+            }
+
             const chatbotBtn = document.getElementById('chatbotBtn');
             const chatbotWindow = document.getElementById('chatbotWindow');
             const chatbotBody = document.getElementById('chatbotBody');
             const chatbotInput = document.getElementById('chatbotInput');
             const chatbotSendBtn = document.getElementById('chatbotSendBtn');
 
-            chatbotBtn.addEventListener('click', () => {
-                chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
-            });
+            if (chatbotBtn && chatbotWindow && chatbotBody && chatbotInput && chatbotSendBtn) {
+                chatbotBtn.addEventListener('click', () => {
+                    chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+                });
 
-            chatbotSendBtn.addEventListener('click', sendMessage);
-            chatbotInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') sendMessage();
-            });
+                chatbotSendBtn.addEventListener('click', sendChatbotMessage);
+                chatbotInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                                                sendChatbotMessage();
+                    }
+                });
 
-            function sendMessage() {
-                const message = chatbotInput.value.trim();
-                if (message) {
-                    const userMessage = document.createElement('div');
-                    userMessage.className = 'chatbot-message user';
-                    userMessage.textContent = message;
-                    chatbotBody.appendChild(userMessage);
+                function sendChatbotMessage() {
+                    const userMessage = chatbotInput.value.trim();
+                    if (userMessage) {
+                        const userMessageEl = document.createElement('div');
+                        userMessageEl.classList.add('chatbot-message', 'user');
+                        userMessageEl.textContent = userMessage;
+                        chatbotBody.appendChild(userMessageEl);
+                        chatbotInput.value = '';
 
-                    const aiResponse = getAIResponse(message.toLowerCase());
-                    const aiMessage = document.createElement('div');
-                    aiMessage.className = 'chatbot-message ai';
-                    aiMessage.innerHTML = aiResponse;
-                    chatbotBody.appendChild(aiMessage);
+                        const aiResponse = getAIResponse(userMessage.toLowerCase());
+                        setTimeout(() => {
+                            const aiMessageEl = document.createElement('div');
+                            aiMessageEl.classList.add('chatbot-message', 'ai');
+                            aiMessageEl.innerHTML = aiResponse;
+                            chatbotBody.appendChild(aiMessageEl);
+                            chatbotBody.scrollTop = chatbotBody.scrollHeight;
 
-                    chatbotInput.value = '';
-                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
-                }
-            }
-
-            function getAIResponse(message) {
-                // Array of images for random selection
-                const images = [
-                    'images/IMG-20250510-WA0002.jpg',
-                    'images/IMG-20250510-WA0004.jpg',
-                    'images/IMG-20250510-WA0008.jpg',
-                    'images/IMG-20250510-WA0009.jpg',
-                    'images/IMG-20250510-WA0010.jpg',
-                    'images/IMG-20250510-WA0012.jpg',
-                    'images/IMG-20250510-WA0013.jpg',
-                    'images/IMG-20250510-WA0018.jpg',
-                    'images/IMG-20250510-WA0019.jpg',
-                    'images/IMG-20250510-WA0021.jpg',
-                    'images/IMG-20250510-WA0043.jpg',
-                    'images/IMG-20250510-WA0025.jpg',
-                    'images/IMG-20250510-WA0026.jpg',
-                    'images/IMG-20250510-WA0028.jpg',
-                    'images/IMG-20250510-WA0029.jpg',
-                    'images/IMG-20250510-WA0044.jpg'
-                ];
-
-                // Fetch top 5 reviews based on rating
-                function getTopReviews() {
-                    return new Promise((resolve) => {
-                        database.ref('reviews').once('value', snapshot => {
-                            const reviews = snapshot.val();
-                            if (reviews) {
-                                const reviewArray = Object.entries(reviews).map(([id, review]) => ({ id, ...review }));
-                                reviewArray.sort((a, b) => b.rating - a.rating);
-                                const topReviews = reviewArray.slice(0, 5);
-                                let response = '<strong>Top 5 Reviews:</strong><br>';
-                                topReviews.forEach(review => {
-                                    response += `<p><strong>${review.username}</strong> (${review.rating}/5): ${review.text}</p>`;
-                                });
-                                resolve(response);
-                            } else {
-                                resolve('No reviews available yet.');
-                            }
-                        });
-                    });
+                            chatbotRef.push({
+                                userMessage: userMessage,
+                                aiResponse: aiResponse,
+                                timestamp: Date.now()
+                            }).catch(error => {
+                                console.error('Error logging chatbot interaction:', error);
+                            });
+                        }, 500);
+                    }
                 }
 
-                // Enhanced responses
-                if (message.includes('hello') || message.includes('hi')) {
-                    return 'Hello! How can I assist you today?';
-                } else if (message.includes('who is samrat') || message.includes('about samrat')) {
-                    return 'Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, known for creating love story videos through Samrat Rajput Creation. He’s also the founder of Samrat Royal Collection, a customized printing business.';
-                } else if (message.includes('social media') || message.includes('follow')) {
-                    return 'You can follow Samrat on: <br>' +
-                           '<a href="https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb" target="_blank">YouTube</a><br>' +
-                           '<a href="https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a><br>' +
-                           '<a href="https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#" target="_blank">Facebook</a>';
-                } else if (message.includes('contact') || message.includes('reach out')) {
-                    return 'You can contact Samrat through the "Contact" section on this website. Just click the "CONTACT" button to send a message!';
-                } else if (message.includes('gallery') || message.includes('photos')) {
-                    return 'Check out the Gallery section to see photos of Samrat Singh Rajput! There are plenty of images showcasing his journey and creations.';
-                } else if (message.includes('videos') || message.includes('youtube')) {
-                    return 'Samrat’s featured videos are in the "Featured Videos" section. You can also visit his YouTube channel at <a href="https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb" target="_blank">Samrat Rajput Creation</a>.';
-                } else if (message.includes('business') || message.includes('ventures')) {
-                    return 'Samrat runs Samrat Royal Collection, a customized printing business in Lucknow offering T-shirt and mug printing. He also creates content through Samrat Rajput Creation.';
-                } else if (message.includes('image') || message.includes('photo of samrat')) {
-                    const randomImage = images[Math.floor(Math.random() * images.length)];
-                    return `Here’s a photo of Samrat Singh Rajput:<br><img src="${randomImage}" alt="Samrat Singh Rajput" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px;">`;
-                } else if (message.includes('reviews') || message.includes('feedback')) {
-                    return getTopReviews().then(response => {
-                        return response + '<br><button onclick="document.getElementById(\'showReviewsBtn\').click()">Show All Reviews</button>';
-                    });
-                } else if (message.includes('journey') || message.includes('story')) {
-                    return 'Samrat started as a content creator with a passion for storytelling, producing love story videos via Samrat Rajput Creation. He also founded Samrat Royal Collection to expand his entrepreneurial ventures.';
-                } else if (message.includes('hobbies') || message.includes('interests')) {
-                    return 'Samrat enjoys singing and traveling. His favorite foods are Sahi Paneer, Puri, Kheer, and Jalebi!';
-                } else if (message.includes('education') || message.includes('study')) {
-                    return 'Samrat completed his schooling at Sri Ayodhya Singh Memorial Inter College, Lucknow, in 2024. He’s currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University, Lucknow.';
-                } else if (message.includes('family') || message.includes('parents')) {
-                    return 'Samrat comes from a supportive family in Lucknow. His father is Thakur Badshah Kushwaha, his mother is Sunila Devi, and his brother, Aman Rajput, is his biggest motivator.';
-                } else if (message.includes('goals') || message.includes('future')) {
-                    return 'Samrat aims to expand Samrat Royal Collection into a larger business, collaborate with global brands, and launch a mobile app for Samrat Rajput Creation.';
-                } else if (message.includes('achievements') || message.includes('success')) {
-                    return 'Samrat has built a loyal social media following and successfully launched Samrat Royal Collection, gaining traction in Lucknow.';
-                } else if (message.includes('birthday') || message.includes('born')) {
-                    return 'Samrat Singh Rajput was born on October 15, 2003, in Lucknow, Uttar Pradesh, India.';
-                } else if (message.includes('location') || message.includes('where')) {
-                    return 'Samrat is based in Lucknow, Uttar Pradesh, India.';
-                } else if (message.includes('content') || message.includes('work')) {
-                    return 'Samrat creates emotional love story videos through Samrat Rajput Creation, which you can watch on his YouTube channel. He also runs a printing business called Samrat Royal Collection.';
-                } else if (message.includes('inspiration') || message.includes('motivation')) {
-                    return 'Samrat is inspired by his family’s support and his passion for storytelling. He wants to connect with his audience through relatable and emotional content.';
-                } else if (message.includes('collaborate') || message.includes('work with')) {
-                    return 'If you’d like to collaborate with Samrat, use the "Contact" section to send him a message with your proposal!';
-                } else if (message.includes('fan') || message.includes('support')) {
-                    return 'Thank you for being a fan! You can support Samrat by following him on social media and sharing his content with your friends!';
-                } else if (message.includes('products') || message.includes('services')) {
-                    return 'Samrat Royal Collection offers customized printing services, including T-shirts and mugs, perfect for personalized gifts!';
-                } else if (message.includes('website') || message.includes('site')) {
-                    return 'You’re already on Samrat Singh Rajput’s official website! Explore sections like About, Gallery, and Contact to learn more.';
-                } else if (message.includes('age') || message.includes('how old')) {
-                    return 'Samrat Singh Rajput is 21 years old as of 2025.';
-                } else if (message.includes('thank you') || message.includes('thanks')) {
-                    return 'You’re welcome! If you have more questions, feel free to ask!';
-                } else {
-                    return 'I’m not sure about that. Could you ask something else about Samrat Singh Rajput or his ventures?';
+                function getAIResponse(message) {
+                    if (message.includes('who is samrat') || message.includes('about samrat')) {
+                        return 'Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, born on 15th October 2003. He’s known for creating love story videos through Samrat Rajput Creation and runs a business called Samrat Royal Collection, offering customized printing services.';
+                    } else if (message.includes('what does samrat do') || message.includes('samrat ventures')) {
+                        return 'Samrat creates love story videos on his YouTube channel, Samrat Rajput Creation, and runs Samrat Royal Collection, a business in Lucknow that offers customized printing services like T-shirts and mugs.';
+                    } else if (message.includes('contact samrat') || message.includes('how to reach samrat')) {
+                        return 'You can contact Samrat through the <a href="#contact">Contact section</a> on this website or reach out via his social media profiles linked in the <a href="#social">Follow Me section</a>.';
+                    } else if (message.includes('gallery') || message.includes('photos')) {
+                        return 'Check out the <a href="#gallery">Gallery section</a> and <a href="#horizontal-gallery">Horizontal Gallery section</a> to see photos related to Samrat’s work and ventures.';
+                    } else if (message.includes('videos') || message.includes('youtube')) {
+                        return 'Samrat shares his love story videos on YouTube. You can watch some of his featured videos in the <a href="#videos">Featured Videos section</a> or visit his YouTube channel linked in the <a href="#social">Follow Me section</a>.';
+                    } else if (message.includes('reviews') || message.includes('rating')) {
+                        return 'You can rate Samrat’s content and leave a review in the <a href="#home">Home section</a>. See what others are saying in the <a href="#testimonials">What People Say section</a> or click "Show All Reviews" to view all submitted reviews.';
+                    } else if (message.includes('social media') || message.includes('follow samrat')) {
+                        return 'You can follow Samrat on YouTube, Instagram, and Facebook. Check the <a href="#social">Follow Me section</a> for direct links to his profiles.';
+                    } else if (message.includes('education') || message.includes('samrat study')) {
+                        return 'Samrat completed his schooling at Sri Ayodhya Singh Memorial Inter College, Lucknow, in 2024. He’s currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University, Lucknow.';
+                    } else if (message.includes('family') || message.includes('samrat family')) {
+                        return 'Samrat comes from a supportive family in Lucknow. His father is Thakur Badshah Kushwaha, his mother is Sunila Devi, and his brother, Aman Rajput, is his constant motivator.';
+                    } else if (message.includes('hobbies') || message.includes('interests')) {
+                        return 'Samrat enjoys singing and traveling. His favorite foods are Sahi Paneer, Puri, Kheer, and Jalebi.';
+                    } else if (message.includes('future goals') || message.includes('samrat plans')) {
+                        return 'Samrat aims to expand his business, Samrat Royal Collection, into a larger empire, continue creating inspiring content, collaborate with brands worldwide, and launch a mobile app for Samrat Rajput Creation.';
+                    } else if (message.includes('achievements') || message.includes('samrat success')) {
+                        return 'Samrat has built a loyal following on social media with his heartfelt content and successfully launched Samrat Royal Collection in Lucknow. Check the <a href="#achievements">Achievements section</a> for more details.';
+                    } else {
+                        return 'I’m not sure how to answer that. Could you ask something else about Samrat or this website?';
+                    }
                 }
+
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            } else {
+                console.error('Chatbot elements not found in the DOM.');
             }
         });
-        // Initialize Ratings on Page Load
-        updateAverageRating();
-    });
-</script>
+    </script>
 </body>
 </html>
