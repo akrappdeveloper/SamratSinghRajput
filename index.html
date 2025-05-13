@@ -414,91 +414,87 @@
             height: 100%;
         }
         /* Card styles for gallery */
-        .gallery-card {
-            background-color: #111827;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .gallery-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
-        }
-        .gallery-card img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-        .gallery-card figcaption {
-            padding: clamp(0.5rem, 1vw, 1rem);
-            text-align: center;
-            color: #e5e5e5;
-            font-size: clamp(0.875rem, 1.5vw, 1rem);
-        }
-        /* Media Queries for Responsiveness */
-        @media (min-width: 640px) {
-            .sm\:space-x-6 > * + * { margin-left: clamp(1rem, 2vw, 1.5rem); }
-            .sm\:space-x-8 > * + * { margin-left: clamp(1.5rem, 3vw, 2rem); }
-            .sm\:space-y-0 > * + * { margin-top: 0; }
-            .sm\:px-10 { padding-left: clamp(1.5rem, 3vw, 2.5rem); padding-right: clamp(1.5rem, 3vw, 2.5rem); }
-            .sm\:text-4xl { font-size: clamp(1.875rem, 4vw, 2.25rem); }
-            .sm\:text-5xl { font-size: clamp(2.25rem, 5vw, 3rem); }
-            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .sm\:flex-row { flex-direction: row; }
-            .sm\:gap-10 { gap: clamp(1.5rem, 3vw, 2.5rem); }
-        }
-        @media (min-width: 768px) {
-            .md\:w-1\/3 { width: 33.333333%; }
-            .md\:w-2\/3 { width: 66.666667%; }
-            .md\:flex-row { flex-direction: row; }
-            .md\:text-left { text-align: left; }
-            .md\:pl-10 { padding-left: clamp(1.5rem, 3vw, 2.5rem); }
-            .md\:mt-0 { margin-top: 0; }
-        }
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .h-80 { height: 28rem; } /* Larger screens for Gallery */
-            .h-56 { height: 20rem; } /* Larger screens for Horizontal Gallery */
-        }
-        @media (max-width: 1024px) {
-            .grid-cols-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .h-80 { height: 22rem; }
-            .h-56 { height: 16rem; }
-        }
-        @media (max-width: 768px) {
-            .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .h-80 { height: 18rem; }
-            .h-56 { height: 14rem; }
-        }
-        @media (max-width: 640px) {
-            .text-5xl { font-size: clamp(2rem, 5vw, 2.5rem); }
-            .text-4xl { font-size: clamp(1.75rem, 4vw, 2rem); }
-            .text-xl { font-size: clamp(1rem, 2.5vw, 1.25rem); }
-            .profile-container {
-                width: clamp(150px, 40vw, 200px);
-                height: clamp(150px, 40vw, 200px);
-            }
-            .social-icon-youtube svg,
-            .social-icon-instagram svg,
-            .social-icon-facebook svg {
-                width: clamp(28px, 6vw, 32px);
-                height: clamp(28px, 6vw, 32px);
-            }
-            .chatbot-window {
-                width: clamp(90%, 95vw, 100%);
-                right: 2.5%;
-                bottom: clamp(60px, 10vw, 80px);
-            }
-            .logo {
-                width: clamp(60px, 15vw, 80px);
-                height: clamp(30px, 7.5vw, 40px);
-            }
-            .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .h-80 { height: 16rem; } /* Adjusted for smaller screens */
-            .h-56 { height: 12rem; } /* Adjusted for smaller screens */
-        }
+       /* Gallery Section */
+.gallery-card {
+    background-color: #111827;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
+}
+.gallery-card img {
+    width: 100%;
+    height: 300px; /* Fixed height for Gallery */
+    aspect-ratio: 4 / 5; /* Consistent aspect ratio */
+    object-fit: cover;
+}
+
+/* Horizontal Gallery Section */
+.horizontal-gallery-card {
+    background-color: #111827;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.horizontal-gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
+}
+.horizontal-gallery-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for Horizontal Gallery */
+    aspect-ratio: 3 / 2; /* Consistent aspect ratio */
+    object-fit: cover;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 1024px) {
+    .gallery-card img {
+        height: 350px; /* Slightly larger for bigger screens */
+    }
+    .horizontal-gallery-card img {
+        height: 250px; /* Slightly larger for bigger screens */
+    }
+}
+@media (max-width: 1024px) {
+    .gallery-card img {
+        height: 250px;
+    }
+    .horizontal-gallery-card img {
+        height: 180px;
+    }
+    .grid-cols-4 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 768px) {
+    .gallery-card img {
+        height: 200px;
+    }
+    .horizontal-gallery-card img {
+        height: 150px;
+    }
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .grid-cols-2 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+@media (max-width: 640px) {
+    .gallery-card img {
+        height: 180px;
+    }
+    .horizontal-gallery-card img {
+        height: 120px;
+    }
+    .grid-cols-4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
     </style>
 </head>
 <body>
@@ -693,253 +689,121 @@
     </section>
 
     <section id="gallery" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
-        <div class="max-w-6xl mx-auto space-y-6">
-            <!-- Row 1 -->
-            <div class="grid grid-cols-4 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0002.jpg" alt="Laptop and TV Show Image 1" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+1'">
-                    <figcaption>Laptop and TV Show Image 1</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0004.jpg" alt="Laptop and TV Show Image 2" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+2'">
-                    <figcaption>Laptop and TV Show Image 2</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0008.jpg" alt="Laptop and TV Show Image 3" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+3'">
-                    <figcaption>Laptop and TV Show Image 3</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0009.jpg" alt="Laptop and TV Show Image 4" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+4'">
-                    <figcaption>Laptop and TV Show Image 4</figcaption>
-                </figure>
-            </div>
-            <!-- Row 2 -->
-            <div class="grid grid-cols-4 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0010.jpg" alt="Laptop and TV Show Image 5" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+5'">
-                    <figcaption>Laptop and TV Show Image 5</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0012.jpg" alt="Laptop and TV Show Image 6" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+6'">
-                    <figcaption>Laptop and TV Show Image 6</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0013.jpg" alt="Laptop and TV Show Image 7" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+7'">
-                    <figcaption>Laptop and TV Show Image 7</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0018.jpg" alt="Laptop and TV Show Image 8" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+8'">
-                    <figcaption>Laptop and TV Show Image 8</figcaption>
-                </figure>
-            </div>
-            <!-- Row 3 -->
-            <div class="grid grid-cols-4 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0019.jpg" alt="Laptop and TV Show Image 9" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+9'">
-                    <figcaption>Laptop and TV Show Image 9</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0021.jpg" alt="Laptop and TV Show Image 10" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+10'">
-                    <figcaption>Laptop and TV Show Image 10</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0043.jpg" alt="Laptop and TV Show Image 11" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+11'">
-                    <figcaption>Laptop and TV Show Image 11</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0025.jpg" alt="Laptop and TV Show Image 12" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+12'">
-                    <figcaption>Laptop and TV Show Image 12</figcaption>
-                </figure>
-            </div>
-            <!-- Row 4 -->
-            <div class="grid grid-cols-4 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0026.jpg" alt="Laptop and TV Show Image 13" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+13'">
-                    <figcaption>Laptop and TV Show Image 13</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0028.jpg" alt="Laptop and TV Show Image 14" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+14'">
-                    <figcaption>Laptop and TV Show Image 14</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0029.jpg" alt="Laptop and TV Show Image 15" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+15'">
-                    <figcaption>Laptop and TV Show Image 15</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0044.jpg" alt="Laptop and TV Show Image 16" class="w-full h-80 object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Laptop+TV+16'">
-                    <figcaption>Laptop and TV Show Image 16</figcaption>
-                </figure>
-            </div>
+    <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
+    <div class="max-w-6xl mx-auto space-y-6">
+        <!-- Row 1 -->
+        <div class="grid grid-cols-4 gap-6">
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0002.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0004.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0008.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0009.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
         </div>
-    </section>
+        <!-- Row 2 -->
+        <div class="grid grid-cols-4 gap-6">
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0010.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0012.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0013.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0018.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+        </div>
+        <!-- Row 3 -->
+        <div class="grid grid-cols-4 gap-6">
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0019.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0021.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0043.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0025.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+        </div>
+        <!-- Row 4 -->
+        <div class="grid grid-cols-4 gap-6">
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0026.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0028.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0029.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0044.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+            </figure>
+        </div>
+    </div>
+</section>
 
-    <section id="horizontal-gallery" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">HORIZONTAL GALLERY</h2>
-        <div class="max-w-6xl mx-auto space-y-6">
-            <!-- Row 1 -->
-            <div class="grid grid-cols-2 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0005.jpg" alt="Horizontal Image 1" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+1'">
-                    <figcaption>Horizontal Image 1</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0014.jpg" alt="Horizontal Image 2" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+2'">
-                    <figcaption>Horizontal Image 2</figcaption>
-                </figure>
-            </div>
-            <!-- Row 2 -->
-            <div class="grid grid-cols-2 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0015.jpg" alt="Horizontal Image 3" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+3'">
-                    <figcaption>Horizontal Image 3</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0016.jpg" alt="Horizontal Image 4" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+4'">
-                    <figcaption>Horizontal Image 4</figcaption>
-                </figure>
-            </div>
-            <!-- Row 3 -->
-            <div class="grid grid-cols-2 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0034.jpg" alt="Horizontal Image 5" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+5'">
-                    <figcaption>Horizontal Image 5</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0062.jpg" alt="Horizontal Image 6" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+6'">
-                    <figcaption>Horizontal Image 6</figcaption>
-                </figure>
-            </div>
-            <!-- Row 4 -->
-            <div class="grid grid-cols-2 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0063.jpg" alt="Horizontal Image 7" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+7'">
-                    <figcaption>Horizontal Image 7</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0065.jpg" alt="Horizontal Image 8" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+8'">
-                    <figcaption>Horizontal Image 8</figcaption>
-                </figure>
-            </div>
-            <!-- Row 5 -->
-            <div class="grid grid-cols-2 gap-6">
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0067.jpg" alt="Horizontal Image 9" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+9'">
-                    <figcaption>Horizontal Image 9</figcaption>
-                </figure>
-                <figure class="gallery-card card-hover zoom-in">
-                    <img src="images/IMG-20250510-WA0056.jpg" alt="Horizontal Image 10" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x200?text=Horizontal+10'">
-                    <figcaption>Horizontal Image 10</figcaption>
-                </figure>
-            </div>
+<section id="horizontal-gallery" class="py-20 px-4 sm:px-10 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10">HORIZONTAL GALLERY</h2>
+    <div class="max-w-6xl mx-auto space-y-6">
+        <!-- Row 1 -->
+        <div class="grid grid-cols-2 gap-6">
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0005.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250512-WA0014.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
         </div>
-    </section>
-
-    <section id="testimonials" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">WHAT PEOPLE SAY</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s videos are so emotional and relatable! I’m a huge fan of his work."</p>
-                <h3 class="mt-4 text-xl neon-green">Priya Sharma</h3>
-                <p class="text-gray-500">Fan</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"The customized T-shirts from Samrat Royal Collection were amazing!"</p>
-                <h3 class="mt-4 text-xl neon-green">Rohan Verma</h3>
-                <p class="text-gray-500">Client</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s storytelling is incredible. His videos always touch my heart."</p>
-                <h3 class="mt-4 text-xl neon-green">Aarav Patel</h3>
-                <p class="text-gray-500">Viewer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"I ordered a mug from Samrat Royal Collection, and the quality was top-notch!"</p>
-                <h3 class="mt-4 text-xl neon-green">Kavya Gupta</h3>
-                <p class="text-gray-500">Customer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s content is a breath of fresh air. Keep up the great work!"</p>
-                <h3 class="mt-4 text-xl neon-green">Vikram Malhotra</h3>
-                <p class="text-gray-500">Fan</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"The love stories Samrat creates are so captivating!"</p>
-                <h3 class="mt-4 text-xl neon-green">Sneha Thakur</h3>
-                <p class="text-gray-500">Viewer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat Royal Collection’s printing service is the best in Lucknow!"</p>
-                <h3 class="mt-4 text-xl neon-green">Aditya Chauhan</h3>
-                <p class="text-gray-500">Client</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s videos always brighten my day!"</p>
-                <h3 class="mt-4 text-xl neon-green">Riya Saxena</h3>
-                <p class="text-gray-500">Fan</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"I love how Samrat tells stories through his videos."</p>
-                <h3 class="mt-4 text-xl neon-green">Nikhil Rana</h3>
-                <p class="text-gray-500">Viewer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat Royal Collection delivered my order faster than expected!"</p>
-                <h3 class="mt-4 text-xl neon-green">Anjali Mishra</h3>
-                <p class="text-gray-500">Customer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s creativity is unmatched. His videos are a must-watch!"</p>
-                <h3 class="mt-4 text-xl neon-green">Harsh Vardhan</h3>
-                <p class="text-gray-500">Fan</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"The quality of products from Samrat Royal Collection is amazing!"</p>
-                <h3 class="mt-4 text-xl neon-green">Meera Kapoor</h3>
-                <p class="text-gray-500">Client</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s videos always leave me inspired."</p>
-                <h3 class="mt-4 text-xl neon-green">Siddharth Bhatt</h3>
-                <p class="text-gray-500">Viewer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"I’m a regular customer of Samrat Royal Collection. Never disappointed!"</p>
-                <h3 class="mt-4 text-xl neon-green">Pooja Dubey</h3>
-                <p class="text-gray-500">Customer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s storytelling skills are phenomenal!"</p>
-                <h3 class="mt-4 text-xl neon-green">Ishaan Tyagi</h3>
-                <p class="text-gray-500">Fan</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s videos are so touching. I watch them all the time!"</p>
-                <h3 class="mt-4 text-xl neon-green">Emily Johnson</h3>
-                <p class="text-gray-500">Viewer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"I ordered a T-shirt from Samrat Royal Collection, and I love it!"</p>
-                <h3 class="mt-4 text-xl neon-green">Carlos Mendes</h3>
-                <p class="text-gray-500">Customer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat’s content is amazing. I’m a big fan from Japan!"</p>
-                <h3 class="mt-4 text-xl neon-green">Aiko Tanaka</h3>
-                <p class="text-gray-500">Fan</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"The love stories Samrat creates are so beautiful."</p>
-                <h3 class="mt-4 text-xl neon-green">Liam O’Connor</h3>
-                <p class="text-gray-500">Viewer</p>
-            </div>
-            <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
-                <p class="text-gray-400">"Samrat Royal Collection’s service is excellent!"</p>
-                <h3 class="mt-4 text-xl neon-green">Sophie Leclerc</h3>
-                <p class="text-gray-500">Client</p>
-            </div>
+        <!-- Row 2 -->
+        <div class="grid grid-cols-2 gap-6">
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0015.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0016.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
         </div>
-    </section>
+        <!-- Row 3 -->
+        <div class="grid grid-cols-2 gap-6">
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0034.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0062.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+        </div>
+        <!-- Row 4 -->
+        <div class="grid grid-cols-2 gap-6">
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0063.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0065.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+        </div>
+        <!-- Row 5 -->
+        <div class="grid grid-cols-2 gap-6">
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0067.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+            <figure class="horizontal-gallery-card card-hover zoom-in">
+                <img src="images/IMG-20250510-WA0056.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+            </figure>
+        </div>
+    </div>
+</section>
 
     <section id="videos" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10">FEATURED VIDEOS</h2>
