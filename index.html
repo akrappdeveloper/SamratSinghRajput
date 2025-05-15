@@ -227,10 +227,19 @@
             border-radius: 50%;
             object-fit: cover;
             animation: rotateProfile 10s linear infinite;
+            animation-play-state: running;
         }
         @keyframes rotateProfile {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        @-webkit-keyframes rotateProfile {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @-moz-keyframes rotateProfile {
+            0% { -moz-transform: rotate(0deg); }
+            100% { -moz-transform: rotate(360deg); }
         }
         .profile-border {
             position: absolute;
@@ -254,6 +263,14 @@
             animation: borderRotate 4s linear infinite;
         }
         @keyframes borderRotate {
+            0% { stroke-dashoffset: 754; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @-webkit-keyframes borderRotate {
+            0% { stroke-dashoffset: 754; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @-moz-keyframes borderRotate {
             0% { stroke-dashoffset: 754; }
             100% { stroke-dashoffset: 0; }
         }
@@ -300,6 +317,8 @@
             width: clamp(80%, 90vw, 500px);
             position: relative;
             animation: modalPop 0.5s ease-out forwards;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         @keyframes modalPop {
             0% { transform: scale(0.7); opacity: 0; }
@@ -659,7 +678,9 @@
         <div class="modal-content">
             <span class="close-btn" id="closeReviewsModal">×</span>
             <h2 class="text-2xl neon-green mb-4">All Reviews</h2>
-            <div id="reviewsList"></div>
+            <div id="reviewsList" class="text-gray-400">
+                <p id="reviewsLoading">Loading...</p>
+            </div>
         </div>
     </div>
 
@@ -734,7 +755,10 @@
 
     <section id="ventures" class="py-20 px-4 sm:px-10 fade-in">
         <h2 class="text-4xl font-bold text-center mb-10 zoom-in">MY VENTURES</h2>
-        <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
+        <div class那么用这一句翻译为英文：The current date is May 15, 2025.
+
+The current date is May 15, 2025.
+<div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <h3 class="text-xl neon-green">SAMRAT RAJPUT CREATION</h3>
                 <p class="mt-2 text-gray-400">
@@ -910,7 +934,7 @@
                     </a>
                     <a href="https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon-instagram hover-scale">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.285.058-2.717.283-3.846 1.412-.975.975-1.412 2.407-1.412 3.846-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.285.283 2.717 1.412 3.846.975.975 2.407 1.412 3.846 1.412 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.285-.058 2.717-.283 3.846-1.412.975-.975 1.412-2.407 1.412-3.846.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.285-.283-2.717-1.412-3.846-.975-.975-2.407-1.412-3.846-1.412-1.28-.058-1.688-.072-4.947-.072m0 5.838c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6m0 9.837c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4m6.406-11.845c-.796 0-1.441-.645-1.441-1.441s.645-1.441 1.441-1.441 1.441.645 1.441 1.441-.645 1.441-1.441 1.441"/>
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.285.058-2.717.283-3.846 1.412-.975.975-1.412 2.407-1.412 3.846-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.285.283 2.717 1.412 3.846.975.975 2.407 1.412 3.846 1.412 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.285-.058 2.717-.283 3.846-1.412.975-.975 1.412-2.407 1.412-3.846.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.285-.283-2.717-1.412-3.846-.975-.975-2.407-1.412-3.846-1.412-1.28-.058-1.688-.072-4.947-.072m0 5.838c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6m0 9.837c-2.209 0-4-1.791-4-4s1.791-4 4 4-1.791 4-4 4m6.406-11.845c-.796 0-1.441-.645-1.441-1.441s.645-1.441 1.441-1.441 1.441.645 1.441 1.441-.645 1.441-1.441 1.441"/>
                         </svg>
                     </a>
                     <a href="https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#" target="_blank" class="social-icon-facebook hover-scale">
@@ -998,6 +1022,7 @@
                 firebase.initializeApp(firebaseConfig);
             } catch (error) {
                 console.error('Firebase initialization failed:', error);
+                alert('Failed to connect to the database. Some features may not work.');
             }
             const database = firebase.database();
             const ratingsRef = database.ref('ratings');
@@ -1177,7 +1202,7 @@
             } else {
                 console.error('Reviews modal elements not found in the DOM.');
             }
-
+            
             const contactModal = document.getElementById('contactModal');
             const openContactModal = document.getElementById('openContactModal');
             const closeContactModal = document.getElementById('closeContactModal');
@@ -1329,6 +1354,15 @@
                 });
             } else {
                 console.error('About Me button not found in the DOM.');
+            }
+
+            // Ensure profile rotation is applied and visible
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage) {
+                profileImage.style.animation = 'rotateProfile 10s linear infinite';
+                profileImage.style.animationPlayState = 'running';
+            } else {
+                console.error('Profile image element not found in the DOM.');
             }
         });
     </script>
