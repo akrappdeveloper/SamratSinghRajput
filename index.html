@@ -15,19 +15,75 @@
     <meta property="og:image" content="images/samlogo.png">
     <meta property="og:site_name" content="Samrat Singh Rajput">
     <script type="application/ld+json">
-   {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Samrat Singh Rajput",
-      "jobTitle": "Social Media Influencer & YouTuber",
-      "description": "Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, known for love story videos through Samrat Rajput Creation and his venture Samrat Royal Collection.",
-      "url": "https://akrappdeveloper.github.io/SamratSinghRajput/",
-      "image": "https://akrappdeveloper.github.io/SamratSinghRajput/images/profile.jpg",
-      "sameAs": [
-        "https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb",
-        "https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        "https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#"
-      ]
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Samrat Singh Rajput",
+        "jobTitle": "Social Media Influencer & YouTuber",
+        "description": "Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, known for love story videos through Samrat Rajput Creation and his venture Samrat Royal Collection.",
+        "url": "https://akrappdeveloper.github.io/SamratSinghRajput/",
+        "image": "https://akrappdeveloper.github.io/SamratSinghRajput/images/profile.jpg",
+        "sameAs": [
+            "https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb",
+            "https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            "https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Who is Samrat Singh Rajput in real life?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, India, known for creating love story videos on his YouTube channel \"Samrat Rajput Creation.\" He is also the founder of Samrat Royal Collection, a customized printing service."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Samrat Singh Rajput’s age?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samrat Singh Rajput was born on October 15, 2003, making him 21 years old as of May 15, 2025."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does Samrat Singh Rajput do for a living?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samrat Singh Rajput creates love story videos as a YouTuber on his channel \"Samrat Rajput Creation.\" He also runs Samrat Royal Collection, a business offering customized printing services for T-shirts and mugs in Lucknow."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where is Samrat Singh Rajput from?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samrat Singh Rajput is from Lucknow, Uttar Pradesh, India, where he was born and raised, and continues to build his career as an influencer and entrepreneur."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Samrat Royal Collection by Samrat Singh Rajput?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samrat Royal Collection is a customized printing service founded by Samrat Singh Rajput in Lucknow, offering products like T-shirts and mugs, with a vision to expand into a larger business empire."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Samrat Singh Rajput’s educational background?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samrat Singh Rajput completed his schooling at Sri Ayodhya Singh Memorial Inter College in Lucknow in 2024. He is currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University."
+                }
+            }
+        ]
     }
     </script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -39,12 +95,13 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         body {
             background-color: #1a1a1a;
             color: #e5e5e5;
             font-family: 'Arial', sans-serif;
-            font-size: clamp(14px, 2vw, 16px); /* Responsive font size */
+            font-size: clamp(14px, 2vw, 16px);
         }
         .neon-green { color: #39ff14; }
         .bg-neon-green { background-color: #39ff14; }
@@ -90,13 +147,10 @@
         .max-w-6xl { max-width: clamp(90%, 72rem, 100%); }
         .mx-auto { margin-left: auto; margin-right: auto; }
         .w-full { width: 100%; }
-        .h-48 { height: 20rem; } /* Updated for Horizontal Gallery */
-        .h-56 { height: 20rem; } /* Updated for Horizontal Gallery (larger screens) */
-        .h-64 { height: 24rem; } /* Updated for Gallery */
-        .h-80 { height: 28rem; } /* Updated for Gallery (larger screens) */
         .grid { display: grid; }
         .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
         .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         .hover\:underline:hover { text-decoration: underline; }
         .hover\:text-gray-400:hover { color: #9ca3af; }
@@ -121,6 +175,15 @@
         }
         @keyframes slideIn {
             0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(50px); }
             100% { opacity: 1; transform: translateX(0); }
         }
         .hover-scale {
@@ -163,6 +226,11 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
+            animation: rotateProfile 10s linear infinite;
+        }
+        @keyframes rotateProfile {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .profile-border {
             position: absolute;
@@ -231,6 +299,11 @@
             border-radius: 0.5rem;
             width: clamp(80%, 90vw, 500px);
             position: relative;
+            animation: modalPop 0.5s ease-out forwards;
+        }
+        @keyframes modalPop {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
         .close-btn {
             position: absolute;
@@ -239,6 +312,10 @@
             font-size: clamp(1.2rem, 2vw, 1.5rem);
             cursor: pointer;
             color: #e5e5e5;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #39ff14;
         }
         .contact-form input,
         .contact-form textarea {
@@ -249,6 +326,12 @@
             border-radius: 0.25rem;
             background-color: #1a1a1a;
             color: #e5e5e5;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #2ecc10;
+            outline: none;
         }
         .contact-form button {
             background-color: #00695c;
@@ -269,7 +352,7 @@
         .star {
             font-size: clamp(20px, 3vw, 24px);
             color: #ccc;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
         }
         .star.filled {
             color: #39ff14;
@@ -287,6 +370,12 @@
             border-radius: 0.25rem;
             background-color: #1a1a1a;
             color: #e5e5e5;
+            transition: border-color 0.3s ease;
+        }
+        .review-form input:focus,
+        .review-form textarea:focus {
+            border-color: #2ecc10;
+            outline: none;
         }
         .review-form button {
             background-color: #39ff14;
@@ -312,6 +401,7 @@
             border-left: 4px solid #39ff14;
             margin-bottom: clamp(0.5rem, 2vw, 1rem);
             border-radius: 0.25rem;
+            animation: slideIn 0.5s ease-out forwards;
         }
         .chatbot-btn {
             position: fixed;
@@ -329,6 +419,7 @@
             cursor: pointer;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
             z-index: 100;
+            animation: pulse 2s infinite;
         }
         .chatbot-window {
             position: fixed;
@@ -342,6 +433,7 @@
             display: none;
             flex-direction: column;
             z-index: 100;
+            animation: slideInRight 0.5s ease-out forwards;
         }
         .chatbot-header {
             background-color: #39ff14;
@@ -358,6 +450,7 @@
         }
         .chatbot-message {
             margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            animation: fadeIn 0.3s ease-in forwards;
         }
         .chatbot-message.user {
             text-align: right;
@@ -370,6 +463,7 @@
         .chatbot-message.ai a {
             color: #39ff14;
             text-decoration: underline;
+            transition: color 0.3s ease;
         }
         .chatbot-message.ai a:hover {
             color: #2ecc10;
@@ -387,6 +481,11 @@
             background-color: #1a1a1a;
             color: #e5e5e5;
             margin-right: clamp(0.3rem, 1vw, 0.5rem);
+            transition: border-color 0.3s ease;
+        }
+        .chatbot-input input:focus {
+            border-color: #2ecc10;
+            outline: none;
         }
         .chatbot-input button {
             background-color: #39ff14;
@@ -395,6 +494,7 @@
             border: none;
             border-radius: 0.25rem;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .chatbot-input button:hover {
             background-color: #2ecc10;
@@ -413,88 +513,68 @@
             width: 100%;
             height: 100%;
         }
-        /* Card styles for gallery */
-       /* Gallery Section */
-.gallery-card {
-    background-color: #111827;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
-}
-.gallery-card img {
-    width: 100%;
-    height: 300px; /* Fixed height for Gallery */
-    aspect-ratio: 4 / 5; /* Consistent aspect ratio */
-    object-fit: cover;
-}
-
-/* Horizontal Gallery Section */
-.horizontal-gallery-card {
-    background-color: #111827;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.horizontal-gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
-}
-.horizontal-gallery-card img {
-    width: 100%;
-    height: 200px; /* Fixed height for Horizontal Gallery */
-    aspect-ratio: 3 / 2; /* Consistent aspect ratio */
-    object-fit: cover;
-}
-
-/* Media Queries for Responsiveness */
-@media (min-width: 1024px) {
-    .gallery-card img {
-        height: 350px; /* Slightly larger for bigger screens */
-    }
-    .horizontal-gallery-card img {
-        height: 250px; /* Slightly larger for bigger screens */
-    }
-}
-@media (max-width: 1024px) {
-    .gallery-card img {
-        height: 250px;
-    }
-    .horizontal-gallery-card img {
-        height: 180px;
-    }
-    .grid-cols-4 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-@media (max-width: 768px) {
-    .gallery-card img {
-        height: 200px;
-    }
-    .horizontal-gallery-card img {
-        height: 150px;
-    }
-    .grid-cols-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .grid-cols-2 {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-}
-@media (max-width: 640px) {
-    .gallery-card img {
-        height: 180px;
-    }
-    .horizontal-gallery-card img {
-        height: 120px;
-    }
-    .grid-cols-4 {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-}
+        .gallery-card {
+            background-color: #111827;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 300px;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.1);
+        }
+        .horizontal-gallery-card {
+            background-color: #111827;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .horizontal-gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2);
+        }
+        .horizontal-gallery-card img {
+            width: 100%;
+            height: 200px;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .horizontal-gallery-card:hover img {
+            transform: scale(1.1);
+        }
+        @media (min-width: 1024px) {
+            .gallery-card img { height: 350px; }
+            .horizontal-gallery-card img { height: 250px; }
+        }
+        @media (max-width: 1024px) {
+            .gallery-card img { height: 250px; }
+            .horizontal-gallery-card img { height: 180px; }
+            .grid-cols-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .grid-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            .gallery-card img { height: 200px; }
+            .horizontal-gallery-card img { height: 150px; }
+            .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-cols-3 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+            .gallery-card img { height: 180px; }
+            .horizontal-gallery-card img { height: 120px; }
+            .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        }
     </style>
 </head>
 <body>
@@ -510,7 +590,7 @@
         </div>
     </div>
 
-    <nav class="flex justify-between items-center py-6 px-4 sm:px-10">
+    <nav class="flex justify-between items-center py-6 px-4 sm:px-10 fade-in">
         <a href="#home">
             <img src="images/samlogo.png" alt="Samrat Singh Rajput Logo" class="logo">
         </a>
@@ -543,14 +623,14 @@
                 </div>
             </div>
         </div>
-        <div class="md:w-2/3 w-full text-center md:text-left md:pl-10 mt-8 md:mt-0">
+        <div class="md:w-2/3 w-full text-center md:text-left md:pl-10 mt-8 md:mt-0 slide-in-right">
             <h1 class="text-2xl">Hello I'm</h1>
             <h2 class="text-4xl sm:text-5xl font-bold neon-green">Samrat Singh Rajput</h2>
             <h3 class="text-3xl sm:text-4xl mt-2">SOCIAL MEDIA INFLUENCER & YOUTUBER</h3>
             <p class="mt-4 text-gray-400">
                 A creative content creator from Lucknow, known for directing and producing love story videos through Samrat Rajput Creation.
             </p>
-            <button class="mt-6 px-6 py-2 bg-neon-green text-black font-bold rounded hover:bg-green-500 hover-scale">ABOUT ME</button>
+            <button class="mt-6 px-6 py-2 bg-neon-green text-black font-bold rounded hover-scale">ABOUT ME</button>
             <div class="mt-6">
                 <h4 class="text-lg neon-green">Rate My Content:</h4>
                 <div class="star-rating" id="starRating">
@@ -562,7 +642,7 @@
                 </div>
                 <p class="mt-2 text-gray-400">Average Rating: <span id="averageRating">0</span>/5 (<span id="totalRatings">0</span> votes)</p>
                 <p id="ratingError" class="mt-2 text-red-500" style="display: none;">Unable to fetch ratings. Please try again later.</p>
-                <button id="showReviewsBtn" class="mt-2 px-4 py-1 bg-neon-green text-black font-bold rounded hover:bg-green-500">Show All Reviews</button>
+                <button id="showReviewsBtn" class="mt-2 px-4 py-1 bg-neon-green text-black font-bold rounded hover-scale">Show All Reviews</button>
             </div>
             <div id="reviewSection" class="mt-6">
                 <h4 class="text-lg neon-green">Leave a Review:</h4>
@@ -584,7 +664,7 @@
     </div>
 
     <section id="about" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">ABOUT ME</h2>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">ABOUT ME</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <h3 class="text-xl neon-green">Personal Background</h3>
@@ -620,7 +700,7 @@
     </section>
 
     <section id="journey" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">MY JOURNEY</h2>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">MY JOURNEY</h2>
         <div class="max-w-4xl mx-auto">
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <h3 class="text-xl neon-green">Starting as a Content Creator</h3>
@@ -653,7 +733,7 @@
     </section>
 
     <section id="ventures" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">MY VENTURES</h2>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">MY VENTURES</h2>
         <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <h3 class="text-xl neon-green">SAMRAT RAJPUT CREATION</h3>
@@ -671,7 +751,7 @@
     </section>
 
     <section id="achievements" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">ACHIEVEMENTS</h2>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">ACHIEVEMENTS</h2>
         <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto">
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <h3 class="text-xl neon-green">Growing Audience</h3>
@@ -689,124 +769,115 @@
     </section>
 
     <section id="gallery" class="py-20 px-4 sm:px-10 fade-in">
-    <h2 class="text-4xl font-bold text-center mb-10">GALLERY</h2>
-    <div class="max-w-6xl mx-auto space-y-6">
-        <!-- Row 1 -->
-        <div class="grid grid-cols-4 gap-6">
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0002.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0004.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0008.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0009.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">GALLERY</h2>
+        <div class="max-w-6xl mx-auto space-y-6">
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0002.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0004.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0008.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0009.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0010.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0012.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0013.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0018.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0019.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0021.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0043.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0025.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-4 gap-6">
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0026.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0028.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0029.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0044.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
         </div>
-        <!-- Row 2 -->
-        <div class="grid grid-cols-4 gap-6">
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0010.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0012.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0013.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0018.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-        <!-- Row 3 -->
-        <div class="grid grid-cols-4 gap-6">
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0019.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0021.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0043.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0025.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-        <!-- Row 4 -->
-        <div class="grid grid-cols-4 gap-6">
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0026.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0028.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0029.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0044.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/300x375?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="horizontal-gallery" class="py-20 px-4 sm:px-10 fade-in">
-    <h2 class="text-4xl font-bold text-center mb-10">HORIZONTAL GALLERY</h2>
-    <div class="max-w-6xl mx-auto space-y-6">
-        <!-- Row 1 -->
-        <div class="grid grid-cols-2 gap-6">
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0005.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250512-WA0014.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
+    <section id="horizontal-gallery" class="py-20 px-4 sm:px-10 fade-in">
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">HORIZONTAL GALLERY</h2>
+        <div class="max-w-6xl mx-auto space-y-6">
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0005.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250512-WA0014.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0015.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0016.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0034.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0062.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0063.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0065.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0067.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+                <figure class="horizontal-gallery-card card-hover zoom-in">
+                    <img src="images/IMG-20250510-WA0056.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
+                </figure>
+            </div>
         </div>
-        <!-- Row 2 -->
-        <div class="grid grid-cols-2 gap-6">
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0015.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0016.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-        <!-- Row 3 -->
-        <div class="grid grid-cols-2 gap-6">
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0034.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0062.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-        <!-- Row 4 -->
-        <div class="grid grid-cols-2 gap-6">
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0063.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0065.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-        <!-- Row 5 -->
-        <div class="grid grid-cols-2 gap-6">
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0067.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-            <figure class="horizontal-gallery-card card-hover zoom-in">
-                <img src="images/IMG-20250510-WA0056.jpg" alt="Samrat Singh Rajput" class="w-full object-cover" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Samrat+Singh+Rajput'">
-            </figure>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section id="videos" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">FEATURED VIDEOS</h2>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">FEATURED VIDEOS</h2>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div class="bg-gray-900 p-4 rounded zoom-in">
                 <div class="video-container">
@@ -827,7 +898,7 @@
     </section>
 
     <section id="social" class="py-20 px-4 sm:px-10 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-10">FOLLOW ME</h2>
+        <h2 class="text-4xl font-bold text-center mb-10 zoom-in">FOLLOW ME</h2>
         <div class="max-w-4xl mx-auto">
             <div class="p-6 bg-gray-900 border-l-4 border-neon-green slide-in">
                 <h3 class="text-xl neon-green text-center mb-4">Connect with Me</h3>
@@ -853,7 +924,7 @@
     </section>
 
     <section id="contact" class="py-20 px-4 sm:px-10 text-center fade-in">
-        <h2 class="text-4xl font-bold mb-6">LET'S COLLABORATE ON YOUR NEXT PROJECT</h2>
+        <h2 class="text-4xl font-bold mb-6 zoom-in">LET'S COLLABORATE ON YOUR NEXT PROJECT</h2>
         <button id="openContactModal" class="px-8 py-4 text-lg bg-teal-600 text-white font-bold rounded hover:bg-teal-700 hover-scale pulse">CONTACT</button>
     </section>
 
@@ -870,7 +941,35 @@
         </div>
     </div>
 
-    <footer class="py-6 text-center text-gray-500">
+    <div class="hidden-faq" style="display: none;">
+        <h2>Frequently Asked Questions About Samrat Singh Rajput</h2>
+        <div class="faq-item">
+            <h3>Who is Samrat Singh Rajput in real life?</h3>
+            <p>Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, India, known for creating love story videos on his YouTube channel "Samrat Rajput Creation." He is also the founder of Samrat Royal Collection, a customized printing service.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What is Samrat Singh Rajput’s age?</h3>
+            <p>Samrat Singh Rajput was born on October 15, 2003, making him 21 years old as of May 15, 2025.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What does Samrat Singh Rajput do for a living?</h3>
+            <p>Samrat Singh Rajput creates love story videos as a YouTuber on his channel "Samrat Rajput Creation." He also runs Samrat Royal Collection, a business offering customized printing services for T-shirts and mugs in Lucknow.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Where is Samrat Singh Rajput from?</h3>
+            <p>Samrat Singh Rajput is from Lucknow, Uttar Pradesh, India, where he was born and raised, and continues to build his career as an influencer and entrepreneur.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What is Samrat Royal Collection by Samrat Singh Rajput?</h3>
+            <p>Samrat Royal Collection is a customized printing service founded by Samrat Singh Rajput in Lucknow, offering products like T-shirts and mugs, with a vision to expand into a larger business empire.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What is Samrat Singh Rajput’s educational background?</h3>
+            <p>Samrat Singh Rajput completed his schooling at Sri Ayodhya Singh Memorial Inter College in Lucknow in 2024. He is currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University.</p>
+        </div>
+    </div>
+
+    <footer class="py-6 text-center text-gray-500 fade-in">
         <ul class="flex flex-wrap justify-center space-x-4 sm:space-x-6 mb-4">
             <li><a href="#home" class="hover:text-gray-400">HOME</a></li>
             <li><a href="#about" class="hover:text-gray-400">ABOUT</a></li>
@@ -1087,7 +1186,7 @@
             const contactEmail = document.getElementById('contactEmail');
             const contactMessage = document.getElementById('contactMessage');
 
-            if (openContactModal && contactModal && closeContactModal && submitContactBtn && contactName && contactEmail && contactMessage) {
+            if (contactModal && openContactModal && closeContactModal && submitContactBtn && contactName && contactEmail && contactMessage) {
                 openContactModal.addEventListener('click', () => {
                     contactModal.style.display = 'flex';
                 });
@@ -1116,10 +1215,10 @@
                             contactName.value = '';
                             contactEmail.value = '';
                             contactMessage.value = '';
-                            alert('Message sent successfully!');
                             contactModal.style.display = 'none';
+                            alert('Message sent successfully!');
                         }).catch(error => {
-                            console.error('Error submitting contact message:', error);
+                            console.error('Error submitting contact form:', error);
                             alert('Failed to send message. Please try again.');
                         });
                     } else {
@@ -1127,7 +1226,7 @@
                     }
                 });
             } else {
-                console.error('Contact form elements not found in the DOM.');
+                console.error('Contact modal elements not found in the DOM.');
             }
 
             const chatbotBtn = document.getElementById('chatbotBtn');
@@ -1144,73 +1243,92 @@
                 chatbotSendBtn.addEventListener('click', sendChatbotMessage);
                 chatbotInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
-                                                sendChatbotMessage();
+                        sendChatbotMessage();
                     }
                 });
 
                 function sendChatbotMessage() {
                     const userMessage = chatbotInput.value.trim();
                     if (userMessage) {
-                        const userMessageEl = document.createElement('div');
-                        userMessageEl.classList.add('chatbot-message', 'user');
-                        userMessageEl.textContent = userMessage;
-                        chatbotBody.appendChild(userMessageEl);
+                        const userMsgDiv = document.createElement('div');
+                        userMsgDiv.classList.add('chatbot-message', 'user');
+                        userMsgDiv.textContent = userMessage;
+                        chatbotBody.appendChild(userMsgDiv);
+
+                        chatbotRef.push({
+                            userMessage: userMessage,
+                            timestamp: Date.now()
+                        }).catch(error => {
+                            console.error('Error logging chatbot interaction:', error);
+                        });
+
                         chatbotInput.value = '';
 
-                        const aiResponse = getAIResponse(userMessage.toLowerCase());
                         setTimeout(() => {
-                            const aiMessageEl = document.createElement('div');
-                            aiMessageEl.classList.add('chatbot-message', 'ai');
-                            aiMessageEl.innerHTML = aiResponse;
-                            chatbotBody.appendChild(aiMessageEl);
-                            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                            let botResponse = '';
+                            const lowerMessage = userMessage.toLowerCase();
+                            if (lowerMessage.includes('who is samrat') || lowerMessage.includes('about samrat')) {
+                                botResponse = 'Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, known for creating love story videos on his YouTube channel "Samrat Rajput Creation." He is also the founder of Samrat Royal Collection, a customized printing service.';
+                            } else if (lowerMessage.includes('age') || lowerMessage.includes('how old')) {
+                                botResponse = 'Samrat Singh Rajput was born on October 15, 2003, making him 21 years old as of May 15, 2025.';
+                            } else if (lowerMessage.includes('what does samrat do') || lowerMessage.includes('job') || lowerMessage.includes('work')) {
+                                botResponse = 'Samrat Singh Rajput creates love story videos as a YouTuber on his channel "Samrat Rajput Creation." He also runs Samrat Royal Collection, a business offering customized printing services for T-shirts and mugs in Lucknow.';
+                            } else if (lowerMessage.includes('where is samrat from') || lowerMessage.includes('location') || lowerMessage.includes('hometown')) {
+                                botResponse = 'Samrat Singh Rajput is from Lucknow, Uttar Pradesh, India, where he was born and raised, and continues to build his career as an influencer and entrepreneur.';
+                            } else if (lowerMessage.includes('samrat royal collection') || lowerMessage.includes('business')) {
+                                botResponse = 'Samrat Royal Collection is a customized printing service founded by Samrat Singh Rajput in Lucknow, offering products like T-shirts and mugs, with a vision to expand into a larger business empire.';
+                            } else if (lowerMessage.includes('education') || lowerMessage.includes('school') || lowerMessage.includes('university')) {
+                                botResponse = 'Samrat Singh Rajput completed his schooling at Sri Ayodhya Singh Memorial Inter College in Lucknow in 2024. He is currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University.';
+                            } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach out') || lowerMessage.includes('collaborate')) {
+                                botResponse = 'You can reach out to Samrat Singh Rajput through the contact form on this website. Just click the "CONTACT" button in the "Let\'s Collaborate" section!';
+                            } else if (lowerMessage.includes('social media') || lowerMessage.includes('follow') || lowerMessage.includes('youtube') || lowerMessage.includes('instagram') || lowerMessage.includes('facebook')) {
+                                botResponse = 'You can follow Samrat Singh Rajput on his social media platforms: <br>' +
+                                            '- YouTube: <a href="https://youtube.com/@samratrajputcreation?si=GBPpM12JXekOfxkb" target="_blank">Samrat Rajput Creation</a><br>' +
+                                            '- Instagram: <a href="https://www.instagram.com/samrat_kushwaha_rajput?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@samrat_kushwaha_rajput</a><br>' +
+                                            '- Facebook: <a href="https://www.facebook.com/samrat.kushwaha.7798?rdid=nAkLd0UaLzey4cgC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12Kf3xhZsw9%2F#" target="_blank">Samrat Kushwaha</a>';
+                            } else {
+                                botResponse = 'I’m not sure how to answer that. Could you ask something about Samrat Singh Rajput, his ventures, or this website?';
+                            }
 
-                            chatbotRef.push({
-                                userMessage: userMessage,
-                                aiResponse: aiResponse,
-                                timestamp: Date.now()
-                            }).catch(error => {
-                                console.error('Error logging chatbot interaction:', error);
-                            });
+                            const botMsgDiv = document.createElement('div');
+                            botMsgDiv.classList.add('chatbot-message', 'ai');
+                            botMsgDiv.innerHTML = botResponse;
+                            chatbotBody.appendChild(botMsgDiv);
+
+                            chatbotBody.scrollTop = chatbotBody.scrollHeight;
                         }, 500);
                     }
                 }
-
-                function getAIResponse(message) {
-                    if (message.includes('who is samrat') || message.includes('about samrat')) {
-                        return 'Samrat Singh Rajput is a social media influencer and YouTuber from Lucknow, born on 15th October 2003. He’s known for creating love story videos through Samrat Rajput Creation and runs a business called Samrat Royal Collection, offering customized printing services.';
-                    } else if (message.includes('what does samrat do') || message.includes('samrat ventures')) {
-                        return 'Samrat creates love story videos on his YouTube channel, Samrat Rajput Creation, and runs Samrat Royal Collection, a business in Lucknow that offers customized printing services like T-shirts and mugs.';
-                    } else if (message.includes('contact samrat') || message.includes('how to reach samrat')) {
-                        return 'You can contact Samrat through the <a href="#contact">Contact section</a> on this website or reach out via his social media profiles linked in the <a href="#social">Follow Me section</a>.';
-                    } else if (message.includes('gallery') || message.includes('photos')) {
-                        return 'Check out the <a href="#gallery">Gallery section</a> and <a href="#horizontal-gallery">Horizontal Gallery section</a> to see photos related to Samrat’s work and ventures.';
-                    } else if (message.includes('videos') || message.includes('youtube')) {
-                        return 'Samrat shares his love story videos on YouTube. You can watch some of his featured videos in the <a href="#videos">Featured Videos section</a> or visit his YouTube channel linked in the <a href="#social">Follow Me section</a>.';
-                    } else if (message.includes('reviews') || message.includes('rating')) {
-                        return 'You can rate Samrat’s content and leave a review in the <a href="#home">Home section</a>. See what others are saying in the <a href="#testimonials">What People Say section</a> or click "Show All Reviews" to view all submitted reviews.';
-                    } else if (message.includes('social media') || message.includes('follow samrat')) {
-                        return 'You can follow Samrat on YouTube, Instagram, and Facebook. Check the <a href="#social">Follow Me section</a> for direct links to his profiles.';
-                    } else if (message.includes('education') || message.includes('samrat study')) {
-                        return 'Samrat completed his schooling at Sri Ayodhya Singh Memorial Inter College, Lucknow, in 2024. He’s currently pursuing a Bachelor of Science in Information Technology at Shri Ramswaroop Memorial University, Lucknow.';
-                    } else if (message.includes('family') || message.includes('samrat family')) {
-                        return 'Samrat comes from a supportive family in Lucknow. His father is Thakur Badshah Kushwaha, his mother is Sunila Devi, and his brother, Aman Rajput, is his constant motivator.';
-                    } else if (message.includes('hobbies') || message.includes('interests')) {
-                        return 'Samrat enjoys singing and traveling. His favorite foods are Sahi Paneer, Puri, Kheer, and Jalebi.';
-                    } else if (message.includes('future goals') || message.includes('samrat plans')) {
-                        return 'Samrat aims to expand his business, Samrat Royal Collection, into a larger empire, continue creating inspiring content, collaborate with brands worldwide, and launch a mobile app for Samrat Rajput Creation.';
-                    } else if (message.includes('achievements') || message.includes('samrat success')) {
-                        return 'Samrat has built a loyal following on social media with his heartfelt content and successfully launched Samrat Royal Collection in Lucknow. Check the <a href="#achievements">Achievements section</a> for more details.';
-                    } else if (message.includes('Caste') || message.includes('samrat caste')) {
-                        return 'Samrat Singh Rajput belongs to the Suryavanshi (Raghuwanshi) Kachwaha Rajput caste.</a> for more details.';
-                    } else {
-                        return 'I’m not sure how to answer that. Could you ask something else about Samrat or this website?';
-                    }
-                }
-
-                chatbotBody.scrollTop = chatbotBody.scrollHeight;
             } else {
                 console.error('Chatbot elements not found in the DOM.');
+            }
+
+            const navLinks = document.querySelectorAll('nav ul li a');
+            if (navLinks.length > 0) {
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                });
+            } else {
+                console.error('Navigation links not found in the DOM.');
+            }
+
+            const aboutMeButton = document.querySelector('#home button');
+            if (aboutMeButton) {
+                aboutMeButton.addEventListener('click', () => {
+                    const aboutSection = document.getElementById('about');
+                    if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            } else {
+                console.error('About Me button not found in the DOM.');
             }
         });
     </script>
